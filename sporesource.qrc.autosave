@@ -1,0 +1,86 @@
+<RCC>
+    <qresource prefix="/root">
+        <file>qtAppIcons/Add.png</file>
+        <file>qtAppIcons/add1.png</file>
+        <file>qtAppIcons/add2.png</file>
+        <file>qtAppIcons/addressbook.png</file>
+        <file>qtAppIcons/alarm.png</file>
+        <file>qtAppIcons/alert.png</file>
+        <file>qtAppIcons/application.png</file>
+        <file>qtAppIcons/Archive.png</file>
+        <file>qtAppIcons/Audio Disk.png</file>
+        <file>qtAppIcons/back.png</file>
+        <file>qtAppIcons/Burn Disk.png</file>
+        <file>qtAppIcons/calculator.png</file>
+        <file>qtAppIcons/calendar.png</file>
+        <file>qtAppIcons/cancel.png</file>
+        <file>qtAppIcons/cart.png</file>
+        <file>qtAppIcons/chart.png</file>
+        <file>qtAppIcons/chat.png</file>
+        <file>qtAppIcons/Check.png</file>
+        <file>qtAppIcons/close.png</file>
+        <file>qtAppIcons/Compact Disk.png</file>
+        <file>qtAppIcons/computer.png</file>
+        <file>qtAppIcons/configure.png</file>
+        <file>qtAppIcons/contact.png</file>
+        <file>qtAppIcons/Copy v2.png</file>
+        <file>qtAppIcons/copy.png</file>
+        <file>qtAppIcons/cut.png</file>
+        <file>qtAppIcons/delete.png</file>
+        <file>qtAppIcons/disc.png</file>
+        <file>qtAppIcons/documents.png</file>
+        <file>qtAppIcons/down.png</file>
+        <file>qtAppIcons/Download.png</file>
+        <file>qtAppIcons/DVD Disk.png</file>
+        <file>qtAppIcons/edit.png</file>
+        <file>qtAppIcons/event.png</file>
+        <file>qtAppIcons/export.png</file>
+        <file>qtAppIcons/Favorites.png</file>
+        <file>qtAppIcons/Find.png</file>
+        <file>qtAppIcons/Flash Disk.png</file>
+        <file>qtAppIcons/Folder.png</file>
+        <file>qtAppIcons/forward.png</file>
+        <file>qtAppIcons/Globe.png</file>
+        <file>qtAppIcons/Hard Disk.png</file>
+        <file>qtAppIcons/Help.png</file>
+        <file>qtAppIcons/import.png</file>
+        <file>qtAppIcons/info.png</file>
+        <file>qtAppIcons/Information.png</file>
+        <file>qtAppIcons/Key.png</file>
+        <file>qtAppIcons/Log Out.png</file>
+        <file>qtAppIcons/Mail.png</file>
+        <file>qtAppIcons/Negative.png</file>
+        <file>qtAppIcons/New.png</file>
+        <file>qtAppIcons/Next.png</file>
+        <file>qtAppIcons/Open.png</file>
+        <file>qtAppIcons/Paste.png</file>
+        <file>qtAppIcons/Pause.png</file>
+        <file>qtAppIcons/Picture.png</file>
+        <file>qtAppIcons/Play.png</file>
+        <file>qtAppIcons/Positive.png</file>
+        <file>qtAppIcons/Presentation.png</file>
+        <file>qtAppIcons/Preview.png</file>
+        <file>qtAppIcons/Previous.png</file>
+        <file>qtAppIcons/Print.png</file>
+        <file>qtAppIcons/Properties.png</file>
+        <file>qtAppIcons/Redo.png</file>
+        <file>qtAppIcons/Refresh.png</file>
+        <file>qtAppIcons/Remove.png</file>
+        <file>qtAppIcons/Rename.png</file>
+        <file>qtAppIcons/Save.png</file>
+        <file>qtAppIcons/Search.png</file>
+        <file>qtAppIcons/Send.png</file>
+        <file>qtAppIcons/Settings.png</file>
+        <file>qtAppIcons/Stock Index Down.png</file>
+        <file>qtAppIcons/Stock Index Up.png</file>
+        <file>qtAppIcons/Stop.png</file>
+        <file>qtAppIcons/Synchronize.png</file>
+        <file>qtAppIcons/Text Document.png</file>
+        <file>qtAppIcons/Undo.png</file>
+        <file>qtAppIcons/up.png</file>
+        <file>qtAppIcons/Upload.png</file>
+        <file>qtAppIcons/User.png</file>
+        <file>qtAppIcons/Zoom In.png</file>
+        <file>qtAppIcons/Zoom Out.png</file>
+    </qresource>
+</RCC>
