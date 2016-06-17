@@ -29,12 +29,17 @@
     <item>
      <widget class="QTabWidget" name="tabMainView">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabShipToAddress">
        <attribute name="title">
-        <string>Ship-To Address</string>
+        <string>Set Ship-To</string>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <layout class="QVBoxLayout" name="loSetupTab"/>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tabAddSmallParts">
        <attribute name="title">
