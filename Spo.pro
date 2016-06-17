@@ -15,13 +15,17 @@ QMAKE_CXXFLAGS += -std=c++11
 
 SOURCES += main.cpp\
         View/mainview.cpp \
-    View/setuptab.cpp
+    View/setuptab.cpp \
+    View/addlineitem.cpp
 
 HEADERS  += View/mainview.h \
-    View/setuptab.h
+    View/setuptab.h \
+    View/addlineitem.h
 
 FORMS    += View/mainview.ui \
-    View/setuptab.ui
+    View/setuptab.ui \
+    View/addlineitem.ui
 
 RESOURCES += \
-    sporesource.qrc
+    sporesource.qrc \
+    btnresource.qrc

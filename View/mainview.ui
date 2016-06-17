@@ -29,7 +29,7 @@
     <item>
      <widget class="QTabWidget" name="tabMainView">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tabShipToAddress">
        <attribute name="title">
@@ -45,6 +45,11 @@
        <attribute name="title">
         <string>Add Small Parts</string>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <layout class="QVBoxLayout" name="loAddSmallParts"/>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
