@@ -25,7 +25,7 @@
    <property name="title">
     <string>Ship-To Address</string>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>450</x>
@@ -34,20 +34,20 @@
       <height>24</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_8">
+    <layout class="QHBoxLayout" name="hloShipToAddress_City">
      <item>
-      <widget class="QLabel" name="label_8">
+      <widget class="QLabel" name="lblShipToAddress_City">
        <property name="text">
         <string>City</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_4"/>
+      <widget class="QLineEdit" name="leShipToAddress_City"/>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>450</x>
@@ -56,20 +56,20 @@
       <height>24</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_9">
+    <layout class="QHBoxLayout" name="hloShipToAddress_State">
      <item>
-      <widget class="QLabel" name="label_9">
+      <widget class="QLabel" name="lblShipToAddress_State">
        <property name="text">
         <string>State</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_5"/>
+      <widget class="QLineEdit" name="leShipToAddress_State"/>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>450</x>
@@ -78,20 +78,20 @@
       <height>24</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_10">
+    <layout class="QHBoxLayout" name="hloShipToAddress_Zip">
      <item>
-      <widget class="QLabel" name="label_10">
+      <widget class="QLabel" name="lblShipToAddress_Zip">
        <property name="text">
         <string>Zip</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_6"/>
+      <widget class="QLineEdit" name="leShipToAddress_Zip"/>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -100,20 +100,20 @@
       <height>24</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_6">
+    <layout class="QHBoxLayout" name="hloShipToAddress_Address1">
      <item>
-      <widget class="QLabel" name="label_6">
+      <widget class="QLabel" name="lblShipToAddress_Address1">
        <property name="text">
         <string>Address 1</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_2"/>
+      <widget class="QLineEdit" name="leShipToAddress_Address1"/>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -122,20 +122,20 @@
       <height>24</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_5">
+    <layout class="QHBoxLayout" name="hloShipToAddress_Attn">
      <item>
-      <widget class="QLabel" name="label_5">
+      <widget class="QLabel" name="lblShipToAddress_Attn">
        <property name="text">
         <string>Attn:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="leShipToAddress_Attn"/>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -144,20 +144,20 @@
       <height>24</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_7">
+    <layout class="QHBoxLayout" name="hloShipToAddress_Address2">
      <item>
-      <widget class="QLabel" name="label_7">
+      <widget class="QLabel" name="lblShipToAddress_Address2">
        <property name="text">
         <string>Address 2</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_3"/>
+      <widget class="QLineEdit" name="leShipToAddress_Address2"/>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -166,21 +166,21 @@
       <height>24</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_11">
+    <layout class="QHBoxLayout" name="hloShipToAdddress_Address3">
      <item>
-      <widget class="QLabel" name="label_11">
+      <widget class="QLabel" name="lblShipToAddress_Address3">
        <property name="text">
         <string>Address 3</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_11"/>
+      <widget class="QLineEdit" name="leShipToAddress_Address3"/>
      </item>
     </layout>
    </widget>
   </widget>
-  <widget class="QGroupBox" name="groupBox">
+  <widget class="QGroupBox" name="gbShipToDealer">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -192,7 +192,7 @@
    <property name="title">
     <string>Ship-To Dealer</string>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -201,20 +201,20 @@
       <height>24</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <layout class="QHBoxLayout" name="hloShipToDealer_DateToShip">
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="lblShipToDealer_DateToShip">
        <property name="text">
         <string>Date to ship</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_8"/>
+      <widget class="QLineEdit" name="leShipToDealer_DateToShip"/>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -223,20 +223,20 @@
       <height>24</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="hloShipToDealer_PO">
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="lblShipToDealer_PO">
        <property name="text">
         <string>Po</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_7"/>
+      <widget class="QLineEdit" name="leShipToDealer_PO"/>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>450</x>
@@ -245,20 +245,20 @@
       <height>24</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <layout class="QHBoxLayout" name="hloShipToDealer_DealerID">
      <item>
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="lblShipToDealer_DealerID">
        <property name="text">
         <string>Dealer ID</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_10"/>
+      <widget class="QLineEdit" name="leShipToDealer_DealerID"/>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>450</x>
@@ -267,34 +267,25 @@
       <height>24</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <layout class="QHBoxLayout" name="hloShipToDealer_Routing">
      <item>
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="lblShipToDealer_Routing">
        <property name="text">
         <string>Routing</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_9"/>
+      <widget class="QLineEdit" name="leShipToDealer_Routing"/>
      </item>
     </layout>
    </widget>
-   <zorder>lineEdit_7</zorder>
-   <zorder>lineEdit_8</zorder>
-   <zorder>lineEdit_9</zorder>
-   <zorder>lineEdit_10</zorder>
-   <zorder>label</zorder>
-   <zorder>label_2</zorder>
-   <zorder>label_3</zorder>
-   <zorder>label_4</zorder>
-   <zorder>lineEdit_8</zorder>
-   <zorder>lineEdit_7</zorder>
-   <zorder></zorder>
-   <zorder></zorder>
-   <zorder></zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>layoutWidget</zorder>
   </widget>
-  <widget class="QGroupBox" name="groupBox_2">
+  <widget class="QGroupBox" name="gbOptions">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -306,7 +297,7 @@
    <property name="title">
     <string>Options</string>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -315,30 +306,30 @@
       <height>121</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QVBoxLayout" name="vloOptions">
      <item>
-      <widget class="QCheckBox" name="checkBox_4">
+      <widget class="QCheckBox" name="cbOptions_ResidentialDelivery">
        <property name="text">
         <string>Residential Delivery</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox_3">
+      <widget class="QCheckBox" name="cbOptions_Notification">
        <property name="text">
         <string>Notification</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox_2">
+      <widget class="QCheckBox" name="cbOptions_InsideDelivery">
        <property name="text">
         <string>Inside Delivery</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox">
+      <widget class="QCheckBox" name="cbOptions_LiftGate">
        <property name="text">
         <string>Lift Gate</string>
        </property>
