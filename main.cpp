@@ -1,11 +1,10 @@
-#include "View/mainview.h"
 #include <QApplication>
+#include "startup.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainView w;
-    w.show();
-
+    TophersNameSpace::Startup start_up;
+    start_up.show();
     return a.exec();
 }

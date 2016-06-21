@@ -16,11 +16,15 @@ QMAKE_CXXFLAGS += -std=c++11
 SOURCES += main.cpp\
         View/mainview.cpp \
     View/setuptab.cpp \
-    View/addlineitem.cpp
+    View/addlineitem.cpp \
+    startup.cpp \
+    utils.cpp
 
 HEADERS  += View/mainview.h \
     View/setuptab.h \
-    View/addlineitem.h
+    View/addlineitem.h \
+    startup.h \
+    utils.h
 
 FORMS    += View/mainview.ui \
     View/setuptab.ui \

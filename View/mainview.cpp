@@ -1,22 +1,27 @@
-#include "mainview.h"
 #include "ui_mainview.h"
+#include "View/mainview.h"
 #include "View/setuptab.h"
 #include "View/addlineitem.h"
 
-MainView::MainView(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainView)
-{
-    ui->setupUi(this);
-    auto setup_tab = new SetupTab(this);
-    ui->loSetupTab->addWidget(setup_tab);
+namespace TophersNameSpace {
 
-    auto addlineitem_tab = new AddLineItem(this);
-    ui->loAddSmallParts->addWidget(addlineitem_tab);
+    MainView::MainView(QWidget *parent, TophersNameSpace::SetupTab& setup) :
+        QMainWindow(parent),
+        m_setupTab(setup),
+        ui(new Ui::MainView)
+    {
+        ui->setupUi(this);
+        m_setupTab.setParent(this);
+        ui->loSetupTab->addWidget(&m_setupTab);
 
-}
+        auto addlineitem_tab = new AddLineItem(this);
+        ui->loAddSmallParts->addWidget(addlineitem_tab);
 
-MainView::~MainView()
-{
-    delete ui;
+    }
+
+    MainView::~MainView()
+    {
+        delete ui;
+    }
+
 }

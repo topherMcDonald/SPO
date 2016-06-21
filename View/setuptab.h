@@ -4,19 +4,21 @@
 #include <QWidget>
 
 namespace Ui {
-class SetupTab;
+    class SetupTab;
 }
 
-class SetupTab : public QWidget
-{
-    Q_OBJECT
+namespace TophersNamespace{
 
-public:
-    explicit SetupTab(QWidget *parent = 0);
-    ~SetupTab();
+    class SetupTab : public QWidget
+    {
+        Q_OBJECT
 
-private:
-    Ui::SetupTab *ui;
-};
+    public:
+        explicit SetupTab(QWidget *parent = 0);
+        ~SetupTab();
 
+    private:
+        Ui::SetupTab *ui;
+    };
+}
 #endif // SETUPTAB_H
