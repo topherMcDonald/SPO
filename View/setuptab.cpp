@@ -1,5 +1,6 @@
 #include "setuptab.h"
 #include "ui_setuptab.h"
+#include "utils.h"
 
 namespace TophersNameSpace
 {
@@ -13,6 +14,7 @@ namespace TophersNameSpace
 
     SetupTab::~SetupTab()
     {
+        Utils::DestructorMsg(this);
         delete ui;
     }
 

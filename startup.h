@@ -15,6 +15,7 @@ namespace TophersNameSpace{
         explicit Startup();
         void show() const;
 
+        ~Startup();
     private:
         SetupTab& m_setupTab;
         MainView& m_mainView;

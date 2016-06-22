@@ -10,221 +10,178 @@
     <height>644</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QGroupBox" name="gbAddLineTtem">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>800</width>
-     <height>231</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Add Line Item</string>
-   </property>
-   <widget class="QPushButton" name="btnAddLineItem_GetMacPacPart">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>30</y>
-      <width>221</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>  Get MacPac Part</string>
-    </property>
-    <property name="icon">
-     <iconset resource="../sporesource.qrc">
-      <normaloff>:/root/qtAppIcons/Add.png</normaloff>:/root/qtAppIcons/Add.png</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnAddLineItem_AddLine">
-    <property name="geometry">
-     <rect>
-      <x>510</x>
-      <y>190</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>  Add Line</string>
-    </property>
-    <property name="icon">
-     <iconset resource="../sporesource.qrc">
-      <normaloff>:/root/qtAppIcons/Check.png</normaloff>:/root/qtAppIcons/Check.png</iconset>
-    </property>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>100</y>
-      <width>431</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="hloAddLineItem_PartNumber">
-     <item>
-      <widget class="QLabel" name="lblAddLineItem_PartNumber">
-       <property name="text">
-        <string>Part Number</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="leAddLineItem_PartNumber"/>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>150</y>
-      <width>431</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="hloAddLineItem_Description">
-     <item>
-      <widget class="QLabel" name="lblAddLineItem_Description">
-       <property name="text">
-        <string>Description</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="leAddlineItem_Description"/>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>100</y>
-      <width>151</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="hloAddLineItem_Quantity">
-     <item>
-      <widget class="QLabel" name="lblAddLineItem_Quantity">
-       <property name="text">
-        <string>Qunantity</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="leAddLineItem_Quantity"/>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>150</y>
-      <width>151</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="hloAddLineItem_Value">
-     <item>
-      <widget class="QLabel" name="lblAddLineItem_Value">
-       <property name="text">
-        <string>Value</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="leAddLineItem_Value"/>
-     </item>
-    </layout>
-   </widget>
-   <zorder>layoutWidget</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>btnAddLineItem_GetMacPacPart</zorder>
-   <zorder>btnAddLineItem_AddLine</zorder>
-  </widget>
-  <widget class="QGroupBox" name="gbRecapAndSubmit">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>270</y>
-     <width>800</width>
-     <height>330</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Recap and Submit</string>
-   </property>
-   <widget class="QPushButton" name="btnRecapAndSubmit_OrderParts">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>280</y>
-      <width>121</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Order Parts</string>
-    </property>
-    <property name="icon">
-     <iconset resource="../sporesource.qrc">
-      <normaloff>:/root/qtAppIcons/cart.png</normaloff>:/root/qtAppIcons/cart.png</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnRecapAndSubmit_Clear">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>280</y>
-      <width>121</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>  Clear</string>
-    </property>
-    <property name="icon">
-     <iconset resource="../sporesource.qrc">
-      <normaloff>:/root/qtAppIcons/Remove.png</normaloff>:/root/qtAppIcons/Remove.png</iconset>
-    </property>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>50</y>
-      <width>461</width>
-      <height>208</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="vloRecapAndSubmit_CurrentOrderLines">
-     <item>
-      <widget class="QLabel" name="lblRecapAndSubmit_CurrentOrderLines">
-       <property name="text">
-        <string>Current Order Lines</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QColumnView" name="columnView"/>
-     </item>
-    </layout>
-   </widget>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="gbAddLineTtem">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Add Line Item</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QPushButton" name="btnAddLineItem_GetMacPacPart">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>  Get MacPac Part</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../btnresource.qrc">
+          <normaloff>:/root/qtAppIcons/Add.png</normaloff>:/root/qtAppIcons/Add.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <layout class="QHBoxLayout" name="hloAddLineItem_PartNumber">
+        <item>
+         <widget class="QLabel" name="lblAddLineItem_PartNumber">
+          <property name="text">
+           <string>Part Number</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leAddLineItem_PartNumber"/>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="1">
+       <layout class="QHBoxLayout" name="hloAddLineItem_Quantity">
+        <item>
+         <widget class="QLabel" name="lblAddLineItem_Quantity">
+          <property name="text">
+           <string>Qunantity</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leAddLineItem_Quantity"/>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0">
+       <layout class="QHBoxLayout" name="hloAddLineItem_Description">
+        <item>
+         <widget class="QLabel" name="lblAddLineItem_Description">
+          <property name="text">
+           <string>Description</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leAddlineItem_Description"/>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="1">
+       <layout class="QHBoxLayout" name="hloAddLineItem_Value">
+        <item>
+         <widget class="QLabel" name="lblAddLineItem_Value">
+          <property name="text">
+           <string>Value</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leAddLineItem_Value"/>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="1">
+       <widget class="QPushButton" name="btnAddLineItem_AddLine">
+        <property name="text">
+         <string>  Add Line</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../sporesource.qrc">
+          <normaloff>:/root/qtAppIcons/Check.png</normaloff>:/root/qtAppIcons/Check.png</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+     <zorder>btnAddLineItem_GetMacPacPart</zorder>
+     <zorder>btnAddLineItem_AddLine</zorder>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="gbRecapAndSubmit">
+     <property name="title">
+      <string>Recap and Submit</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0" colspan="2">
+       <layout class="QVBoxLayout" name="vloRecapAndSubmit_CurrentOrderLines">
+        <item>
+         <widget class="QLabel" name="lblRecapAndSubmit_CurrentOrderLines">
+          <property name="text">
+           <string>Current Order Lines</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QColumnView" name="columnView"/>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="btnRecapAndSubmit_OrderParts">
+        <property name="text">
+         <string>Order Parts</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../sporesource.qrc">
+          <normaloff>:/root/qtAppIcons/cart.png</normaloff>:/root/qtAppIcons/cart.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="btnRecapAndSubmit_Clear">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>  Clear</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../btnresource.qrc">
+          <normaloff>:/root/qtAppIcons/Remove.png</normaloff>:/root/qtAppIcons/Remove.png</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources>
+  <include location="../btnresource.qrc"/>
   <include location="../sporesource.qrc"/>
  </resources>
  <connections/>
