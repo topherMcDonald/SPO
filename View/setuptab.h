@@ -7,7 +7,7 @@ namespace Ui {
     class SetupTab;
 }
 
-namespace TophersNamespace{
+namespace TophersNameSpace{
 
     class SetupTab : public QWidget
     {

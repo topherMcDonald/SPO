@@ -1,5 +1,5 @@
-#include "ui_mainview.h"
 #include "View/mainview.h"
+#include "ui_mainview.h"
 #include "View/setuptab.h"
 #include "View/addlineitem.h"
 

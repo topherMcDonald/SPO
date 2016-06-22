@@ -2,7 +2,7 @@
 
 namespace TophersNameSpace
 {
-Utils::Utils() :
-{
-}
+//    Utils::Utils() :
+//    {
+//    }
 }

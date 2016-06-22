@@ -4,19 +4,21 @@
 #include <QWidget>
 
 namespace Ui {
-class AddLineItem;
+    class AddLineItem;
 }
 
-class AddLineItem : public QWidget
-{
-    Q_OBJECT
+namespace TophersNameSpace{
 
-public:
-    explicit AddLineItem(QWidget *parent = 0);
-    ~AddLineItem();
+    class AddLineItem : public QWidget
+    {
+        Q_OBJECT
 
-private:
-    Ui::AddLineItem *ui;
-};
+    public:
+        explicit AddLineItem(QWidget *parent = 0);
+        ~AddLineItem();
 
+    private:
+        Ui::AddLineItem *ui;
+    };
+}
 #endif // ADDLINEITEM_H
