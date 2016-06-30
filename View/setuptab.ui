@@ -33,6 +33,27 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
       <item row="0" column="0">
+       <layout class="QHBoxLayout" name="hloShipToDealer_DealerID">
+        <item>
+         <widget class="QLabel" name="lblShipToDealer_DealerID">
+          <property name="text">
+           <string>Dealer ID</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="cmbShipToDealer_DealerID">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
        <layout class="QHBoxLayout" name="hloShipToDealer_PO">
         <item>
          <widget class="QLabel" name="lblShipToDealer_PO">
@@ -42,7 +63,21 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="leShipToDealer_PO"/>
+         <widget class="QLineEdit" name="leShipToDealer_DealerID"/>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="1">
+       <layout class="QHBoxLayout" name="hloShipToDealer_DateToShip">
+        <item>
+         <widget class="QLabel" name="lblShipToDealer_DateToShip">
+          <property name="text">
+           <string>Date to ship</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToDealer_DateToShip"/>
         </item>
        </layout>
       </item>
@@ -57,34 +92,6 @@
         </item>
         <item>
          <widget class="QLineEdit" name="leShipToDealer_Routing"/>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="0">
-       <layout class="QHBoxLayout" name="hloShipToDealer_DateToShip">
-        <item>
-         <widget class="QLabel" name="lblShipToDealer_DateToShip">
-          <property name="text">
-           <string>Date to ship</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leShipToDealer_DateToShip"/>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="1">
-       <layout class="QHBoxLayout" name="hloShipToDealer_DealerID">
-        <item>
-         <widget class="QLabel" name="lblShipToDealer_DealerID">
-          <property name="text">
-           <string>Dealer ID</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leShipToDealer_DealerID"/>
         </item>
        </layout>
       </item>
@@ -253,6 +260,20 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>leShipToDealer_Routing</tabstop>
+  <tabstop>leShipToAddress_Attn</tabstop>
+  <tabstop>leShipToAddress_City</tabstop>
+  <tabstop>leShipToAddress_Address1</tabstop>
+  <tabstop>leShipToAddress_State</tabstop>
+  <tabstop>leShipToAddress_Address2</tabstop>
+  <tabstop>leShipToAddress_Zip</tabstop>
+  <tabstop>leShipToAddress_Address3</tabstop>
+  <tabstop>cbOptions_ResidentialDelivery</tabstop>
+  <tabstop>cbOptions_Notification</tabstop>
+  <tabstop>cbOptions_InsideDelivery</tabstop>
+  <tabstop>cbOptions_LiftGate</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

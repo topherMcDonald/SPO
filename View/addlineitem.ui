@@ -117,8 +117,6 @@
        </widget>
       </item>
      </layout>
-     <zorder>btnAddLineItem_GetMacPacPart</zorder>
-     <zorder>btnAddLineItem_AddLine</zorder>
     </widget>
    </item>
    <item>
@@ -180,6 +178,17 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>btnAddLineItem_GetMacPacPart</tabstop>
+  <tabstop>leAddLineItem_PartNumber</tabstop>
+  <tabstop>leAddLineItem_Quantity</tabstop>
+  <tabstop>leAddlineItem_Description</tabstop>
+  <tabstop>leAddLineItem_Value</tabstop>
+  <tabstop>btnAddLineItem_AddLine</tabstop>
+  <tabstop>columnView</tabstop>
+  <tabstop>btnRecapAndSubmit_OrderParts</tabstop>
+  <tabstop>btnRecapAndSubmit_Clear</tabstop>
+ </tabstops>
  <resources>
   <include location="../btnresource.qrc"/>
   <include location="../sporesource.qrc"/>

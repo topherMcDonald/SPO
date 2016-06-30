@@ -15,5 +15,4 @@ namespace TophersNameSpace
     {
         delete ui;
     }
-
-}
+}/*End NameSpace */

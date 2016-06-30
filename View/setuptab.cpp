@@ -17,5 +17,4 @@ namespace TophersNameSpace
         Utils::DestructorMsg(this);
         delete ui;
     }
-
 }

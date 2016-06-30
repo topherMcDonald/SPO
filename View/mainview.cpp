@@ -23,5 +23,4 @@ namespace TophersNameSpace {
     {
         delete ui;
     }
-
 }

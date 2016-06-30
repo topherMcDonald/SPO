@@ -15,5 +15,4 @@ namespace TophersNameSpace
     {
         DestructorMsg(object->metaObject()->className());
     }
-
 }
