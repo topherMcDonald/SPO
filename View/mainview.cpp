@@ -3,24 +3,23 @@
 #include "View/setuptab.h"
 #include "View/addlineitem.h"
 
-namespace TophersNameSpace {
 
-    MainView::MainView(QWidget *parent, TophersNameSpace::SetupTab& setup) :
-        QMainWindow(parent),
-        m_setupTab(setup),
-        ui(new Ui::MainView)
-    {
+MainView::MainView(QWidget *parent, SetupTab& setup, AddLineItem& addlineitem) :
+    QMainWindow(parent),
+    m_setupTab (setup),
+    m_addlineitem(addlineitem),
+    ui(new Ui::MainView)
+{
         ui->setupUi(this);
         m_setupTab.setParent(this);
+       // auto setup_tab = new SetupTab(this);    // Create instance of the class
         ui->loSetupTab->addWidget(&m_setupTab);
+       // auto addlineitem_tab = new AddLineItem(this);
+        ui->loAddSmallParts->addWidget(&addlineitem);
 
-        auto addlineitem_tab = new AddLineItem(this);
-        ui->loAddSmallParts->addWidget(addlineitem_tab);
+}
 
-    }
-
-    MainView::~MainView()
-    {
-        delete ui;
-    }
+MainView::~MainView()
+{
+    delete ui;
 }

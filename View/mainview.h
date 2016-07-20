@@ -3,12 +3,12 @@
 
 #include <QMainWindow>
 #include <View/setuptab.h>
+#include <View/addlineitem.h>
 
 namespace Ui {
     class MainView;
 }
 
-namespace TophersNameSpace {
 
     class SetupTab;
 
@@ -17,12 +17,12 @@ namespace TophersNameSpace {
         Q_OBJECT
 
     public:
-        explicit MainView(QWidget *parent, TophersNameSpace::SetupTab &setup);
+        explicit MainView(QWidget *parent, SetupTab &setup, AddLineItem &addlineitem);
         ~MainView();
 
     private:
         SetupTab& m_setupTab;
+        AddLineItem& m_addlineitem;
         Ui::MainView *ui;
     };
-}
 #endif // MAINVIEW_H

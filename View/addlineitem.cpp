@@ -1,8 +1,7 @@
 #include "addlineitem.h"
 #include "ui_addlineitem.h"
 
-namespace TophersNameSpace
-{
+
 
     AddLineItem::AddLineItem(QWidget *parent) :
         QWidget(parent),
@@ -15,4 +14,9 @@ namespace TophersNameSpace
     {
         delete ui;
     }
-}/*End NameSpace */
+
+
+void AddLineItem::on_btnAddLineItem_GetMacPacPart_clicked()
+{
+
+}

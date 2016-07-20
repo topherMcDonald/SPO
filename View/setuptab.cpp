@@ -2,8 +2,6 @@
 #include "ui_setuptab.h"
 #include "utils.h"
 
-namespace TophersNameSpace
-{
 
     SetupTab::SetupTab(QWidget *parent) :
         QWidget(parent),
@@ -14,7 +12,6 @@ namespace TophersNameSpace
 
     SetupTab::~SetupTab()
     {
-        Utils::DestructorMsg(this);
+        Utils::DestuctorMsg(this);
         delete ui;
     }
-}

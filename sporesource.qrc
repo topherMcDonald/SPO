@@ -83,4 +83,7 @@
         <file>qtAppIcons/Zoom In.png</file>
         <file>qtAppIcons/Zoom Out.png</file>
     </qresource>
+    <qresource prefix="/json">
+        <file>settings.json</file>
+    </qresource>
 </RCC>

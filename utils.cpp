@@ -1,18 +1,16 @@
 #include "utils.h"
-#include "QString"
-#include "QDebug"
+#include <QString>
+#include <QDebug>
 
-namespace TophersNameSpace
+
+static QString DESTRUCTOR_MSG = QStringLiteral("Running the %1 destructor.");
+
+void Utils::DestuctorMsg(const QString &value)
 {
-    static QString DESTUCTOR_MSG = QStringLiteral("Running the %1 detuctor.");
+    qDebug() << DESTRUCTOR_MSG.arg(value);
+}
 
-    void Utils::DestructorMsg(const QString &value)
-    {
-        qDebug() << DESTUCTOR_MSG.arg(value);
-    }
-
-    void Utils::DestructorMsg(const QObject* const object)
-    {
-        DestructorMsg(object->metaObject()->className());
-    }
+void Utils::DestuctorMsg(const QObject* const object)
+{
+    DestuctorMsg(object->metaObject()->className());
 }

@@ -7,8 +7,6 @@ namespace Ui {
     class SetupTab;
 }
 
-namespace TophersNameSpace{
-
     class SetupTab : public QWidget
     {
         Q_OBJECT
@@ -20,5 +18,5 @@ namespace TophersNameSpace{
     private:
         Ui::SetupTab *ui;
     };
-}
+
 #endif // SETUPTAB_H

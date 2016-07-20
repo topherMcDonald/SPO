@@ -1,20 +1,19 @@
-
 #pragma once
 #include <QWidget>
 
-namespace TophersNameSpace{
-    class Utils
-    {
-    public:
-        Utils();
+class Utils
+{
 
-       static void DestructorMsg(const QString& value);
-       static void DestructorMsg(const QObject * const object);
+public:
+    Utils();
 
-    private:
-        explicit Utils(const Utils& rhs) = delete;
-        Utils& operator= (const Utils& rhs) = delete;
-    };
-}
+    static void DestuctorMsg(const QString& value);
+    static void DestuctorMsg(const QObject * const object);
+private:
+    explicit Utils(const Utils& rhs) = delete;
+    Utils& operator= (const Utils& rhs) = delete;
+};
+
+
 
 

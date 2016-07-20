@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,14 +17,18 @@ SOURCES += main.cpp\
         View/mainview.cpp \
     View/setuptab.cpp \
     View/addlineitem.cpp \
-    startup.cpp \
-    utils.cpp
+    utils.cpp \
+    Model/settings.cpp \
+    Model/dealeridxmlreader.cpp \
+    startup.cpp
 
 HEADERS  += View/mainview.h \
     View/setuptab.h \
     View/addlineitem.h \
-    startup.h \
-    utils.h
+    utils.h \
+    Model/settings.h \
+    Model/dealeridxmlreader.h \
+    startup.h
 
 FORMS    += View/mainview.ui \
     View/setuptab.ui \

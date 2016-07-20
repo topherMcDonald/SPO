@@ -49,6 +49,9 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
        </layout>
@@ -261,7 +264,10 @@
   </layout>
  </widget>
  <tabstops>
+  <tabstop>cmbShipToDealer_DealerID</tabstop>
   <tabstop>leShipToDealer_Routing</tabstop>
+  <tabstop>leShipToDealer_DealerID</tabstop>
+  <tabstop>leShipToDealer_DateToShip</tabstop>
   <tabstop>leShipToAddress_Attn</tabstop>
   <tabstop>leShipToAddress_City</tabstop>
   <tabstop>leShipToAddress_Address1</tabstop>
