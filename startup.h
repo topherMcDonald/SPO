@@ -18,9 +18,11 @@ private:
     AddLineItem& m_addlineitem;         //Reference member for mainview
     MainView& m_mainView;               //Reference member for mainview
 
-
+    QString ReadXmlFile();
     explicit Startup(const Startup& rhs) = delete;
     Startup& operator= (const Startup& rhs) = delete;
+
+    void ParseXmlData();
 };
 
 

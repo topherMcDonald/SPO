@@ -2,7 +2,7 @@
 #include "ui_mainview.h"
 #include "View/setuptab.h"
 #include "View/addlineitem.h"
-
+#include <QTableWidget>
 
 MainView::MainView(QWidget *parent, SetupTab& setup, AddLineItem& addlineitem) :
     QMainWindow(parent),

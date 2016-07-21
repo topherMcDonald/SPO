@@ -1,9 +1,7 @@
 #include "dealeridxmlreader.h"
 
-namespace TophersNameSpace
+
+dealerIdXmlReader::dealerIdXmlReader(QObject *parent) :
+    QObject(parent)
 {
-    dealerIdXmlReader::dealerIdXmlReader(QObject *parent) :
-        QObject(parent)
-    {
-    }
 }
