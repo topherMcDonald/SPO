@@ -13,16 +13,24 @@ public:
     explicit Startup();
     void show() const;                  // will launch app instead of main.cpp
     ~Startup();
+
+public slots:
+    // void SaveXMLFile();
+    // void ParseXmlData();
+
 private:
+    QString m_basefilename;
     SetupTab& m_setupTab;               //Reference member for setuptab
     AddLineItem& m_addlineitem;         //Reference member for mainview
     MainView& m_mainView;               //Reference member for mainview
 
-    QString ReadXmlFile();
+
+    // QString ReadXmlFile();
     explicit Startup(const Startup& rhs) = delete;
     Startup& operator= (const Startup& rhs) = delete;
 
-    void ParseXmlData();
+
+
 };
 
 

@@ -5,9 +5,10 @@
 #include <QDebug>
 
 
-Settings::Settings(QObject *parent, QString filename) :
+Settings::Settings(QObject *parent, QString basefilename, QString orderlinefile) :
     QObject(parent),
-    m_filename (filename)
+    m_basefilename (basefilename),
+    m_orderlinefile(orderlinefile)
 {
     ReadXmlFile();
 }

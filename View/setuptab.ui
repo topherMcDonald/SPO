@@ -114,30 +114,16 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0">
-       <layout class="QHBoxLayout" name="hloShipToAddress_Attn">
+       <layout class="QHBoxLayout" name="hloShipToAddress_Name">
         <item>
-         <widget class="QLabel" name="lblShipToAddress_Attn">
+         <widget class="QLabel" name="lblShipToAddress_Name">
           <property name="text">
-           <string>Attn:</string>
+           <string>Name:</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="leShipToAddress_Attn"/>
-        </item>
-       </layout>
-      </item>
-      <item row="0" column="1">
-       <layout class="QHBoxLayout" name="hloShipToAddress_City">
-        <item>
-         <widget class="QLabel" name="lblShipToAddress_City">
-          <property name="text">
-           <string>City</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leShipToAddress_City"/>
+         <widget class="QLineEdit" name="leShipToAddress_Name"/>
         </item>
        </layout>
       </item>
@@ -169,17 +155,31 @@
         </item>
        </layout>
       </item>
-      <item row="2" column="0">
-       <layout class="QHBoxLayout" name="hloShipToAddress_Address2">
+      <item row="3" column="0">
+       <layout class="QHBoxLayout" name="hloShipToAdddress_Address3">
         <item>
-         <widget class="QLabel" name="lblShipToAddress_Address2">
+         <widget class="QLabel" name="lblShipToAddress_Address3">
           <property name="text">
-           <string>Address 2</string>
+           <string>Address 3</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="leShipToAddress_Address2"/>
+         <widget class="QLineEdit" name="leShipToAddress_Address3"/>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="1">
+       <layout class="QHBoxLayout" name="hloShipToAddress_City">
+        <item>
+         <widget class="QLabel" name="lblShipToAddress_City">
+          <property name="text">
+           <string>City</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToAddress_City"/>
         </item>
        </layout>
       </item>
@@ -197,19 +197,46 @@
         </item>
        </layout>
       </item>
-      <item row="3" column="0">
-       <layout class="QHBoxLayout" name="hloShipToAdddress_Address3">
+      <item row="2" column="0">
+       <layout class="QHBoxLayout" name="hloShipToAddress_Address2">
         <item>
-         <widget class="QLabel" name="lblShipToAddress_Address3">
+         <widget class="QLabel" name="lblShipToAddress_Address2">
           <property name="text">
-           <string>Address 3</string>
+           <string>Address 2</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="leShipToAddress_Address3"/>
+         <widget class="QLineEdit" name="leShipToAddress_Address2"/>
         </item>
        </layout>
+      </item>
+      <item row="5" column="0">
+       <widget class="QPushButton" name="btnAddShipToAddress">
+        <property name="text">
+         <string>Add Ship-To Address</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../sporesource.qrc">
+          <normaloff>:/root/qtAppIcons/Add.png</normaloff>:/root/qtAppIcons/Add.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>5</width>
+          <height>10</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>
@@ -268,7 +295,7 @@
   <tabstop>leShipToDealer_Routing</tabstop>
   <tabstop>leShipToDealer_DealerID</tabstop>
   <tabstop>leShipToDealer_DateToShip</tabstop>
-  <tabstop>leShipToAddress_Attn</tabstop>
+  <tabstop>leShipToAddress_Name</tabstop>
   <tabstop>leShipToAddress_City</tabstop>
   <tabstop>leShipToAddress_Address1</tabstop>
   <tabstop>leShipToAddress_State</tabstop>
@@ -280,6 +307,8 @@
   <tabstop>cbOptions_InsideDelivery</tabstop>
   <tabstop>cbOptions_LiftGate</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../sporesource.qrc"/>
+ </resources>
  <connections/>
 </ui>

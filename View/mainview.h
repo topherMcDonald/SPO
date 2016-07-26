@@ -10,19 +10,34 @@ namespace Ui {
 }
 
 
-    class SetupTab;
+class SetupTab;
 
-    class MainView : public QMainWindow
-    {
-        Q_OBJECT
+class MainView : public QMainWindow
+{
+    Q_OBJECT
 
-    public:
-        explicit MainView(QWidget *parent, SetupTab &setup, AddLineItem &addlineitem);
-        ~MainView();
+public:
+    explicit MainView(QWidget *parent, SetupTab &setup, AddLineItem &addlineitem);
+    ~MainView();
 
-    private:
-        SetupTab& m_setupTab;
-        AddLineItem& m_addlineitem;
-        Ui::MainView *ui;
-    };
+public slots:
+
+    void SaveXMLFile();
+
+private:
+    SetupTab& m_setupTab;
+    AddLineItem& m_addlineitem;
+    Ui::MainView *ui;
+    QString basefilename;
+
+    void createActions();
+
+    QAction *openAction;
+    QAction *saveAsAction;
+    QAction *clearAction;
+    QAction *exitAction;
+    QAction *aboutAction;
+    QAction *aboutQtAction;
+
+};
 #endif // MAINVIEW_H

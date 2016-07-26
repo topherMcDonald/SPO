@@ -35,5 +35,4 @@ FORMS    += View/mainview.ui \
     View/addlineitem.ui
 
 RESOURCES += \
-    sporesource.qrc \
-    btnresource.qrc
+    sporesource.qrc

@@ -14,10 +14,11 @@ class Settings : public QObject
 {
     Q_OBJECT
 public:
-    explicit Settings(QObject *parent, QString filename);
+    explicit Settings(QObject *parent, QString basefilename, QString orderlinefile);
 
 private:
-    QString m_filename;
+    QString m_basefilename;
+    QString m_orderlinefile;
 
     QString ReadXmlFile();
 

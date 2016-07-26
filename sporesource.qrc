@@ -83,7 +83,8 @@
         <file>qtAppIcons/Zoom In.png</file>
         <file>qtAppIcons/Zoom Out.png</file>
     </qresource>
-    <qresource prefix="/json">
-        <file>settings.json</file>
+    <qresource prefix="/xml">
+        <file>spoBase.xml</file>
+        <file>spoOrderLine.xml</file>
     </qresource>
 </RCC>
