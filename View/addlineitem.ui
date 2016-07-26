@@ -44,8 +44,8 @@
          <string>  Get MacPac Part</string>
         </property>
         <property name="icon">
-         <iconset resource="../btnresource.qrc">
-          <normaloff>:/root/qtAppIcons/Add.png</normaloff>:/root/qtAppIcons/Add.png</iconset>
+         <iconset resource="../sporesource.qrc">
+          <normaloff>:/root/qtAppIcons/forward.png</normaloff>:/root/qtAppIcons/forward.png</iconset>
         </property>
        </widget>
       </item>
@@ -136,17 +136,6 @@
         </item>
        </layout>
       </item>
-      <item row="4" column="0">
-       <widget class="QPushButton" name="btnRecapAndSubmit_OrderParts">
-        <property name="text">
-         <string>Order Parts</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../sporesource.qrc">
-          <normaloff>:/root/qtAppIcons/cart.png</normaloff>:/root/qtAppIcons/cart.png</iconset>
-        </property>
-       </widget>
-      </item>
       <item row="4" column="1">
        <widget class="QPushButton" name="btnRecapAndSubmit_Clear">
         <property name="sizePolicy">
@@ -165,7 +154,7 @@
          <string>  Clear</string>
         </property>
         <property name="icon">
-         <iconset resource="../btnresource.qrc">
+         <iconset resource="../sporesource.qrc">
           <normaloff>:/root/qtAppIcons/Remove.png</normaloff>:/root/qtAppIcons/Remove.png</iconset>
         </property>
        </widget>
@@ -217,12 +206,27 @@
   <tabstop>leAddlineItem_Description</tabstop>
   <tabstop>leAddLineItem_Value</tabstop>
   <tabstop>btnAddLineItem_AddLine</tabstop>
-  <tabstop>btnRecapAndSubmit_OrderParts</tabstop>
   <tabstop>btnRecapAndSubmit_Clear</tabstop>
  </tabstops>
  <resources>
-  <include location="../btnresource.qrc"/>
   <include location="../sporesource.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btnAddLineItem_AddLine</sender>
+   <signal>clicked()</signal>
+   <receiver>tblOrderLinesWidget</receiver>
+   <slot>resizeRowsToContents()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>508</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>486</x>
+     <y>203</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

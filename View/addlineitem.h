@@ -9,19 +9,21 @@ namespace Ui {
 
 
 
-    class AddLineItem : public QWidget
-    {
-        Q_OBJECT
+class AddLineItem : public QWidget
+{
+    Q_OBJECT
 
-    public:
-        explicit AddLineItem(QWidget *parent = 0);
-        ~AddLineItem();
+public:
+    explicit AddLineItem(QWidget *parent = 0);
+    ~AddLineItem();
 
-    private slots:
-        void on_btnAddLineItem_GetMacPacPart_clicked();
+private slots:
 
-    private:
-        Ui::AddLineItem *ui;
-    };
+
+    void on_btnAddLineItem_AddLine_clicked();
+
+private:
+    Ui::AddLineItem *ui;
+};
 
 #endif // ADDLINEITEM_H
