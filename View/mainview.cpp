@@ -24,15 +24,11 @@ MainView::MainView(QWidget *parent, SetupTab& setup, AddLineItem& addlineitem) :
     ui(new Ui::MainView)
 {
         ui->setupUi(this);
-
         m_setupTab.setParent(this);
        // auto setup_tab = new SetupTab(this);    // Create instance of the class
         ui->loSetupTab->addWidget(&m_setupTab);
        // auto addlineitem_tab = new AddLineItem(this);
         ui->loAddSmallParts->addWidget(&addlineitem);
-        statusBar()->showMessage(tr("Ready"));
-        //SaveXMLFile();
-
 }
 
 void MainView::createActions()
@@ -65,21 +61,6 @@ void MainView::createActions()
 //    aboutQtAction = new QAction(tr("About &QT..."),this);
 //    aboutQtAction->setShortcut(tr("Ctrl+T"));
 //    connect(aboutQtAction,SIGNAL(triggered()),qApp,SLOT(aboutQt()));
-}
-
-void MainView::SaveXMLFile()
-{
-
-//    basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
-
-//    QFile file(basefilename);
-//    file.open(QIODevice::WriteOnly);
-
-//    QXmlStreamWriter xmlWriter(&file);
-//    xmlWriter.setAutoFormatting(true);
-//    xmlWriter.writeStartDocument();
-
-//    xmlWriter.writeStartElement("LAMPS");
 }
 
 MainView::~MainView()

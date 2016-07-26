@@ -12,7 +12,7 @@ class SetupTab : public QWidget
     Q_OBJECT
 
 public:
-    explicit SetupTab(QWidget *parent, QString& basefilename);
+    explicit SetupTab(QWidget *parent);
     ~SetupTab();
 
 public slots:
@@ -21,8 +21,8 @@ private slots:
     void on_btnAddShipToAddress_clicked();
 
 private:
-       QString m_basefilename;
-       QString basefilename;
+    QString m_basefilename;
+    QString basefilename;
 
     Ui::SetupTab *ui;
 

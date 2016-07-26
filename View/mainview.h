@@ -22,8 +22,6 @@ public:
 
 public slots:
 
-    void SaveXMLFile();
-
 private:
     SetupTab& m_setupTab;
     AddLineItem& m_addlineitem;
