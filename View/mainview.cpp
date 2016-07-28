@@ -25,7 +25,7 @@ MainView::MainView(QWidget *parent, SetupTab& setup, AddLineItem& addlineitem) :
 {
         ui->setupUi(this);
         m_setupTab.setParent(this);
-       // auto setup_tab = new SetupTab(this);    // Create instance of the class
+        // auto setup_tab = new SetupTab(this);    // Create instance of the class
         ui->loSetupTab->addWidget(&m_setupTab);
        // auto addlineitem_tab = new AddLineItem(this);
         ui->loAddSmallParts->addWidget(&addlineitem);

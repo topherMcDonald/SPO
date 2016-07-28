@@ -21,7 +21,7 @@ SOURCES += main.cpp\
     Model/settings.cpp \
     Model/dealeridxmlreader.cpp \
     startup.cpp \
-    View/addlineitem_search.cpp
+    View/searchdialog.cpp
 
 HEADERS  += View/mainview.h \
     View/setuptab.h \
@@ -30,12 +30,12 @@ HEADERS  += View/mainview.h \
     Model/settings.h \
     Model/dealeridxmlreader.h \
     startup.h \
-    View/addlineitem_search.h
+    View/searchdialog.h
 
 FORMS    += View/mainview.ui \
     View/setuptab.ui \
     View/addlineitem.ui \
-    View/addlineitem_search.ui
+    View/searchdialog.ui
 
 RESOURCES += \
     sporesource.qrc

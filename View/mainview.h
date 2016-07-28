@@ -9,8 +9,8 @@ namespace Ui {
     class MainView;
 }
 
-
 class SetupTab;
+class AddLineItem;
 
 class MainView : public QMainWindow
 {

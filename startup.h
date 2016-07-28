@@ -1,10 +1,12 @@
 #pragma once
 #include <QObject>
+#include <QWidget>
 
 /* Forward reference to classes */
 class MainView;
 class SetupTab;
 class AddLineItem;
+class SearchDialog;
 
 class Startup final : public QObject    //not intended to be a base class, mark final
 {
@@ -17,14 +19,13 @@ public:
 public slots:
 
 private:
-    SetupTab& m_setupTab;               //Reference member for setuptab
     AddLineItem& m_addlineitem;         //Reference member for mainview
+    SearchDialog& m_search;
+    SetupTab& m_setupTab;               //Reference member for setuptab
     MainView& m_mainView;               //Reference member for mainview
 
     explicit Startup(const Startup& rhs) = delete;
     Startup& operator= (const Startup& rhs) = delete;
-
-
 
 };
 

@@ -2,6 +2,7 @@
 #include "View/setuptab.h"
 #include "View/mainview.h"
 #include "View/addlineitem.h"
+
 #include "utils.h"
 #include "Model/settings.h"
 #include <QString>
@@ -26,8 +27,9 @@
 
 Startup::Startup() :
     QObject(nullptr),
+    m_addlineitem(*new AddLineItem(nullptr, m_search)),
+    m_search(*new SearchDialog(nullptr)),
     m_setupTab(*new SetupTab(nullptr)),
-    m_addlineitem(*new AddLineItem(nullptr)),
     m_mainView(*new MainView(nullptr, m_setupTab, m_addlineitem))
 {
 

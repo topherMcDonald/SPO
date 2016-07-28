@@ -1,18 +1,17 @@
 #include "addlineitem.h"
 #include "ui_addlineitem.h"
 #include <QTableWidget>
+#include "View/searchdialog.h"
 
-
-AddLineItem::AddLineItem(QWidget *parent) :
+AddLineItem::AddLineItem(QWidget *parent, SearchDialog &search) :
     QWidget(parent),
+    m_search(search),
     ui(new Ui::AddLineItem)
 {
     ui->setupUi(this);
     //Set Table column names
     ui->tblOrderLinesWidget->setHorizontalHeaderLabels(QString("Part ;Qty ;Desc ;Dims ;Weight ;").split(";"));
     //Add Table items here
-    //table->setItem(0,0,new QTableWidgetItem("ITEM 1"));
-
     ui->tblOrderLinesWidget->setItem(0,0, new QTableWidgetItem("shade"));
     ui->tblOrderLinesWidget->setItem(0,1, new QTableWidgetItem("1"));
     ui->tblOrderLinesWidget->setItem(0,2, new QTableWidgetItem("this is part one"));
@@ -36,9 +35,6 @@ AddLineItem::AddLineItem(QWidget *parent) :
     ui->tblOrderLinesWidget->setItem(3,2, new QTableWidgetItem("this is part 4"));
     ui->tblOrderLinesWidget->setItem(3,3, new QTableWidgetItem("1x7"));
     ui->tblOrderLinesWidget->setItem(3,4, new QTableWidgetItem("$15.00"));
-
-    ui->tblOrderLinesWidget->setItem(4,0, new QTableWidgetItem(ui->leAddLineItem_PartNumber->text()));
-
 }
 
 AddLineItem::~AddLineItem()
@@ -47,8 +43,8 @@ AddLineItem::~AddLineItem()
 }
 
 
-
-void AddLineItem::on_btnAddLineItem_AddLine_clicked()
+void AddLineItem::on_btnAddLineItem_GetMacPacPart_clicked()
 {
-    ui->tblOrderLinesWidget->setItem(4,0, new QTableWidgetItem(ui->leAddLineItem_PartNumber->text()));
+     //connect(ui->btnAddShipToAddress, SIGNAL(clicked()), this, SLOT(SaveAddressXML()));
+    //connect(ui->btnAddLineItem_GetMacPacPart, SIGNAL(clicked()), this, QDialog::show());
 }
