@@ -17,7 +17,7 @@
    <item>
     <layout class="QVBoxLayout" name="loSearchDialog">
      <item>
-      <widget class="QGroupBox" name="groupBox">
+      <widget class="QGroupBox" name="gbSearchResults">
        <property name="enabled">
         <bool>true</bool>
        </property>
@@ -55,7 +55,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QGroupBox" name="groupBox_2">
+      <widget class="QGroupBox" name="gbSearchCancel">
        <property name="title">
         <string/>
        </property>
@@ -74,7 +74,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="btnCancelSearch">
           <property name="maximumSize">
            <size>
             <width>122</width>
