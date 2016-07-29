@@ -14,18 +14,16 @@ class AddLineItem : public QWidget
 {
     Q_OBJECT
 
-public slots:
 
 public:
-    explicit AddLineItem(QWidget *parent, SearchDialog &search);
-
+    explicit AddLineItem(QWidget *parent = 0);
     ~AddLineItem();
 
 private slots:
     void on_btnAddLineItem_GetMacPacPart_clicked();
 
 private:
-    SearchDialog& m_search;
+
     Ui::AddLineItem *ui; 
 };
 

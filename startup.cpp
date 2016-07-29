@@ -27,7 +27,7 @@
 
 Startup::Startup() :
     QObject(nullptr),
-    m_addlineitem(*new AddLineItem(nullptr, m_search)),
+    m_addlineitem(*new AddLineItem(nullptr)),
     m_search(*new SearchDialog(nullptr)),
     m_setupTab(*new SetupTab(nullptr)),
     m_mainView(*new MainView(nullptr, m_setupTab, m_addlineitem))

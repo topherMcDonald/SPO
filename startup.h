@@ -20,7 +20,7 @@ public slots:
 
 private:
     AddLineItem& m_addlineitem;         //Reference member for mainview
-    SearchDialog& m_search;
+    SearchDialog& m_search;             //Reference member for SearchDialog
     SetupTab& m_setupTab;               //Reference member for setuptab
     MainView& m_mainView;               //Reference member for mainview
 
