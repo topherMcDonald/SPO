@@ -19,7 +19,6 @@ SOURCES += main.cpp\
     View/addlineitem.cpp \
     utils.cpp \
     Model/settings.cpp \
-    Model/dealeridxmlreader.cpp \
     startup.cpp \
     View/searchdialog.cpp
 
@@ -28,7 +27,6 @@ HEADERS  += View/mainview.h \
     View/addlineitem.h \
     utils.h \
     Model/settings.h \
-    Model/dealeridxmlreader.h \
     startup.h \
     View/searchdialog.h
 

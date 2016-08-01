@@ -17,10 +17,7 @@ public:
 
 private slots:
     void on_btnSearchDialog_clicked();
-
     void startSearchRequest();
-    void on_pushButton_clicked();
-
 private:
     Ui::SearchDialog *ui;
 };
