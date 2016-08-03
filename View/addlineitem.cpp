@@ -1,3 +1,4 @@
+#include <QDebug>
 #include "addlineitem.h"
 #include "ui_addlineitem.h"
 #include <QTableWidget>
@@ -26,6 +27,9 @@ AddLineItem::~AddLineItem()
 
 void AddLineItem::on_btnAddLineItem_GetMacPacPart_clicked()
 {
+    int row = ui->tblOrderLinesWidget->rowCount();
+    qDebug() << "ROW COUNT: " <<row;
     SearchDialog *dialog = new SearchDialog;
+    ui->tblOrderLinesWidget->insertRow(row);
     dialog->show();
 }
