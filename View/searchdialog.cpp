@@ -57,24 +57,45 @@ void SearchDialog::startSearchRequest()
 }
 void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
 {
-    QString partName,  description;
+    QString partName,  description, cost;
+    int row = ui->tblDialogSearchResults->rowCount();
 
-      while(!XmlFile.atEnd() && !XmlFile.hasError())
-      {
-          QXmlStreamReader::TokenType token = XmlFile.readNext();
-          if(token == QXmlStreamReader::StartElement)
-          {
-              QStringRef  name = XmlFile.name();
-              if(name == "Name")
-              {
-                  //QXmlStreamAttribute namAttr = XmlFile.attributes();
-                  partName = XmlFile.attributes().value("Name").toString();
-                  //partName = namAttr.value().toString();
-                  qDebug() << "GOT THE NAME" << name;
-              }
 
-          }
-      }
+    while(!XmlFile.atEnd() && !XmlFile.hasError())
+    {
+
+        QXmlStreamReader::TokenType token = XmlFile.readNext();
+        if(token == QXmlStreamReader::StartElement)
+        {
+
+            QStringRef  name = XmlFile.name();
+            if(name == "Name")
+            {
+
+                ui->tblDialogSearchResults->insertRow(row);
+
+                partName = XmlFile.readElementText();
+                ui->tblDialogSearchResults->setItem(row,0, new QTableWidgetItem (partName));
+                qDebug() << "GOT THE NAME" << partName;
+            }
+            else if(name == "Description")
+            {
+                //row = ui->tblDialogSearchResults->rowCount();
+                //qDebug() << "Row count for dialog" << row;
+                description = XmlFile.readElementText();
+                ui->tblDialogSearchResults->setItem(row,1, new QTableWidgetItem (description));
+                qDebug() << "GOT THE Des" << description;
+            }
+            else if(name == "Cost")
+            {
+                cost = XmlFile.readElementText();
+                ui->tblDialogSearchResults->setItem(row,2, new QTableWidgetItem (cost));
+                qDebug() << "GOT THE COST" << cost;
+            }
+
+        }
+
+    }
 }
 
 void SearchDialog::on_btnSearchDialog_clicked()

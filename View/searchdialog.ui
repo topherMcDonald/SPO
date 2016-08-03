@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>413</width>
+    <width>513</width>
     <height>332</height>
    </rect>
   </property>
@@ -42,13 +42,28 @@
          <widget class="QLineEdit" name="leEnterSearchCriteria"/>
         </item>
         <item>
-         <widget class="QTableWidget" name="tableWidget">
+         <widget class="QTableWidget" name="tblDialogSearchResults">
           <property name="maximumSize">
            <size>
             <width>16777215</width>
             <height>167772</height>
            </size>
           </property>
+          <column>
+           <property name="text">
+            <string>Part</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Description</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Cost</string>
+           </property>
+          </column>
          </widget>
         </item>
        </layout>

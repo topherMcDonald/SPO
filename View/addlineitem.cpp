@@ -18,6 +18,7 @@ AddLineItem::AddLineItem(QWidget *parent) :
     ui->tblOrderLinesWidget->setItem(0,3, new QTableWidgetItem("7x7"));
     ui->tblOrderLinesWidget->setItem(0,4, new QTableWidgetItem("$25.00"));
 
+
 }
 
 AddLineItem::~AddLineItem()
