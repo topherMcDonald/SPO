@@ -91,10 +91,10 @@ void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
                 cost = XmlFile.readElementText();
                 ui->tblDialogSearchResults->setItem(row,2, new QTableWidgetItem (cost));
                 qDebug() << "GOT THE COST" << cost;
+                row = ui->tblDialogSearchResults->rowCount();
+                qDebug() << "Row count for dialog" << row;
             }
-
         }
-
     }
 }
 
