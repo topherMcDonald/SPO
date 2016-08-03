@@ -49,6 +49,18 @@
             <height>167772</height>
            </size>
           </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
+          </property>
+          <property name="dragDropMode">
+           <enum>QAbstractItemView::DragDrop</enum>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
           <column>
            <property name="text">
             <string>Part</string>
@@ -79,7 +91,7 @@
          <widget class="QPushButton" name="btnSearchDialog">
           <property name="maximumSize">
            <size>
-            <width>122</width>
+            <width>140</width>
             <height>25</height>
            </size>
           </property>
@@ -89,10 +101,23 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="btnAddSelectedItem">
+          <property name="maximumSize">
+           <size>
+            <width>140</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Add Selected Item</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="btnCancelSearch">
           <property name="maximumSize">
            <size>
-            <width>122</width>
+            <width>140</width>
             <height>25</height>
            </size>
           </property>

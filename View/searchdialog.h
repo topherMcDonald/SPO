@@ -1,6 +1,7 @@
 #ifndef SEARCHDIALOG_H
 #define SEARCHDIALOG_H
-
+#include "View/addlineitem.h"
+#include "ui_addlineitem.h"
 #include <QDialog>
 
 namespace Ui {
@@ -8,7 +9,9 @@ namespace Ui {
 }
 
 class QXmlStreamReader;
-class SearchDialog : public QDialog
+class AddLineItem;
+
+class SearchDialog : public QDialog, public Ui::AddLineItem
 {
     Q_OBJECT
 
@@ -17,12 +20,16 @@ public:
     void XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile);
     ~SearchDialog();
 
+    void GetTextValues();
 private slots:
 
     void on_btnSearchDialog_clicked();
     void startSearchRequest();
+    void on_btnAddSelectedItem_clicked();
+
 private:
     Ui::SearchDialog *ui;
+    Ui::AddLineItem *nui;
 
 };
 

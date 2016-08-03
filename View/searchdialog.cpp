@@ -1,5 +1,7 @@
 #include "searchdialog.h"
 #include "ui_searchdialog.h"
+#include "ui_addlineitem.h"
+#include "addlineitem.h"
 #include <QDebug>
 #include <QtNetwork>
 //For web calls ...
@@ -19,6 +21,8 @@
 //#else
 //static const char defaultServiceRequest[] = "https://spi-rabbit2:8080/parts/part/search/C109";
 //#endif
+
+QList<QTableWidgetItem *>  selectedValue;
 
 SearchDialog::SearchDialog(QWidget *parent) :
     QDialog(parent),
@@ -51,37 +55,28 @@ void SearchDialog::startSearchRequest()
     QXmlStreamReader xmlReader(result);
      qDebug() << "Successful read of the xml file *****" << result;
     XmlDialogSearchRequestParsing(xmlReader);
-
-
-
 }
+
 void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
 {
     QString partName,  description, cost;
     int row = ui->tblDialogSearchResults->rowCount();
 
-
     while(!XmlFile.atEnd() && !XmlFile.hasError())
     {
-
         QXmlStreamReader::TokenType token = XmlFile.readNext();
         if(token == QXmlStreamReader::StartElement)
         {
-
             QStringRef  name = XmlFile.name();
             if(name == "Name")
             {
-
                 ui->tblDialogSearchResults->insertRow(row);
-
                 partName = XmlFile.readElementText();
                 ui->tblDialogSearchResults->setItem(row,0, new QTableWidgetItem (partName));
                 qDebug() << "GOT THE NAME" << partName;
             }
             else if(name == "Description")
             {
-                //row = ui->tblDialogSearchResults->rowCount();
-                //qDebug() << "Row count for dialog" << row;
                 description = XmlFile.readElementText();
                 ui->tblDialogSearchResults->setItem(row,1, new QTableWidgetItem (description));
                 qDebug() << "GOT THE Des" << description;
@@ -98,8 +93,24 @@ void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
     }
 }
 
+void SearchDialog::GetTextValues()
+{
+    //return ui->tblDialogSearchResults->selectedItems().value();
+}
+
 void SearchDialog::on_btnSearchDialog_clicked()
 {
     connect(ui->btnSearchDialog, SIGNAL(clicked(bool)), this, SLOT(startSearchRequest()));
 }
 
+void SearchDialog::on_btnAddSelectedItem_clicked()
+{
+   QString des;
+   // SearchDialog myDlg;
+   selectedValue = ui->tblDialogSearchResults->selectedItems();
+   //nui->leAddLineItem_PartNumber->text() = "textsekjhkjlh";
+
+    qDebug() << "Selected values" << selectedValue;
+
+    //connect(ui->btnAddSelectedItem, SIGNAL(clicked(bool)), this, SLOT());
+}

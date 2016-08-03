@@ -162,10 +162,10 @@
       <item row="1" column="0" colspan="2">
        <widget class="QTableWidget" name="tblOrderLinesWidget">
         <property name="rowCount">
-         <number>5</number>
+         <number>1</number>
         </property>
         <property name="columnCount">
-         <number>5</number>
+         <number>3</number>
         </property>
         <attribute name="horizontalHeaderDefaultSectionSize">
          <number>164</number>
@@ -183,15 +183,21 @@
          <bool>true</bool>
         </attribute>
         <row/>
-        <row/>
-        <row/>
-        <row/>
-        <row/>
-        <column/>
-        <column/>
-        <column/>
-        <column/>
-        <column/>
+        <column>
+         <property name="text">
+          <string>Part</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Description</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Cost</string>
+         </property>
+        </column>
        </widget>
       </item>
      </layout>

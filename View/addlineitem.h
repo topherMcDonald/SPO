@@ -3,6 +3,7 @@
 //#include <QObject>
 #include <QWidget>
 #include "View/searchdialog.h"
+#include "ui_addlineitem.h"
 
 namespace Ui {
     class AddLineItem;
@@ -10,7 +11,7 @@ namespace Ui {
 
 class SearchDialog;
 
-class AddLineItem : public QWidget
+class AddLineItem : public QWidget, public Ui::AddLineItem
 {
     Q_OBJECT
 
@@ -19,6 +20,7 @@ public:
     explicit AddLineItem(QWidget *parent = 0);
     ~AddLineItem();
 
+    void AddLineItemFromDialog(QString &item);
 private slots:
     void on_btnAddLineItem_GetMacPacPart_clicked();
 

@@ -10,13 +10,13 @@ AddLineItem::AddLineItem(QWidget *parent) :
 {
     ui->setupUi(this);
     //Set Table column names
-    ui->tblOrderLinesWidget->setHorizontalHeaderLabels(QString("Part ;Qty ;Desc ;Dims ;Weight ;").split(";"));
+    //ui->tblOrderLinesWidget->setHorizontalHeaderLabels(QString("Part ;Qty ;Desc ;Dims ;Weight ;").split(";"));
     //Add Table items here
-    ui->tblOrderLinesWidget->setItem(0,0, new QTableWidgetItem("shade"));
-    ui->tblOrderLinesWidget->setItem(0,1, new QTableWidgetItem("1"));
-    ui->tblOrderLinesWidget->setItem(0,2, new QTableWidgetItem("this is part one"));
-    ui->tblOrderLinesWidget->setItem(0,3, new QTableWidgetItem("7x7"));
-    ui->tblOrderLinesWidget->setItem(0,4, new QTableWidgetItem("$25.00"));
+//    ui->tblOrderLinesWidget->setItem(0,0, new QTableWidgetItem("shade"));
+//    ui->tblOrderLinesWidget->setItem(0,1, new QTableWidgetItem("1"));
+//    ui->tblOrderLinesWidget->setItem(0,2, new QTableWidgetItem("this is part one"));
+//    ui->tblOrderLinesWidget->setItem(0,3, new QTableWidgetItem("7x7"));
+//    ui->tblOrderLinesWidget->setItem(0,4, new QTableWidgetItem("$25.00"));
 
 
 }
@@ -24,6 +24,11 @@ AddLineItem::AddLineItem(QWidget *parent) :
 AddLineItem::~AddLineItem()
 {
     delete ui;
+}
+
+void AddLineItem::AddLineItemFromDialog(QString & item)
+{
+    ui->tblOrderLinesWidget->setItem(0,0, new QTableWidgetItem(item));
 }
 
 void AddLineItem::on_btnAddLineItem_GetMacPacPart_clicked()
