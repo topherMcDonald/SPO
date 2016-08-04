@@ -49,10 +49,4 @@ void AddLineItem::on_btnAddLineItem_GetMacPacPart_clicked()
         ui->leAddLineItem_Value->setText(partCost);
 
     }
-
-}
-
-void AddLineItem::receiveDialogData(QStringData *)
-{
-
 }

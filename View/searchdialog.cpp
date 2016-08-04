@@ -42,20 +42,20 @@ void SearchDialog::startSearchRequest()
 {
     // create custom temporary event loop on stack
     QEventLoop eventLoop;
-    const QString& myXmlFile = 0;
+   // const QString& myXmlFile = 0;
 
     // "quit()" the event-loop, when the network request "finished()"
     QNetworkAccessManager mgr;
     QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
-
+    QString textSearch = ui->leEnterSearchCriteria->text();
     // the HTTP request
-    QNetworkRequest req( QUrl( QString("http://spi-rabbit2:8080/parts/part/search/C109") ) );
+    QNetworkRequest req( QUrl( QString("http://spi-rabbit2:8080/parts/part/search/"+textSearch) ) );
     QNetworkReply *reply = mgr.get(req);
     eventLoop.exec(); // blocks stack until "finished()" has been called
 
     QByteArray result = reply->readAll();
     QXmlStreamReader xmlReader(result);
-     qDebug() << "Successful read of the xml file *****" << result;
+
     XmlDialogSearchRequestParsing(xmlReader);
 }
 
@@ -124,9 +124,6 @@ void SearchDialog::on_btnAddSelectedItem_clicked()
 QMap<QString, QString> SearchDialog::getMap() {
 
     QTableWidgetItem *rowValue;
-
-    qDebug() << "SEARCH DIALOG Selected values****************" << rowValue;
-
     QVariant partValue;
     QVariant partDesc;
     QVariant partCost;
