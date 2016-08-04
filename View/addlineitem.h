@@ -21,6 +21,9 @@ public:
     ~AddLineItem();
 
     void AddLineItemFromDialog(QString &item);
+public slots:
+    void receiveDialogData(QStringData *);
+
 private slots:
     void on_btnAddLineItem_GetMacPacPart_clicked();
 

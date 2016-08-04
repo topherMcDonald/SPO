@@ -33,9 +33,26 @@ void AddLineItem::AddLineItemFromDialog(QString & item)
 
 void AddLineItem::on_btnAddLineItem_GetMacPacPart_clicked()
 {
-    int row = ui->tblOrderLinesWidget->rowCount();
-    qDebug() << "ROW COUNT: " <<row;
     SearchDialog *dialog = new SearchDialog;
-    ui->tblOrderLinesWidget->insertRow(row);
-    dialog->show();
+
+    if(dialog->exec())
+    {
+        QMap<QString, QString> m = dialog->getMap();
+
+        QString partName = m.value("PartName");
+        ui->leAddLineItem_PartNumber->setText(partName);
+
+        QString partDesc = m.value("PartDesc");
+        ui->leAddlineItem_Description->setText(partDesc);
+
+        QString partCost = m.value("PartCost");
+        ui->leAddLineItem_Value->setText(partCost);
+
+    }
+
+}
+
+void AddLineItem::receiveDialogData(QStringData *)
+{
+
 }

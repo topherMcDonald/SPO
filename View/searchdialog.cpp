@@ -24,6 +24,8 @@
 
 QList<QTableWidgetItem *>  selectedValue;
 
+QMap<QString, QString> partMap;
+
 SearchDialog::SearchDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SearchDialog)
@@ -103,14 +105,54 @@ void SearchDialog::on_btnSearchDialog_clicked()
     connect(ui->btnSearchDialog, SIGNAL(clicked(bool)), this, SLOT(startSearchRequest()));
 }
 
+
+
 void SearchDialog::on_btnAddSelectedItem_clicked()
 {
-   QString des;
-   // SearchDialog myDlg;
-   selectedValue = ui->tblDialogSearchResults->selectedItems();
-   //nui->leAddLineItem_PartNumber->text() = "textsekjhkjlh";
-
-    qDebug() << "Selected values" << selectedValue;
-
-    //connect(ui->btnAddSelectedItem, SIGNAL(clicked(bool)), this, SLOT());
+    selectedValue = ui->tblDialogSearchResults->selectedItems();
+    //qDebug() << "Butten return values****************" << selectedValue;
+    //qDebug() << "Selected values" << selectedValue;
+    connect(ui->btnAddSelectedItem, SIGNAL(clicked(bool)), this, SLOT(accept()));
 }
+
+//QList<QTableWidgetItem* > SearchDialog::getSelected(){
+//    << selectedValue;
+
+//    return selectedValue;
+//}
+
+QMap<QString, QString> SearchDialog::getMap() {
+
+    QTableWidgetItem *rowValue;
+
+    qDebug() << "SEARCH DIALOG Selected values****************" << rowValue;
+
+    QVariant partValue;
+    QVariant partDesc;
+    QVariant partCost;
+
+    foreach (rowValue, selectedValue) {
+        if (rowValue->column() == 0) {
+            partValue = rowValue->text();
+        }
+        else if (rowValue->column() == 1) {
+            partDesc = rowValue->text();
+        }
+        else if (rowValue->column() == 2) {
+            partCost = rowValue->text();
+        }
+    }
+
+    partMap["PartName"] = partValue.toString();
+    partMap["PartDesc"] = partDesc.toString();
+    partMap["PartCost"] = partCost.toString();
+
+
+    qDebug() << "Here is the part info:" << partValue.toString() << "--" << partDesc.toString() << "--" << partCost.toString();
+    return partMap;
+
+}
+
+//QString SearchDialog::getPart(){
+
+//}

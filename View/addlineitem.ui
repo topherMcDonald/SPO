@@ -62,7 +62,7 @@
         <item>
          <widget class="QLabel" name="lblAddLineItem_Quantity">
           <property name="text">
-           <string>Qunantity</string>
+           <string>Quantity</string>
           </property>
          </widget>
         </item>

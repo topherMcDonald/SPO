@@ -83,10 +83,10 @@ void SetupTab::SaveAddressXML()
 
 }
 
-void SetupTab::on_btnAddShipToAddress_clicked()
-{
-    connect(ui->btnAddShipToAddress, SIGNAL(clicked()), this, SLOT(SaveAddressXML()));
-}
+//void SetupTab::on_btnAddShipToAddress_clicked()
+//{
+//    connect(ui->btnAddShipToAddress, SIGNAL(clicked()), this, SLOT(SaveAddressXML()));
+//}
 
 SetupTab::~SetupTab()
 {

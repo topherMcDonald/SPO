@@ -18,7 +18,7 @@ public:
 public slots:
     void SaveAddressXML();
 private slots:
-    void on_btnAddShipToAddress_clicked();
+    //void on_btnAddShipToAddress_clicked();
 
 private:
     QString m_basefilename;

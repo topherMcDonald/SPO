@@ -21,6 +21,8 @@ public:
     ~SearchDialog();
 
     void GetTextValues();
+    //QList<QTableWidgetItem *> getSelected();
+    QMap<QString, QString> getMap();
 private slots:
 
     void on_btnSearchDialog_clicked();
@@ -29,7 +31,6 @@ private slots:
 
 private:
     Ui::SearchDialog *ui;
-    Ui::AddLineItem *nui;
 
 };
 
