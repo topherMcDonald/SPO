@@ -25,7 +25,7 @@ public slots:
 
 private slots:
     void on_btnAddLineItem_GetMacPacPart_clicked();
-
+    void on_btnAddLineItem_AddLine_clicked();
 private:
 
     Ui::AddLineItem *ui; 

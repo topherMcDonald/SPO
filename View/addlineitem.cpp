@@ -50,3 +50,25 @@ void AddLineItem::on_btnAddLineItem_GetMacPacPart_clicked()
 
     }
 }
+
+void AddLineItem::on_btnAddLineItem_AddLine_clicked()
+{
+    int row = ui->tblOrderLinesWidget->rowCount();
+    QString partName;
+    ui->tblOrderLinesWidget->insertRow(row);
+    partName = ui->leAddLineItem_PartNumber->text();
+    ui->tblOrderLinesWidget->setItem(row,0, new QTableWidgetItem (partName));
+    qDebug() << "GOT THE NAME" << partName;
+    QString partDesc;
+    partDesc = ui->leAddlineItem_Description->text();
+    ui->tblOrderLinesWidget->setItem(row,1, new QTableWidgetItem (partDesc));
+    qDebug() << "GOT THE DESC" << partDesc;
+    QString partCost;
+    partCost = ui->leAddLineItem_Value->text();
+    ui->tblOrderLinesWidget->setItem(row,2, new QTableWidgetItem (partCost));
+    qDebug() << "GOT THE COST" << partDesc;
+    QString partQty;
+    partQty = ui->leAddLineItem_Quantity->text();
+    ui->tblOrderLinesWidget->setItem(row,3, new QTableWidgetItem (partQty));
+    qDebug() << "GOT THE QTY" << partDesc;
+}

@@ -55,7 +55,6 @@ void SearchDialog::startSearchRequest()
 
     QByteArray result = reply->readAll();
     QXmlStreamReader xmlReader(result);
-
     XmlDialogSearchRequestParsing(xmlReader);
 }
 
@@ -102,10 +101,10 @@ void SearchDialog::GetTextValues()
 
 void SearchDialog::on_btnSearchDialog_clicked()
 {
+
     connect(ui->btnSearchDialog, SIGNAL(clicked(bool)), this, SLOT(startSearchRequest()));
+
 }
-
-
 
 void SearchDialog::on_btnAddSelectedItem_clicked()
 {
@@ -143,11 +142,8 @@ QMap<QString, QString> SearchDialog::getMap() {
     partMap["PartName"] = partValue.toString();
     partMap["PartDesc"] = partDesc.toString();
     partMap["PartCost"] = partCost.toString();
-
-
     qDebug() << "Here is the part info:" << partValue.toString() << "--" << partDesc.toString() << "--" << partCost.toString();
     return partMap;
-
 }
 
 //QString SearchDialog::getPart(){

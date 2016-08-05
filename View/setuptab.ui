@@ -179,7 +179,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="leShipToDealer_DealerID"/>
+         <widget class="QLineEdit" name="leShipToDealer_DealerID">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
