@@ -31,6 +31,11 @@ SearchDialog::SearchDialog(QWidget *parent) :
     ui(new Ui::SearchDialog)
 {
     ui->setupUi(this);
+    connect(ui->btnSearchDialog, SIGNAL(clicked(bool)), this, SLOT(startSearchRequest()));
+    selectedValue = ui->tblDialogSearchResults->selectedItems();
+    //qDebug() << "Butten return values****************" << selectedValue;
+    //qDebug() << "Selected values" << selectedValue;
+    connect(ui->btnAddSelectedItem, SIGNAL(clicked(bool)), this, SLOT(accept()));
 }
 
 SearchDialog::~SearchDialog()
@@ -102,23 +107,17 @@ void SearchDialog::GetTextValues()
 void SearchDialog::on_btnSearchDialog_clicked()
 {
 
-    connect(ui->btnSearchDialog, SIGNAL(clicked(bool)), this, SLOT(startSearchRequest()));
+    //connect(ui->btnSearchDialog, SIGNAL(clicked(bool)), this, SLOT(startSearchRequest()));
 
 }
 
 void SearchDialog::on_btnAddSelectedItem_clicked()
 {
     selectedValue = ui->tblDialogSearchResults->selectedItems();
-    //qDebug() << "Butten return values****************" << selectedValue;
-    //qDebug() << "Selected values" << selectedValue;
-    connect(ui->btnAddSelectedItem, SIGNAL(clicked(bool)), this, SLOT(accept()));
+//    //qDebug() << "Butten return values****************" << selectedValue;
+//    //qDebug() << "Selected values" << selectedValue;
+//    connect(ui->btnAddSelectedItem, SIGNAL(clicked(bool)), this, SLOT(accept()));
 }
-
-//QList<QTableWidgetItem* > SearchDialog::getSelected(){
-//    << selectedValue;
-
-//    return selectedValue;
-//}
 
 QMap<QString, QString> SearchDialog::getMap() {
 
