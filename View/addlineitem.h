@@ -19,8 +19,8 @@ class AddLineItem : public QWidget, public Ui::AddLineItem
 public:
     explicit AddLineItem(QWidget *parent = 0);
     ~AddLineItem();
-
     void AddLineItemFromDialog(QString &item);
+    bool PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty);
 public slots:
 
 private slots:

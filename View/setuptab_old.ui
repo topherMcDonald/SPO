@@ -21,81 +21,6 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0">
-    <widget class="QGroupBox" name="gbShipToDealer">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="title">
-      <string>Ship-To Dealer</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_4">
-      <item row="0" column="0">
-       <layout class="QHBoxLayout" name="hloShipToDealer_DealerID">
-        <item>
-         <widget class="QLabel" name="lblShipToDealer_DealerID">
-          <property name="text">
-           <string>Dealer ID</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leShipToDealer_ID">
-          <property name="placeholderText">
-           <string>END USER</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="0">
-       <layout class="QHBoxLayout" name="hloShipToDealer_PO">
-        <item>
-         <widget class="QLabel" name="lblShipToDealer_PO">
-          <property name="text">
-           <string>PO</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leShipToDealer_PO"/>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="1">
-       <layout class="QHBoxLayout" name="hloShipToDealer_DateToShip">
-        <item>
-         <widget class="QLabel" name="lblShipToDealer_DateToShip">
-          <property name="text">
-           <string>Date to Ship</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leShipToDealer_DateToShip"/>
-        </item>
-       </layout>
-      </item>
-      <item row="0" column="1">
-       <layout class="QHBoxLayout" name="hloShipToDealer_Routing">
-        <item>
-         <widget class="QLabel" name="lblShipToDealer_Routing">
-          <property name="text">
-           <string>Routing</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leShipToDealer_Routing"/>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="2" column="0">
     <widget class="QGroupBox" name="gbShipToAddress">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -209,43 +134,96 @@
     </widget>
    </item>
    <item row="0" column="0">
-    <widget class="QGroupBox" name="groupBox">
-     <property name="title">
-      <string>Salesperson Info</string>
+    <widget class="QGroupBox" name="gbShipToDealer">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>391</width>
-        <height>191</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="hloSalespersonEmail">
-       <item>
-        <widget class="QLabel" name="lblSalespersonEmail">
-         <property name="text">
-          <string>Email Address</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="leSalespersonEmail">
-         <property name="placeholderText">
-          <string>@draperinc.com</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
+     <property name="title">
+      <string>Ship-To Dealer</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="hloShipToDealer_DealerID">
+        <item>
+         <widget class="QLabel" name="lblShipToDealer_DealerID">
+          <property name="text">
+           <string>Dealer ID</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="cmbShipToDealer_DealerID">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <layout class="QHBoxLayout" name="hloShipToDealer_PO">
+        <item>
+         <widget class="QLabel" name="lblShipToDealer_PO">
+          <property name="text">
+           <string>PO</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToDealer_DealerID">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="1">
+       <layout class="QHBoxLayout" name="hloShipToDealer_DateToShip">
+        <item>
+         <widget class="QLabel" name="lblShipToDealer_DateToShip">
+          <property name="text">
+           <string>Date to ship</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToDealer_DateToShip"/>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="1">
+       <layout class="QHBoxLayout" name="hloShipToDealer_Routing">
+        <item>
+         <widget class="QLabel" name="lblShipToDealer_Routing">
+          <property name="text">
+           <string>Routing</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToDealer_Routing"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>
  </widget>
  <tabstops>
+  <tabstop>cmbShipToDealer_DealerID</tabstop>
   <tabstop>leShipToDealer_Routing</tabstop>
-  <tabstop>leShipToDealer_PO</tabstop>
+  <tabstop>leShipToDealer_DealerID</tabstop>
   <tabstop>leShipToDealer_DateToShip</tabstop>
   <tabstop>leShipToAddress_Name</tabstop>
   <tabstop>leShipToAddress_City</tabstop>

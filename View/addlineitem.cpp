@@ -12,13 +12,7 @@ AddLineItem::AddLineItem(QWidget *parent) :
     //Set Table column names
     //ui->tblOrderLinesWidget->setHorizontalHeaderLabels(QString("Part ;Qty ;Desc ;Dims ;Weight ;").split(";"));
     //Add Table items here
-//    ui->tblOrderLinesWidget->setItem(0,0, new QTableWidgetItem("shade"));
-//    ui->tblOrderLinesWidget->setItem(0,1, new QTableWidgetItem("1"));
-//    ui->tblOrderLinesWidget->setItem(0,2, new QTableWidgetItem("this is part one"));
-//    ui->tblOrderLinesWidget->setItem(0,3, new QTableWidgetItem("7x7"));
-//    ui->tblOrderLinesWidget->setItem(0,4, new QTableWidgetItem("$25.00"));
-
-
+    //connect(ui->btnAddLineItem_AddLine, SIGNAL(clicked(bool)), this, SLOT(accept()));
 }
 
 AddLineItem::~AddLineItem()
@@ -53,22 +47,38 @@ void AddLineItem::on_btnAddLineItem_GetMacPacPart_clicked()
 
 void AddLineItem::on_btnAddLineItem_AddLine_clicked()
 {
-    int row = ui->tblOrderLinesWidget->rowCount();
     QString partName;
-    ui->tblOrderLinesWidget->insertRow(row);
-    partName = ui->leAddLineItem_PartNumber->text();
-    ui->tblOrderLinesWidget->setItem(row,0, new QTableWidgetItem (partName));
-    qDebug() << "GOT THE NAME" << partName;
     QString partDesc;
-    partDesc = ui->leAddlineItem_Description->text();
-    ui->tblOrderLinesWidget->setItem(row,1, new QTableWidgetItem (partDesc));
-    qDebug() << "GOT THE DESC" << partDesc;
     QString partCost;
-    partCost = ui->leAddLineItem_Value->text();
-    ui->tblOrderLinesWidget->setItem(row,2, new QTableWidgetItem (partCost));
-    qDebug() << "GOT THE COST" << partDesc;
     QString partQty;
+    partName = ui->leAddLineItem_PartNumber->text();
+    partDesc = ui->leAddlineItem_Description->text();
+    partCost = ui->leAddLineItem_Value->text();
     partQty = ui->leAddLineItem_Quantity->text();
-    ui->tblOrderLinesWidget->setItem(row,3, new QTableWidgetItem (partQty));
-    qDebug() << "GOT THE QTY" << partDesc;
+
+    if (PartOkToAdd(partName, partDesc, partCost, partQty) == true) {
+        int row = ui->tblOrderLinesWidget->rowCount();
+        ui->tblOrderLinesWidget->insertRow(row);
+        ui->tblOrderLinesWidget->setItem(row,0, new QTableWidgetItem (partName));
+        ui->tblOrderLinesWidget->setItem(row,1, new QTableWidgetItem (partDesc));
+        ui->tblOrderLinesWidget->setItem(row,2, new QTableWidgetItem (partCost));
+        ui->tblOrderLinesWidget->setItem(row,3, new QTableWidgetItem (partQty));
+    }
+}
+
+bool AddLineItem::PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty) {
+    bool retval = true;
+    if (partName == "") {
+        retval = false;
+    }
+    if (partDesc == "") {
+        retval = false;
+    }
+    if (partCost == "") {
+        retval = false;
+    }
+    if (partQty == "" || partQty == "0" || partQty.contains("-")) {
+        retval = false;
+    }
+    return retval;
 }

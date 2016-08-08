@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>793</width>
+    <width>830</width>
     <height>464</height>
    </rect>
   </property>
@@ -204,12 +204,12 @@
         </column>
         <column>
          <property name="text">
-          <string>Qty</string>
+          <string>Cost</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>Cost</string>
+          <string>Qty</string>
          </property>
         </column>
        </widget>

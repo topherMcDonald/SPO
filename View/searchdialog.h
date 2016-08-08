@@ -19,8 +19,6 @@ public:
     explicit SearchDialog(QWidget *parent = 0);
     void XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile);
     ~SearchDialog();
-
-    void GetTextValues();
     //QList<QTableWidgetItem *> getSelected();
     QMap<QString, QString> getMap();
 private slots:

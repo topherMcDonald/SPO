@@ -20,6 +20,13 @@
 #include <QTextStream>
 #include <QPushButton>
 #include <QIcon>
+#include <QtNetwork>
+#include <QCoreApplication>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QUrl>
+#include <QUrlQuery>
 
 static auto RESOURCE_PREFIX = QStringLiteral(":/xml");
 static QString FILEERROR_MSG = QStringLiteral("ERROR OPENING FILE");
@@ -30,6 +37,12 @@ SetupTab::SetupTab(QWidget *parent) :
 {
     qDebug() << "QWidget SetupTab has been envoked!";
     ui->setupUi(this);
+    //Start: PO generation (fjd 8.5.16 1:46PM)
+    QString po = "";
+    Utils *u;
+    u->createPO(po);
+    ui->leShipToDealer_PO->setText(po);
+    //End: PO generation
     ReadBaseXMLFile();
 }
 
@@ -83,13 +96,115 @@ void SetupTab::SaveAddressXML()
 
 }
 
-//void SetupTab::on_btnAddShipToAddress_clicked()
-//{
-//    connect(ui->btnAddShipToAddress, SIGNAL(clicked()), this, SLOT(SaveAddressXML()));
-//}
+void SetupTab::GetAddressXML() {
+    if (ui->leShipToDealer_ID->text().isEmpty() == false || ui->leShipToDealer_ID->text().contains("END USER") == false) {
+        //Create custom temporary event loop on stack
+        QEventLoop eventLoop;
+        QNetworkAccessManager mgr;
+        QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
+        QString textSearch = ui->leShipToDealer_ID->text();
+        //HTTP request
+        QNetworkRequest req( QUrl( QString("http://spi-rabbit2:8080/addresses/address/" + textSearch)));
+        QNetworkReply *reply = mgr.get(req);
+        //Blocking
+        eventLoop.exec();
+        QByteArray result = reply->readAll();
+        QXmlStreamReader xmlReader(result);
+        XmlAddressSearchRequestParsing(xmlReader);
+    }
+}
+void SetupTab::XmlAddressSearchRequestParsing(QXmlStreamReader &XmlFileReader)
+{
+    QString dealerID, dname, status, address1, address2, address3, city, state, zip, countryCode, region, phone;
+    while(!XmlFileReader.atEnd() && !XmlFileReader.hasError())
+    {
+        QXmlStreamReader::TokenType token = XmlFileReader.readNext();
+        if(token == QXmlStreamReader::StartDocument) {
+                        continue;
+                }
+        if(token == QXmlStreamReader::StartElement)
+        {
+            //QStringRef  name = XmlFileReader.name();
+            if(XmlFileReader.name() == "DealerID")
+            {
+                dealerID = XmlFileReader.readElementText();
+            }
+
+            else if(XmlFileReader.name() == "Name")
+            {
+               dname = XmlFileReader.readElementText();
+            }
+
+            else if(XmlFileReader.name() == "Status")
+            {
+                status = XmlFileReader.readElementText();
+            }
+
+            else if(XmlFileReader.name() == "Address1")
+            {
+                address1 = XmlFileReader.readElementText();
+            }
+
+            else if(XmlFileReader.name() == "Address2")
+            {
+                address2 = XmlFileReader.readElementText();
+            }
+
+            else if(XmlFileReader.name() == "Address3")
+            {
+                address3 = XmlFileReader.readElementText();
+            }
+
+            else if(XmlFileReader.name() == "City")
+            {
+                city = XmlFileReader.readElementText();
+            }
+
+            else if(XmlFileReader.name() == "State")
+            {
+                state = XmlFileReader.readElementText();
+            }
+
+            else if(XmlFileReader.name() == "Zip")
+            {
+                zip = XmlFileReader.readElementText();
+            }
+
+            else if(XmlFileReader.name() == "CountryCode")
+            {
+                countryCode = XmlFileReader.readElementText();
+            }
+
+            else if(XmlFileReader.name() == "Region")
+            {
+                region = XmlFileReader.readElementText();
+
+            }
+            else if(XmlFileReader.name() == "Phone")
+            {
+                phone = XmlFileReader.readElementText();
+            }
+
+            //leShipToAddress_
+            ui->leShipToAddress_Name->setText(dname); // = dname;
+            ui->leShipToAddress_Address1->setText(address1); //= address1;
+            ui->leShipToAddress_Address2->setText(address2); //= address2;
+            ui->leShipToAddress_Address3->setText(address3); //= address3;
+            ui->leShipToAddress_City->setText(city); //= city;
+            ui->leShipToAddress_State->setText(state); //= state;
+            ui->leShipToAddress_Zip->setText(zip); //= zip;
+
+        }
+    }
+}
 
 SetupTab::~SetupTab()
 {
     Utils::DestuctorMsg(this);
     delete ui;
+}
+
+void SetupTab::on_leShipToDealer_ID_editingFinished()
+{
+    GetAddressXML();
 }

@@ -15,13 +15,6 @@
 #include <QFile>
 #include <QDir>
 
-
-//#ifndef QT_NO_SSL
-//static const char defaultServiceRequest[] = "https://spi-rabbit2:8080/parts/part/search/C109";
-//#else
-//static const char defaultServiceRequest[] = "https://spi-rabbit2:8080/parts/part/search/C109";
-//#endif
-
 QList<QTableWidgetItem *>  selectedValue;
 
 QMap<QString, QString> partMap;
@@ -33,8 +26,6 @@ SearchDialog::SearchDialog(QWidget *parent) :
     ui->setupUi(this);
     connect(ui->btnSearchDialog, SIGNAL(clicked(bool)), this, SLOT(startSearchRequest()));
     selectedValue = ui->tblDialogSearchResults->selectedItems();
-    //qDebug() << "Butten return values****************" << selectedValue;
-    //qDebug() << "Selected values" << selectedValue;
     connect(ui->btnAddSelectedItem, SIGNAL(clicked(bool)), this, SLOT(accept()));
 }
 
@@ -66,6 +57,8 @@ void SearchDialog::startSearchRequest()
 void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
 {
     QString partName,  description, cost;
+    //Removes all rows from table (fjd 8.5.16 1:05 PM)
+    ui->tblDialogSearchResults->setRowCount(0);
     int row = ui->tblDialogSearchResults->rowCount();
 
     while(!XmlFile.atEnd() && !XmlFile.hasError())
@@ -79,44 +72,32 @@ void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
                 ui->tblDialogSearchResults->insertRow(row);
                 partName = XmlFile.readElementText();
                 ui->tblDialogSearchResults->setItem(row,0, new QTableWidgetItem (partName));
-                qDebug() << "GOT THE NAME" << partName;
+
             }
             else if(name == "Description")
             {
                 description = XmlFile.readElementText();
                 ui->tblDialogSearchResults->setItem(row,1, new QTableWidgetItem (description));
-                qDebug() << "GOT THE Des" << description;
+
             }
             else if(name == "Cost")
             {
                 cost = XmlFile.readElementText();
                 ui->tblDialogSearchResults->setItem(row,2, new QTableWidgetItem (cost));
-                qDebug() << "GOT THE COST" << cost;
                 row = ui->tblDialogSearchResults->rowCount();
-                qDebug() << "Row count for dialog" << row;
             }
         }
     }
 }
 
-void SearchDialog::GetTextValues()
-{
-    //return ui->tblDialogSearchResults->selectedItems().value();
-}
-
 void SearchDialog::on_btnSearchDialog_clicked()
 {
-
     //connect(ui->btnSearchDialog, SIGNAL(clicked(bool)), this, SLOT(startSearchRequest()));
-
 }
 
 void SearchDialog::on_btnAddSelectedItem_clicked()
 {
     selectedValue = ui->tblDialogSearchResults->selectedItems();
-//    //qDebug() << "Butten return values****************" << selectedValue;
-//    //qDebug() << "Selected values" << selectedValue;
-//    connect(ui->btnAddSelectedItem, SIGNAL(clicked(bool)), this, SLOT(accept()));
 }
 
 QMap<QString, QString> SearchDialog::getMap() {
@@ -137,14 +118,9 @@ QMap<QString, QString> SearchDialog::getMap() {
             partCost = rowValue->text();
         }
     }
-
     partMap["PartName"] = partValue.toString();
     partMap["PartDesc"] = partDesc.toString();
     partMap["PartCost"] = partCost.toString();
-    qDebug() << "Here is the part info:" << partValue.toString() << "--" << partDesc.toString() << "--" << partCost.toString();
     return partMap;
 }
 
-//QString SearchDialog::getPart(){
-
-//}
