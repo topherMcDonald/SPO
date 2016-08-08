@@ -196,7 +196,7 @@
          <number>40</number>
         </attribute>
         <attribute name="verticalHeaderMinimumSectionSize">
-         <number>1</number>
+         <number>40</number>
         </attribute>
         <attribute name="verticalHeaderStretchLastSection">
          <bool>true</bool>

@@ -3,6 +3,7 @@
 #include "ui_addlineitem.h"
 #include <QTableWidget>
 #include "View/searchdialog.h"
+#include "View/missingdatadialog.h"
 
 AddLineItem::AddLineItem(QWidget *parent) :
     QWidget(parent),
@@ -79,6 +80,10 @@ bool AddLineItem::PartOkToAdd(QString partName, QString partDesc, QString partCo
     }
     if (partQty == "" || partQty == "0" || partQty.contains("-")) {
         retval = false;
+    }
+    if (retval == false) {
+            MissingDataDialog *mdDialog = new MissingDataDialog;
+            mdDialog->show();
     }
     return retval;
 }
