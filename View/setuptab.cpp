@@ -113,6 +113,7 @@ void SetupTab::GetAddressXML() {
         XmlAddressSearchRequestParsing(xmlReader);
     }
 }
+
 void SetupTab::XmlAddressSearchRequestParsing(QXmlStreamReader &XmlFileReader)
 {
     QString dealerID, dname, status, address1, address2, address3, city, state, zip, countryCode, region, phone;

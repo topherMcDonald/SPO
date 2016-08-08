@@ -23,12 +23,15 @@ public:
     bool PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty);
 public slots:
 
+protected:
+
 private slots:
     void on_btnAddLineItem_GetMacPacPart_clicked();
     void on_btnAddLineItem_AddLine_clicked();
 private:
 
-    Ui::AddLineItem *ui; 
+    Ui::AddLineItem *ui;
+    void AddLineItem_OrderTotal(QString orderTotal);
 };
 
 #endif // ADDLINEITEM_H

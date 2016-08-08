@@ -4,6 +4,8 @@
 #include <QTableWidget>
 #include "View/searchdialog.h"
 #include "View/missingdatadialog.h"
+#include <string>
+#include <sstream>
 
 AddLineItem::AddLineItem(QWidget *parent) :
     QWidget(parent),
@@ -57,14 +59,18 @@ void AddLineItem::on_btnAddLineItem_AddLine_clicked()
     partCost = ui->leAddLineItem_Value->text();
     partQty = ui->leAddLineItem_Quantity->text();
 
+
     if (PartOkToAdd(partName, partDesc, partCost, partQty) == true) {
+        AddLineItem_OrderTotal(partCost);
         int row = ui->tblOrderLinesWidget->rowCount();
         ui->tblOrderLinesWidget->insertRow(row);
         ui->tblOrderLinesWidget->setItem(row,0, new QTableWidgetItem (partName));
         ui->tblOrderLinesWidget->setItem(row,1, new QTableWidgetItem (partDesc));
         ui->tblOrderLinesWidget->setItem(row,2, new QTableWidgetItem (partCost));
         ui->tblOrderLinesWidget->setItem(row,3, new QTableWidgetItem (partQty));
+
     }
+
 }
 
 bool AddLineItem::PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty) {
@@ -87,3 +93,26 @@ bool AddLineItem::PartOkToAdd(QString partName, QString partDesc, QString partCo
     }
     return retval;
 }
+
+void AddLineItem::AddLineItem_OrderTotal(QString orderTotal)
+{
+    qDebug() << "total of line item"<< orderTotal;
+    bool ok;
+    static float orderTotalFloatRunningTotal;
+    float orderTotalFloat = orderTotal.toFloat(&ok);
+    qDebug() << "AFTER THE Conversion" << orderTotalFloat;
+    orderTotalFloatRunningTotal += orderTotalFloat;
+    //orderTotalFloatRunningTotal = orderTotalFloatRunningTotal + orderTotalFloat;
+    qDebug() << "What is the running total" << orderTotalFloatRunningTotal;
+
+    ui->leOrderTotal->setText(orderTotal);
+}
+
+
+
+
+
+
+
+
+

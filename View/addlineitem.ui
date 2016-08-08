@@ -180,6 +180,9 @@
         <property name="lineWidth">
          <number>1</number>
         </property>
+        <property name="sizeAdjustPolicy">
+         <enum>QAbstractScrollArea::AdjustToContents</enum>
+        </property>
         <property name="rowCount">
          <number>0</number>
         </property>
@@ -196,7 +199,7 @@
          <number>40</number>
         </attribute>
         <attribute name="verticalHeaderMinimumSectionSize">
-         <number>1</number>
+         <number>40</number>
         </attribute>
         <attribute name="verticalHeaderStretchLastSection">
          <bool>true</bool>
@@ -225,6 +228,12 @@
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="lblOrderTotal">
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>Order Total</string>
         </property>
@@ -257,6 +266,19 @@
          <bool>true</bool>
         </property>
        </widget>
+      </item>
+      <item row="6" column="1">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>
@@ -337,6 +359,22 @@
          <size>
           <width>450</width>
           <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>30</height>
          </size>
         </property>
        </spacer>
