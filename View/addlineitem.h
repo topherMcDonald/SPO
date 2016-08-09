@@ -29,9 +29,9 @@ private slots:
     void on_btnAddLineItem_GetMacPacPart_clicked();
     void on_btnAddLineItem_AddLine_clicked();
 private:
-
+    bool overCostLimit;
     Ui::AddLineItem *ui;
-    void AddLineItem_OrderTotal(QString orderTotal);
+    bool AddLineItem_OrderTotal(QString orderTotal);
 };
 
 #endif // ADDLINEITEM_H

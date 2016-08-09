@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     Model/settings.cpp \
     startup.cpp \
     View/searchdialog.cpp \
-    View/missingdatadialog.cpp
+    View/missingdatadialog.cpp \
+    View/overcostlimitdialog.cpp
 
 HEADERS  += View/mainview.h \
     View/setuptab.h \
@@ -30,13 +31,15 @@ HEADERS  += View/mainview.h \
     Model/settings.h \
     startup.h \
     View/searchdialog.h \
-    View/missingdatadialog.h
+    View/missingdatadialog.h \
+    View/overcostlimitdialog.h
 
 FORMS    += View/mainview.ui \
     View/setuptab.ui \
     View/addlineitem.ui \
     View/searchdialog.ui \
-    View/missingdatadialog.ui
+    View/missingdatadialog.ui \
+    View/overcostlimitdialog.ui
 
 RESOURCES += \
     sporesource.qrc

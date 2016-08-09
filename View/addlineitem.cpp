@@ -4,6 +4,7 @@
 #include <QTableWidget>
 #include "View/searchdialog.h"
 #include "View/missingdatadialog.h"
+#include "View/overcostlimitdialog.h"
 #include <string>
 #include <sstream>
 
@@ -62,15 +63,16 @@ void AddLineItem::on_btnAddLineItem_AddLine_clicked()
 
     if (PartOkToAdd(partName, partDesc, partCost, partQty) == true) {
         AddLineItem_OrderTotal(partCost);
-        int row = ui->tblOrderLinesWidget->rowCount();
-        ui->tblOrderLinesWidget->insertRow(row);
-        ui->tblOrderLinesWidget->setItem(row,0, new QTableWidgetItem (partName));
-        ui->tblOrderLinesWidget->setItem(row,1, new QTableWidgetItem (partDesc));
-        ui->tblOrderLinesWidget->setItem(row,2, new QTableWidgetItem (partCost));
-        ui->tblOrderLinesWidget->setItem(row,3, new QTableWidgetItem (partQty));
-
+        if(overCostLimit == false)
+        {
+            int row = ui->tblOrderLinesWidget->rowCount();
+            ui->tblOrderLinesWidget->insertRow(row);
+            ui->tblOrderLinesWidget->setItem(row,0, new QTableWidgetItem (partName));
+            ui->tblOrderLinesWidget->setItem(row,1, new QTableWidgetItem (partDesc));
+            ui->tblOrderLinesWidget->setItem(row,2, new QTableWidgetItem (partCost));
+            ui->tblOrderLinesWidget->setItem(row,3, new QTableWidgetItem (partQty));
+        }
     }
-
 }
 
 bool AddLineItem::PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty) {
@@ -94,18 +96,29 @@ bool AddLineItem::PartOkToAdd(QString partName, QString partDesc, QString partCo
     return retval;
 }
 
-void AddLineItem::AddLineItem_OrderTotal(QString orderTotal)
+bool AddLineItem::AddLineItem_OrderTotal(QString orderTotal)
 {
+    QString orderTotalToString;
     qDebug() << "total of line item"<< orderTotal;
     bool ok;
     static float orderTotalFloatRunningTotal;
     float orderTotalFloat = orderTotal.toFloat(&ok);
     qDebug() << "AFTER THE Conversion" << orderTotalFloat;
     orderTotalFloatRunningTotal += orderTotalFloat;
-    //orderTotalFloatRunningTotal = orderTotalFloatRunningTotal + orderTotalFloat;
-    qDebug() << "What is the running total" << orderTotalFloatRunningTotal;
-
-    ui->leOrderTotal->setText(orderTotal);
+    if(orderTotalFloatRunningTotal <= 2)
+    {
+        qDebug() << "What is the running total" << orderTotalFloatRunningTotal;
+        orderTotalToString.setNum(orderTotalFloatRunningTotal);
+        ui->leOrderTotal->setText(orderTotalToString);
+        return overCostLimit = false;
+    }
+    else
+    {
+        overCostLimitDialog *overLimitDialog = new overCostLimitDialog;
+        overLimitDialog->show();
+        qDebug() << "YOU over over the cost limitation!!!!!!!!!!!!!";
+        return overCostLimit   = true;
+    }
 }
 
 
