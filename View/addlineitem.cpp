@@ -121,11 +121,20 @@ bool AddLineItem::AddLineItem_OrderTotal(QString orderTotal)
     }
 }
 
+void AddLineItem::handleDeleteSelectedRow()
+{
+    QList<QTableWidgetItem*> selectionRangeList = this->ui->tblOrderLinesWidget->selectedItems();
+    int rowIndex;
+    QListIterator<QTableWidgetItem*> selectionRangeListIter(selectionRangeList);
 
+    while(selectionRangeListIter.hasNext()){
+        rowIndex = ((int)((QTableWidgetItem*)selectionRangeListIter.next())->row());
+        this->ui->tblOrderLinesWidget->removeRow(rowIndex);
+    }
+}
 
-
-
-
-
-
-
+void AddLineItem::on_btnRecapAndSubmit_Clear_clicked()
+{
+    qDebug() << "I NEED TO DELETE!!!!!!!!!!!!!";
+    handleDeleteSelectedRow();
+}

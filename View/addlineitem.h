@@ -21,6 +21,7 @@ public:
     ~AddLineItem();
     void AddLineItemFromDialog(QString &item);
     bool PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty);
+    void handleDeleteSelectedRow();
 public slots:
 
 protected:
@@ -28,6 +29,8 @@ protected:
 private slots:
     void on_btnAddLineItem_GetMacPacPart_clicked();
     void on_btnAddLineItem_AddLine_clicked();
+    void on_btnRecapAndSubmit_Clear_clicked();
+
 private:
     bool overCostLimit;
     Ui::AddLineItem *ui;
