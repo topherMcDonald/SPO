@@ -33,34 +33,7 @@ MainView::MainView(QWidget *parent, SetupTab& setup, AddLineItem& addlineitem) :
 
 void MainView::createActions()
 {
-//    openAction = new QAction(tr("&Open..."),this);
-//    openAction->setShortcut(tr("Ctrl+O"));
-//    openAction->setIcon(QIcon("icons/open2.png"));
-//    connect(openAction, SIGNAL(triggered()), this, SLOT(OpenXMLofFile()));
 
-//    saveAsAction = new QAction(tr("&Save As..."),this);
-//    saveAsAction->setShortcut(tr("Ctrl+S"));
-//    saveAsAction->setIcon(QIcon("icons/save.png"));
-//    //QObject::connect(ui->tabShipToAddress->, SIGNAL(triggered()), this, SLOT(SaveXMLFile()));
-//    //connect(saveAsAction, SIGNAL(triggered()), this, SLOT(SaveXMLFile()));
-
-//    clearAction = new QAction(tr("&Clear Data..."),this);
-//    clearAction->setShortcut(tr("Ctrl+C"));
-//    clearAction->setIcon(QIcon("icons/clear.png"));
-//    connect(clearAction,SIGNAL(triggered()),this,SLOT(ClearData()));
-
-//    exitAction = new QAction(tr("&Exit"),this);
-//    exitAction->setShortcut(tr("Ctrl+Q"));
-//    exitAction->setIcon(QIcon("icons/exit.png"));
-//    connect(exitAction,SIGNAL(triggered()),this,SLOT(close()));
-
-//    aboutAction = new QAction(tr("&About..."),this);
-//    aboutAction->setShortcut(tr("Ctrl+A"));
-//    connect(aboutAction,SIGNAL(triggered()),this,SLOT(AboutApp()));
-
-//    aboutQtAction = new QAction(tr("About &QT..."),this);
-//    aboutQtAction->setShortcut(tr("Ctrl+T"));
-//    connect(aboutQtAction,SIGNAL(triggered()),qApp,SLOT(aboutQt()));
 }
 
 MainView::~MainView()

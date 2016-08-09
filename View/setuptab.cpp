@@ -74,17 +74,14 @@ QString SetupTab::ReadBaseXMLFromInternalResource()
 
 void SetupTab::SaveAddressXML()
 {
-
     //basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
     basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
 
     QFile file(basefilename);
     file.open(QIODevice::WriteOnly);
-
     QXmlStreamWriter xmlWriter(&file);
     xmlWriter.setAutoFormatting(true);
     xmlWriter.writeStartDocument();
-
     xmlWriter.writeStartElement("ShipTo");
     xmlWriter.writeTextElement("Name",ui->leShipToAddress_Name->text());
     xmlWriter.writeTextElement("Address",ui->leShipToAddress_Address1->text());

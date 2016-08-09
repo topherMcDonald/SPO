@@ -13,10 +13,6 @@ AddLineItem::AddLineItem(QWidget *parent) :
     ui(new Ui::AddLineItem)
 {
     ui->setupUi(this);
-    //Set Table column names
-    //ui->tblOrderLinesWidget->setHorizontalHeaderLabels(QString("Part ;Qty ;Desc ;Dims ;Weight ;").split(";"));
-    //Add Table items here
-    //connect(ui->btnAddLineItem_AddLine, SIGNAL(clicked(bool)), this, SLOT(accept()));
 }
 
 AddLineItem::~AddLineItem()
@@ -123,12 +119,25 @@ bool AddLineItem::AddLineItem_OrderTotal(QString orderTotal)
 
 void AddLineItem::handleDeleteSelectedRow()
 {
+   // QVariant partCost;
     QList<QTableWidgetItem*> selectionRangeList = this->ui->tblOrderLinesWidget->selectedItems();
+
     int rowIndex;
     QListIterator<QTableWidgetItem*> selectionRangeListIter(selectionRangeList);
+    while(selectionRangeListIter.hasNext())
+    {
+        QTableWidgetItem *rowValue;
+        QVariant partCost;//cost of part
 
-    while(selectionRangeListIter.hasNext()){
         rowIndex = ((int)((QTableWidgetItem*)selectionRangeListIter.next())->row());
+//        foreach (rowValue, selectionRangeList) {
+//            if ((rowValue->column() == 0) || (rowValue->column() == 1) || (rowValue->column() == 2)) {
+//              //ui->tblOrderLinesWidget->(setItem(row,2, new QTableWidgetItem (partCost));
+//                *rowValue = 2;
+//              partCost = rowValue->column();
+//              qDebug() << "WHAT IS IN THE ITERATOR LIST" << partCost;
+//            }
+//        }
         this->ui->tblOrderLinesWidget->removeRow(rowIndex);
     }
 }

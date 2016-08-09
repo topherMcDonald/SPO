@@ -103,9 +103,9 @@ void SearchDialog::on_btnAddSelectedItem_clicked()
 QMap<QString, QString> SearchDialog::getMap() {
 
     QTableWidgetItem *rowValue;
-    QVariant partValue;
-    QVariant partDesc;
-    QVariant partCost;
+    QVariant partValue;//name of part
+    QVariant partDesc;//description of part
+    QVariant partCost;//cost of part
 
     foreach (rowValue, selectedValue) {
         if (rowValue->column() == 0) {
