@@ -22,7 +22,7 @@
                 </OrderComments>
         </OrderInstructions>
         <MetaInfo>
-                <PONumber>InternalPO1</PONumber><!-- Auto-assigned, random PO string ... whatever. Chris P. will prepend something to it to uniquely identify small parts POs for reporting purposes. -->
+                <PONumber></PONumber><!-- Auto-assigned, random PO string ... whatever. Chris P. will prepend something to it to uniquely identify small parts POs for reporting purposes. -->
                 <EndCustPO></EndCustPO>
                 <DealerSONumber>123456</DealerSONumber>
                 <POCreated>

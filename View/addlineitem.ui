@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>830</width>
+    <width>870</width>
     <height>464</height>
    </rect>
   </property>
@@ -183,11 +183,17 @@
         <property name="sizeAdjustPolicy">
          <enum>QAbstractScrollArea::AdjustToContents</enum>
         </property>
+        <property name="alternatingRowColors">
+         <bool>true</bool>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::SingleSelection</enum>
+        </property>
         <property name="rowCount">
          <number>0</number>
         </property>
         <property name="columnCount">
-         <number>4</number>
+         <number>5</number>
         </property>
         <attribute name="horizontalHeaderDefaultSectionSize">
          <number>164</number>
@@ -206,7 +212,7 @@
         </attribute>
         <column>
          <property name="text">
-          <string>Part</string>
+          <string>Part Number</string>
          </property>
         </column>
         <column>
@@ -216,12 +222,17 @@
         </column>
         <column>
          <property name="text">
-          <string>Cost</string>
+          <string>Unit Cost</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>Qty</string>
+          <string>Quantity</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Extended Cost</string>
          </property>
         </column>
        </widget>

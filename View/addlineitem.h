@@ -22,6 +22,7 @@ public:
     void AddLineItemFromDialog(QString &item);
     bool PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty);
     void handleDeleteSelectedRow();
+    void updateExtendedCostTotal();
 public slots:
 
 protected:
@@ -31,10 +32,13 @@ private slots:
     void on_btnAddLineItem_AddLine_clicked();
     void on_btnRecapAndSubmit_Clear_clicked();
 
+    void on_btnSubmitOrder_clicked();
+
 private:
     bool overCostLimit;
     Ui::AddLineItem *ui;
     bool AddLineItem_OrderTotal(QString orderTotal);
+    void resetFields();
 };
 
 #endif // ADDLINEITEM_H
