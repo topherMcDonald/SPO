@@ -61,8 +61,16 @@ void AddLineItem::updateExtendedCostTotal() {
         wi = ui->tblOrderLinesWidget->item(i,4);
         tmpTotal += wi->text().toFloat();
     }
+    if(tmpTotal > 100)
+    {
+        overCostLimitDialog *overLimitDialog = new overCostLimitDialog;
+        overLimitDialog->show();
+
+        return;
+    }
     uiTotal.setNum(tmpTotal);
     ui->leOrderTotal->setText(uiTotal);
+
 }
 
 void AddLineItem::resetFields() {
@@ -72,6 +80,27 @@ void AddLineItem::resetFields() {
     ui->leAddLineItem_Quantity->setText("");
 }
 
+//bool AddLineItem::GetOrderTotal() {
+//    bool retval = true;
+//    bool ok;
+//    QString orderTotal;
+//    float orderTotalFloat;
+//    orderTotal = ui->leOrderTotal->text();
+//    orderTotalFloat = orderTotal.toFloat(&ok);
+//    qDebug() << "Order Total Float:  " << orderTotalFloat;
+//    if(orderTotalFloat > 10)
+//    {
+//        overCostLimitDialog *overLimitDialog = new overCostLimitDialog;
+//        overLimitDialog->show();
+//        retval = false;
+//    }
+//    else
+//    {
+//        retval = true;
+//    }
+//    return retval;
+//}
+
 void AddLineItem::on_btnAddLineItem_AddLine_clicked()
 {
     QString partName;
@@ -79,11 +108,8 @@ void AddLineItem::on_btnAddLineItem_AddLine_clicked()
     QString partCost;
     QString partQty;
     QString extCost;
-    QString orderTotal;
+
     float xCost;
-    float orderTotalFloat;
-
-
 
     partName = ui->leAddLineItem_PartNumber->text();
     partDesc = ui->leAddlineItem_Description->text();
@@ -93,10 +119,11 @@ void AddLineItem::on_btnAddLineItem_AddLine_clicked()
     xCost = partQty.toFloat() * partCost.toFloat();
     extCost.setNum(xCost);
     //END: Extended Cost Mod
-    orderTotal = ui->leOrderTotal->text();
-    orderTotalFloat = orderTotal.toFloat();
-     qDebug() << "Order Total Float:  " << orderTotalFloat;
-    if((PartOkToAdd(partName, partDesc, partCost, partQty) == true) && (orderTotalFloat <= 10))
+//    if(xCost > 100)
+//    {
+//        return;
+//    }
+    if((PartOkToAdd(partName, partDesc, partCost, partQty) == true) && (xCost < 100))
     {
         int row = ui->tblOrderLinesWidget->rowCount();
         ui->tblOrderLinesWidget->insertRow(row);
@@ -104,13 +131,10 @@ void AddLineItem::on_btnAddLineItem_AddLine_clicked()
         ui->tblOrderLinesWidget->setItem(row,1, new QTableWidgetItem (partDesc));
         ui->tblOrderLinesWidget->setItem(row,2, new QTableWidgetItem (partCost));
         ui->tblOrderLinesWidget->setItem(row,3, new QTableWidgetItem (partQty));
-        //START: Extended Cost Mod
         ui->tblOrderLinesWidget->setItem(row,4, new QTableWidgetItem (extCost));
-        //END: Extended Cost Mod
         updateExtendedCostTotal();
         resetFields();
     }
-
 }
 
 bool AddLineItem::PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty) {

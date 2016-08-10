@@ -39,6 +39,7 @@ private:
     Ui::AddLineItem *ui;
     bool AddLineItem_OrderTotal(QString orderTotal);
     void resetFields();
+    bool GetOrderTotal();
 };
 
 #endif // ADDLINEITEM_H
