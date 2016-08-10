@@ -79,7 +79,12 @@ void AddLineItem::on_btnAddLineItem_AddLine_clicked()
     QString partCost;
     QString partQty;
     QString extCost;
+    QString orderTotal;
     float xCost;
+    float orderTotalFloat;
+
+
+
     partName = ui->leAddLineItem_PartNumber->text();
     partDesc = ui->leAddlineItem_Description->text();
     partCost = ui->leAddLineItem_Value->text();
@@ -88,22 +93,24 @@ void AddLineItem::on_btnAddLineItem_AddLine_clicked()
     xCost = partQty.toFloat() * partCost.toFloat();
     extCost.setNum(xCost);
     //END: Extended Cost Mod
-    if (PartOkToAdd(partName, partDesc, partCost, partQty) == true) {
-        if(overCostLimit == false)
-        {
-            int row = ui->tblOrderLinesWidget->rowCount();
-            ui->tblOrderLinesWidget->insertRow(row);
-            ui->tblOrderLinesWidget->setItem(row,0, new QTableWidgetItem (partName));
-            ui->tblOrderLinesWidget->setItem(row,1, new QTableWidgetItem (partDesc));
-            ui->tblOrderLinesWidget->setItem(row,2, new QTableWidgetItem (partCost));
-            ui->tblOrderLinesWidget->setItem(row,3, new QTableWidgetItem (partQty));
-            //START: Extended Cost Mod
-            ui->tblOrderLinesWidget->setItem(row,4, new QTableWidgetItem (extCost));
-            //END: Extended Cost Mod
-        }
+    orderTotal = ui->leOrderTotal->text();
+    orderTotalFloat = orderTotal.toFloat();
+     qDebug() << "Order Total Float:  " << orderTotalFloat;
+    if((PartOkToAdd(partName, partDesc, partCost, partQty) == true) && (orderTotalFloat <= 10))
+    {
+        int row = ui->tblOrderLinesWidget->rowCount();
+        ui->tblOrderLinesWidget->insertRow(row);
+        ui->tblOrderLinesWidget->setItem(row,0, new QTableWidgetItem (partName));
+        ui->tblOrderLinesWidget->setItem(row,1, new QTableWidgetItem (partDesc));
+        ui->tblOrderLinesWidget->setItem(row,2, new QTableWidgetItem (partCost));
+        ui->tblOrderLinesWidget->setItem(row,3, new QTableWidgetItem (partQty));
+        //START: Extended Cost Mod
+        ui->tblOrderLinesWidget->setItem(row,4, new QTableWidgetItem (extCost));
+        //END: Extended Cost Mod
+        updateExtendedCostTotal();
+        resetFields();
     }
-    updateExtendedCostTotal();
-    resetFields();
+
 }
 
 bool AddLineItem::PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty) {
