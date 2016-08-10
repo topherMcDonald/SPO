@@ -50,7 +50,6 @@ QString SetupTab::ReadBaseXMLFile()
 {
     auto default_xml = ReadBaseXMLFromInternalResource();
     return default_xml;
-
 }
 
 QString SetupTab::ReadBaseXMLFromInternalResource()
@@ -93,8 +92,10 @@ void SetupTab::SaveAddressXML()
 
 }
 
-void SetupTab::GetAddressXML() {
-    if (ui->leShipToDealer_ID->text().isEmpty() == false || ui->leShipToDealer_ID->text().contains("END USER") == false) {
+void SetupTab::GetAddressXML()
+{
+    if (ui->leShipToDealer_ID->text().isEmpty() == false || ui->leShipToDealer_ID->text().contains("END USER") == false)
+    {
         //Create custom temporary event loop on stack
         QEventLoop eventLoop;
         QNetworkAccessManager mgr;

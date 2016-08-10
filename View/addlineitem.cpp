@@ -130,14 +130,14 @@ void AddLineItem::handleDeleteSelectedRow()
         QVariant partCost;//cost of part
 
         rowIndex = ((int)((QTableWidgetItem*)selectionRangeListIter.next())->row());
-//        foreach (rowValue, selectionRangeList) {
-//            if ((rowValue->column() == 0) || (rowValue->column() == 1) || (rowValue->column() == 2)) {
-//              //ui->tblOrderLinesWidget->(setItem(row,2, new QTableWidgetItem (partCost));
-//                *rowValue = 2;
-//              partCost = rowValue->column();
-//              qDebug() << "WHAT IS IN THE ITERATOR LIST" << partCost;
-//            }
-//        }
+        foreach (rowValue, selectionRangeList) {
+            if ((rowValue->column() == 0) || (rowValue->column() == 1) || (rowValue->column() == 2)) {
+              //ui->tblOrderLinesWidget->(setItem(row,2, new QTableWidgetItem (partCost));
+                //*rowValue = 2;
+              partCost = rowValue->column();
+              qDebug() << "WHAT IS IN THE ITERATOR LIST" << partCost;
+            }
+        }
         this->ui->tblOrderLinesWidget->removeRow(rowIndex);
     }
 }
