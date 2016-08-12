@@ -3,7 +3,7 @@
         <CommunicationType>SPO</CommunicationType>
         <Contexts>
                 <ParserVersion>1.0</ParserVersion><!-- Constant 1.0 value here. -->
-                <POGUID></POGUID><!-- Can be any GUID matching this alphanumeric format 8-4-4-4-12 -->
+                <POGUID>spo12345</POGUID><!-- Can be any GUID matching this alphanumeric format 8-4-4-4-12 -->
         </Contexts>
         <OrderInstructions>
                 <Environment>Internal</Environment><!-- Internal for the small parts process. -->

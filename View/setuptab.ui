@@ -69,12 +69,29 @@
         <item>
          <widget class="QLabel" name="lblShipToDealer_DateToShip">
           <property name="text">
-           <string>Date to Ship</string>
+           <string>                                                       Date to Ship</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="leShipToDealer_DateToShip"/>
+         <widget class="QDateEdit" name="dateEdit">
+          <property name="minimumDate">
+           <date>
+            <year>2016</year>
+            <month>8</month>
+            <day>9</day>
+           </date>
+          </property>
+          <property name="displayFormat">
+           <string>MM/dd/yyyy</string>
+          </property>
+          <property name="calendarPopup">
+           <bool>true</bool>
+          </property>
+          <property name="timeSpec">
+           <enum>Qt::TimeZone</enum>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -205,6 +222,9 @@
         </item>
        </layout>
       </item>
+      <item row="4" column="0">
+       <widget class="QTextEdit" name="textEdit"/>
+      </item>
      </layout>
     </widget>
    </item>
@@ -246,7 +266,6 @@
  <tabstops>
   <tabstop>leShipToDealer_Routing</tabstop>
   <tabstop>leShipToDealer_PO</tabstop>
-  <tabstop>leShipToDealer_DateToShip</tabstop>
   <tabstop>leShipToAddress_Name</tabstop>
   <tabstop>leShipToAddress_City</tabstop>
   <tabstop>leShipToAddress_Address1</tabstop>

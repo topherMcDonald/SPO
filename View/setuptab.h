@@ -2,6 +2,7 @@
 #define SETUPTAB_H
 #include <QWidget>
 #include <QXmlStreamReader>
+#include <QFile>
 
 namespace Ui {
     class SetupTab;
@@ -16,7 +17,8 @@ public:
     ~SetupTab();
     void GetAddressXML();
     void XmlAddressSearchRequestParsing(QXmlStreamReader &XmlFileReader);
-
+    QString GetDefaultXML();
+    void ShowXmlOnScreen();
 public slots:
     void SaveAddressXML();
 private slots:
@@ -26,8 +28,10 @@ private:
     QString m_basefilename;
     QString basefilename;
     Ui::SetupTab *ui;
-    QString ReadBaseXMLFile();
+    //QString ReadBaseXMLFile();
     QString ReadBaseXMLFromInternalResource();
+    QString ReadBaseXMLFile();
+    void XmlSpoParsing(QXmlStreamReader &XmlFileReader);
 };
 
 #endif // SETUPTAB_H
