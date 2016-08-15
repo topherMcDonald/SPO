@@ -1,5 +1,6 @@
 #include <QDebug>
 #include "addlineitem.h"
+#include "View/setuptab.h"
 #include "ui_addlineitem.h"
 #include <QTableWidget>
 #include "View/searchdialog.h"
@@ -163,6 +164,8 @@ void AddLineItem::OverLimitDialog()
 
 void AddLineItem::on_btnSubmitOrder_clicked()
 {
-    OrderSubmittedDialog *dialog = new OrderSubmittedDialog;
-    dialog->exec();
+    SetupTab *writeFile = 0;
+    //OrderSubmittedDialog *dialog = new OrderSubmittedDialog;
+    writeFile->WriteXml();
+   // dialog->exec();
 }

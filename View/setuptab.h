@@ -19,6 +19,7 @@ public:
     void XmlAddressSearchRequestParsing(QXmlStreamReader &XmlFileReader);
     QString GetDefaultXML();
     void ShowXmlOnScreen();
+    void WriteXml();
 public slots:
     void SaveAddressXML();
 private slots:

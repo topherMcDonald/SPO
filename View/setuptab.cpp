@@ -29,6 +29,7 @@
 #include <QUrlQuery>
 
 static auto RESOURCE_PREFIX = QStringLiteral(":/xml");
+static auto OUTFILE_PREFIX = QStringLiteral("C:/");
 static QString FILEERROR_MSG = QStringLiteral("ERROR OPENING FILE");
 QString defaultXML;
 
@@ -49,7 +50,7 @@ SetupTab::SetupTab(QWidget *parent) :
     u->createPO(po);
     ui->leShipToDealer_PO->setText(po);
     //End: PO generation
-    defaultXML = ReadBaseXMLFromInternalResource();
+   // defaultXML = ReadBaseXMLFromInternalResource();
 }
 /************************************************************************
  *
@@ -83,10 +84,11 @@ QString SetupTab::ReadBaseXMLFromInternalResource()
         qDebug() << FILEERROR_MSG;
     }
     //QString baseXML = res_file.readAll();
-    QByteArray baseXML = res_file.readAll();
-    QXmlStreamReader xmlReader(baseXML);
-    XmlSpoParsing(xmlReader);
-    return baseXML;
+    //QByteArray baseXML = res_file.readAll();
+    //QXmlStreamReader xmlReader(baseXML);
+    //XmlSpoParsing(xmlReader);
+   // WriteXml();
+    //return baseXML;
 }
 /************************************************************************
  *
@@ -109,46 +111,46 @@ void SetupTab::ShowXmlOnScreen()
     }
 }
 /************************************************************************
- *
- *  XmlSpoParsing(QXmlStreamReader &)
- *
+// *
+// *  XmlSpoParsing(QXmlStreamReader &)
+// *
  ************************************************************************/
-void SetupTab::XmlSpoParsing(QXmlStreamReader &XmlFileReader)
-{
-    basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
-    QFile XmlOutputFile(basefilename);
-    XmlOutputFile.open(QIODevice::WriteOnly);
-    QXmlStreamWriter xmlWriter(&XmlOutputFile);
+//void SetupTab::XmlSpoParsing(QXmlStreamReader &XmlFileReader)
+//{
+//    basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
+//    QFile XmlOutputFile(basefilename);
+//    XmlOutputFile.open(QIODevice::WriteOnly);
+//    QXmlStreamWriter xmlWriter(&XmlOutputFile);
 
-    while(!XmlFileReader.atEnd() && !XmlFileReader.hasError())
-    {
-        QXmlStreamReader::TokenType token = XmlFileReader.readNext();
-        if(token == QXmlStreamReader::StartDocument)
-        {
-            continue;
-        }
-        if(XmlFileReader.isStartElement())
-        {
-            //QStringRef  name = XmlFileReader.name();
-            if(XmlFileReader.name() == "POGUID")
-            {
-              xmlWriter.writeTextElement("POGUID", ui->leShipToDealer_PO->text());
-              qDebug() << "MADE IT INSIDE THE POGUID";
-            }
-            if(XmlFileReader.name() == "ShipTo")
-            {
-                XmlFileReader.readNext();
-                if(XmlFileReader.name()== "Name")
-                {
-                    xmlWriter.writeTextElement("ShipTo++++Name", ui->leShipToDealer_PO->text());
-                    qDebug() << "READING ShipTo";
-                }
-            }
-        }
-    }
-    XmlOutputFile.close();
-    ShowXmlOnScreen();
-}
+//    while(!XmlFileReader.atEnd() && !XmlFileReader.hasError())
+//    {
+//        QXmlStreamReader::TokenType token = XmlFileReader.readNext();
+//        if(token == QXmlStreamReader::StartDocument)
+//        {
+//            continue;
+//        }
+//        if(XmlFileReader.isStartElement())
+//        {
+//            //QStringRef  name = XmlFileReader.name();
+//            if(XmlFileReader.name() == "POGUID")
+//            {
+//              xmlWriter.writeTextElement("POGUID", ui->leShipToDealer_PO->text());
+//              qDebug() << "MADE IT INSIDE THE POGUID";
+//            }
+//            if(XmlFileReader.name() == "ShipTo")
+//            {
+//                XmlFileReader.readNext();
+//                if(XmlFileReader.name()== "Name")
+//                {
+//                    xmlWriter.writeTextElement("ShipTo++++Name", ui->leShipToDealer_PO->text());
+//                    qDebug() << "READING ShipTo";
+//                }
+//            }
+//        }
+//    }
+//    XmlOutputFile.close();
+//    ShowXmlOnScreen();
+//}
 /************************************************************************
  *
  *  SaveAddressXML()
@@ -308,10 +310,42 @@ void SetupTab::on_leShipToDealer_ID_editingFinished()
 }
 /************************************************************************
  *
- *  GetDefaultXML()
+ *  WriteXml()
  *
  ************************************************************************/
-QString SetupTab::GetDefaultXML() {
-     qDebug() << "WHAT IS ????????????xml" << defaultXML;
-    return defaultXML;
+void SetupTab::WriteXml()
+{
+    QDir res_dir (OUTFILE_PREFIX);
+    auto path = res_dir.filePath("XmlForMacPac.xml");
+    QFile res_file(path);
+
+  //  basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
+
+    if(!res_file.open(QIODevice::WriteOnly))
+    {
+        //TODO Send Error message
+        qDebug() << FILEERROR_MSG;
+    }
+    res_file.open(QIODevice::WriteOnly);
+    QXmlStreamWriter xmlWriter(&res_file);
+    xmlWriter.setAutoFormatting(true);
+    xmlWriter.writeStartDocument();
+    xmlWriter.writeStartElement("Communication");//**********************************************
+    xmlWriter.writeTextElement("CommunicationType", "SPO");
+    xmlWriter.writeStartElement("Contexts");//***********************************************
+    xmlWriter.writeTextElement("ParserVersion", "1.0");
+    xmlWriter.writeTextElement("POGUID", "SPO12345");
+    xmlWriter.writeEndElement();//End Contexts*********************************************
+    xmlWriter.writeEndElement();//End Communication********************************************
+   // ShowXmlOnScreen();
 }
+
+
+
+
+
+
+
+
+
+
