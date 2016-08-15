@@ -23,6 +23,7 @@ public:
     bool PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty);
     void handleDeleteSelectedRow();
     void updateExtendedCostTotal();
+    void OverLimitDialog();
 public slots:
 
 protected:

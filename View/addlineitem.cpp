@@ -51,7 +51,7 @@ void AddLineItem::on_btnAddLineItem_GetMacPacPart_clicked()
 void AddLineItem::updateExtendedCostTotal() {
     int rowCt = ui->tblOrderLinesWidget->rowCount();
     if (rowCt == 0) {
-         ui->leOrderTotal->setText("0.00");
+        ui->leOrderTotal->setText("0.00");
         return;
     }
     QString uiTotal;
@@ -60,17 +60,15 @@ void AddLineItem::updateExtendedCostTotal() {
     for (int i = 0; i < rowCt; i++) {
         wi = ui->tblOrderLinesWidget->item(i,4);
         tmpTotal += wi->text().toFloat();
-    }
-    if(tmpTotal > 100)
-    {
-        overCostLimitDialog *overLimitDialog = new overCostLimitDialog;
-        overLimitDialog->show();
-
-        return;
+        if(tmpTotal > 100)
+        {
+            this->ui->tblOrderLinesWidget->removeRow(i);
+            OverLimitDialog();
+            return;
+        }
     }
     uiTotal.setNum(tmpTotal);
     ui->leOrderTotal->setText(uiTotal);
-
 }
 
 void AddLineItem::resetFields() {
@@ -80,26 +78,6 @@ void AddLineItem::resetFields() {
     ui->leAddLineItem_Quantity->setText("");
 }
 
-//bool AddLineItem::GetOrderTotal() {
-//    bool retval = true;
-//    bool ok;
-//    QString orderTotal;
-//    float orderTotalFloat;
-//    orderTotal = ui->leOrderTotal->text();
-//    orderTotalFloat = orderTotal.toFloat(&ok);
-//    qDebug() << "Order Total Float:  " << orderTotalFloat;
-//    if(orderTotalFloat > 10)
-//    {
-//        overCostLimitDialog *overLimitDialog = new overCostLimitDialog;
-//        overLimitDialog->show();
-//        retval = false;
-//    }
-//    else
-//    {
-//        retval = true;
-//    }
-//    return retval;
-//}
 
 void AddLineItem::on_btnAddLineItem_AddLine_clicked()
 {
@@ -108,7 +86,6 @@ void AddLineItem::on_btnAddLineItem_AddLine_clicked()
     QString partCost;
     QString partQty;
     QString extCost;
-
     float xCost;
 
     partName = ui->leAddLineItem_PartNumber->text();
@@ -119,10 +96,13 @@ void AddLineItem::on_btnAddLineItem_AddLine_clicked()
     xCost = partQty.toFloat() * partCost.toFloat();
     extCost.setNum(xCost);
     //END: Extended Cost Mod
-//    if(xCost > 100)
-//    {
-//        return;
-//    }
+
+    if(xCost > 100)
+    {
+        OverLimitDialog();
+        return;
+    }
+
     if((PartOkToAdd(partName, partDesc, partCost, partQty) == true) && (xCost < 100))
     {
         int row = ui->tblOrderLinesWidget->rowCount();
@@ -173,6 +153,12 @@ void AddLineItem::on_btnRecapAndSubmit_Clear_clicked()
 {
     handleDeleteSelectedRow();
     updateExtendedCostTotal();
+}
+
+void AddLineItem::OverLimitDialog()
+{
+    overCostLimitDialog *dialog = new overCostLimitDialog;
+    dialog->exec();
 }
 
 void AddLineItem::on_btnSubmitOrder_clicked()
