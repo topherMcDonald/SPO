@@ -1,219 +1,219 @@
-#include <QDebug>
-#include "addlineitem.h"
-#include "View/setuptab.h"
-#include "ui_addlineitem.h"
-#include <QTableWidget>
-#include "View/searchdialog.h"
-#include "View/missingdatadialog.h"
-#include "View/overcostlimitdialog.h"
-#include "View/ordersubmitteddialog.h"
-#include <string>
-#include <sstream>
-#include <QDir>
-#include <QFile>
+//#include <QDebug>
+//#include "addlineitem.h"
+//#include "View/setuptab.h"
+//#include "ui_addlineitem.h"
+//#include <QTableWidget>
+//#include "View/searchdialog.h"
+//#include "View/missingdatadialog.h"
+//#include "View/overcostlimitdialog.h"
+//#include "View/ordersubmitteddialog.h"
+//#include <string>
+//#include <sstream>
+//#include <QDir>
+//#include <QFile>
 
-static auto OUTFILE_PREFIX = QStringLiteral("C:/");
-static QString FILEERROR_MSG = QStringLiteral("ERROR OPENING FILE");
+//static auto OUTFILE_PREFIX = QStringLiteral("C:/");
+//static QString FILEERROR_MSG = QStringLiteral("ERROR OPENING FILE");
 
-AddLineItem::AddLineItem(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::AddLineItem)
-{
-    ui->setupUi(this);
-}
+//AddLineItem::AddLineItem(QWidget *parent) :
+//    QWidget(parent),
+//    ui(new Ui::AddLineItem)
+//{
+//    ui->setupUi(this);
+//}
 
-AddLineItem::~AddLineItem()
-{
-    delete ui;
-}
+//AddLineItem::~AddLineItem()
+//{
+//    delete ui;
+//}
 
-void AddLineItem::AddLineItemFromDialog(QString & item)
-{
-    ui->tblOrderLinesWidget->setItem(0,0, new QTableWidgetItem(item));
-}
+//void AddLineItem::AddLineItemFromDialog(QString & item)
+//{
+//    ui->tblOrderLinesWidget->setItem(0,0, new QTableWidgetItem(item));
+//}
 
-void AddLineItem::on_btnAddLineItem_GetMacPacPart_clicked()
-{
-    SearchDialog *dialog = new SearchDialog;
+//void AddLineItem::on_btnAddLineItem_GetMacPacPart_clicked()
+//{
+//    SearchDialog *dialog = new SearchDialog;
 
-    if(dialog->exec())
-    {
-        QMap<QString, QString> m = dialog->getMap();
+//    if(dialog->exec())
+//    {
+//        QMap<QString, QString> m = dialog->getMap();
 
-        QString partName = m.value("PartName");
-        ui->leAddLineItem_PartNumber->setText(partName);
+//        QString partName = m.value("PartName");
+//        ui->leAddLineItem_PartNumber->setText(partName);
 
-        QString partDesc = m.value("PartDesc");
-        ui->leAddlineItem_Description->setText(partDesc);
+//        QString partDesc = m.value("PartDesc");
+//        ui->leAddlineItem_Description->setText(partDesc);
 
-        QString partCost = m.value("PartCost");
-        ui->leAddLineItem_Value->setText(partCost);
+//        QString partCost = m.value("PartCost");
+//        ui->leAddLineItem_Value->setText(partCost);
 
-        //Default the quantity to 1 for users
-        ui->leAddLineItem_Quantity->setText("1");
-    }
-}
+//        //Default the quantity to 1 for users
+//        ui->leAddLineItem_Quantity->setText("1");
+//    }
+//}
 
-void AddLineItem::updateExtendedCostTotal() {
-    int rowCt = ui->tblOrderLinesWidget->rowCount();
-    if (rowCt == 0) {
-        ui->leOrderTotal->setText("0.00");
-        return;
-    }
-    QString uiTotal;
-    float tmpTotal;
-    QTableWidgetItem *wi;
-    for (int i = 0; i < rowCt; i++) {
-        wi = ui->tblOrderLinesWidget->item(i,4);
-        tmpTotal += wi->text().toFloat();
-        if(tmpTotal > 100)
-        {
-            this->ui->tblOrderLinesWidget->removeRow(i);
-            OverLimitDialog();
-            return;
-        }
-    }
-    uiTotal.setNum(tmpTotal);
-    ui->leOrderTotal->setText(uiTotal);
-}
+//void AddLineItem::updateExtendedCostTotal() {
+//    int rowCt = ui->tblOrderLinesWidget->rowCount();
+//    if (rowCt == 0) {
+//        ui->leOrderTotal->setText("0.00");
+//        return;
+//    }
+//    QString uiTotal;
+//    float tmpTotal;
+//    QTableWidgetItem *wi;
+//    for (int i = 0; i < rowCt; i++) {
+//        wi = ui->tblOrderLinesWidget->item(i,4);
+//        tmpTotal += wi->text().toFloat();
+//        if(tmpTotal > 100)
+//        {
+//            this->ui->tblOrderLinesWidget->removeRow(i);
+//            OverLimitDialog();
+//            return;
+//        }
+//    }
+//    uiTotal.setNum(tmpTotal);
+//    ui->leOrderTotal->setText(uiTotal);
+//}
 
-void AddLineItem::resetFields() {
-    ui->leAddLineItem_PartNumber->setText("");
-    ui->leAddlineItem_Description->setText("");
-    ui->leAddLineItem_Value->setText("");
-    ui->leAddLineItem_Quantity->setText("");
-}
+//void AddLineItem::resetFields() {
+//    ui->leAddLineItem_PartNumber->setText("");
+//    ui->leAddlineItem_Description->setText("");
+//    ui->leAddLineItem_Value->setText("");
+//    ui->leAddLineItem_Quantity->setText("");
+//}
 
 
-void AddLineItem::on_btnAddLineItem_AddLine_clicked()
-{
-    QString partName;
-    QString partDesc;
-    QString partCost;
-    QString partQty;
-    QString extCost;
-    float xCost;
+//void AddLineItem::on_btnAddLineItem_AddLine_clicked()
+//{
+//    QString partName;
+//    QString partDesc;
+//    QString partCost;
+//    QString partQty;
+//    QString extCost;
+//    float xCost;
 
-    partName = ui->leAddLineItem_PartNumber->text();
-    partDesc = ui->leAddlineItem_Description->text();
-    partCost = ui->leAddLineItem_Value->text();
-    partQty = ui->leAddLineItem_Quantity->text();
-    //START: Extended Cost Mod - FJD - 8.9.2016
-    xCost = partQty.toFloat() * partCost.toFloat();
-    extCost.setNum(xCost);
-    //END: Extended Cost Mod
+//    partName = ui->leAddLineItem_PartNumber->text();
+//    partDesc = ui->leAddlineItem_Description->text();
+//    partCost = ui->leAddLineItem_Value->text();
+//    partQty = ui->leAddLineItem_Quantity->text();
+//    //START: Extended Cost Mod - FJD - 8.9.2016
+//    xCost = partQty.toFloat() * partCost.toFloat();
+//    extCost.setNum(xCost);
+//    //END: Extended Cost Mod
 
-    if(xCost > 100)
-    {
-        OverLimitDialog();
-        return;
-    }
+//    if(xCost > 100)
+//    {
+//        OverLimitDialog();
+//        return;
+//    }
 
-    if((PartOkToAdd(partName, partDesc, partCost, partQty) == true) && (xCost < 100))
-    {
-        int row = ui->tblOrderLinesWidget->rowCount();
-        ui->tblOrderLinesWidget->insertRow(row);
-        ui->tblOrderLinesWidget->setItem(row,0, new QTableWidgetItem (partName));
-        ui->tblOrderLinesWidget->setItem(row,1, new QTableWidgetItem (partDesc));
-        ui->tblOrderLinesWidget->setItem(row,2, new QTableWidgetItem (partCost));
-        ui->tblOrderLinesWidget->setItem(row,3, new QTableWidgetItem (partQty));
-        ui->tblOrderLinesWidget->setItem(row,4, new QTableWidgetItem (extCost));
-        updateExtendedCostTotal();
-        resetFields();
-    }
-}
+//    if((PartOkToAdd(partName, partDesc, partCost, partQty) == true) && (xCost < 100))
+//    {
+//        int row = ui->tblOrderLinesWidget->rowCount();
+//        ui->tblOrderLinesWidget->insertRow(row);
+//        ui->tblOrderLinesWidget->setItem(row,0, new QTableWidgetItem (partName));
+//        ui->tblOrderLinesWidget->setItem(row,1, new QTableWidgetItem (partDesc));
+//        ui->tblOrderLinesWidget->setItem(row,2, new QTableWidgetItem (partCost));
+//        ui->tblOrderLinesWidget->setItem(row,3, new QTableWidgetItem (partQty));
+//        ui->tblOrderLinesWidget->setItem(row,4, new QTableWidgetItem (extCost));
+//        updateExtendedCostTotal();
+//        resetFields();
+//    }
+//}
 
-bool AddLineItem::PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty) {
-    bool retval = true;
-    if (partName == "") {
-        retval = false;
-    }
-    if (partDesc == "") {
-        retval = false;
-    }
-    if (partCost == "") {
-        retval = false;
-    }
-    if (partQty == "" || partQty == "0" || partQty.contains("-")) {
-        retval = false;
-    }
-    if (retval == false) {
-            MissingDataDialog *mdDialog = new MissingDataDialog;
-            mdDialog->show();
-    }
-    return retval;
-}
+//bool AddLineItem::PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty) {
+//    bool retval = true;
+//    if (partName == "") {
+//        retval = false;
+//    }
+//    if (partDesc == "") {
+//        retval = false;
+//    }
+//    if (partCost == "") {
+//        retval = false;
+//    }
+//    if (partQty == "" || partQty == "0" || partQty.contains("-")) {
+//        retval = false;
+//    }
+//    if (retval == false) {
+//            MissingDataDialog *mdDialog = new MissingDataDialog;
+//            mdDialog->show();
+//    }
+//    return retval;
+//}
 
-void AddLineItem::handleDeleteSelectedRow()
-{
-    QList<QTableWidgetItem*> selectionRangeList = this->ui->tblOrderLinesWidget->selectedItems();
-    int rowIndex;
-    QListIterator<QTableWidgetItem*> selectionRangeListIter(selectionRangeList);
-    while(selectionRangeListIter.hasNext()){
-        rowIndex = ((int)((QTableWidgetItem*)selectionRangeListIter.next())->row());
-        this->ui->tblOrderLinesWidget->removeRow(rowIndex);
-    }
-}
+//void AddLineItem::handleDeleteSelectedRow()
+//{
+//    QList<QTableWidgetItem*> selectionRangeList = this->ui->tblOrderLinesWidget->selectedItems();
+//    int rowIndex;
+//    QListIterator<QTableWidgetItem*> selectionRangeListIter(selectionRangeList);
+//    while(selectionRangeListIter.hasNext()){
+//        rowIndex = ((int)((QTableWidgetItem*)selectionRangeListIter.next())->row());
+//        this->ui->tblOrderLinesWidget->removeRow(rowIndex);
+//    }
+//}
 
-void AddLineItem::on_btnRecapAndSubmit_Clear_clicked()
-{
-    handleDeleteSelectedRow();
-    updateExtendedCostTotal();
-}
+//void AddLineItem::on_btnRecapAndSubmit_Clear_clicked()
+//{
+//    handleDeleteSelectedRow();
+//    updateExtendedCostTotal();
+//}
 
-void AddLineItem::OverLimitDialog()
-{
-    overCostLimitDialog *dialog = new overCostLimitDialog;
-    dialog->exec();
-}
+//void AddLineItem::OverLimitDialog()
+//{
+//    overCostLimitDialog *dialog = new overCostLimitDialog;
+//    dialog->exec();
+//}
 
-void AddLineItem::on_btnSubmitOrder_clicked()
-{
-
-    //QString testPO;
-    Ui_SetupTab * test = new Ui_SetupTab;
-    test->leShipToDealer_PO->text();
-     //qDebug() << "TEST THE POOOOOOOOOOOOOOOO" << testPO;
-    //OrderSubmittedDialog *dialog = new OrderSubmittedDialog;
-   WriteXml();
-   // dialog->exec();
-}
-
-//void AddLineItem::ProcessSetUpTab(SetupTab * a)
+//void AddLineItem::on_btnSubmitOrder_clicked()
 //{
 
+//    //QString testPO;
+//    Ui_SetupTab * test = new Ui_SetupTab;
+//    test->leShipToDealer_PO->text();
+//     //qDebug() << "TEST THE POOOOOOOOOOOOOOOO" << testPO;
+//    //OrderSubmittedDialog *dialog = new OrderSubmittedDialog;
+//   WriteXml();
+//   // dialog->exec();
 //}
-/************************************************************************
- *
- *  WriteXml()
- *
- ************************************************************************/
-void AddLineItem::WriteXml()
-{
+
+////void AddLineItem::ProcessSetUpTab(SetupTab * a)
+////{
+
+////}
+///************************************************************************
+// *
+// *  WriteXml()
+// *
+// ************************************************************************/
+//void AddLineItem::WriteXml()
+//{
 
 
 
-    QDir res_dir (OUTFILE_PREFIX);
-    auto path = res_dir.filePath("XmlForMacPac.xml");
-    QFile res_file(path);
+//    QDir res_dir (OUTFILE_PREFIX);
+//    auto path = res_dir.filePath("XmlForMacPac.xml");
+//    QFile res_file(path);
 
-  //  basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
+//  //  basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
 
-    if(!res_file.open(QIODevice::WriteOnly))
-    {
-        //TODO Send Error message
-        qDebug() << FILEERROR_MSG;
-    }
-    res_file.open(QIODevice::WriteOnly);
-    QXmlStreamWriter xmlWriter(&res_file);
-    xmlWriter.setAutoFormatting(true);
-    xmlWriter.writeStartDocument();
-    xmlWriter.writeStartElement("Communication");//**********************************************
-    xmlWriter.writeTextElement("CommunicationType", "SPO");
-    xmlWriter.writeStartElement("Contexts");//***********************************************
-    xmlWriter.writeTextElement("ParserVersion", "1.0");
-    xmlWriter.writeTextElement("POGUID", "SPO12345");
-    xmlWriter.writeEndElement();//End Contexts*********************************************
-    xmlWriter.writeEndElement();//End Communication********************************************
-   // ShowXmlOnScreen();
-}
+//    if(!res_file.open(QIODevice::WriteOnly))
+//    {
+//        //TODO Send Error message
+//        qDebug() << FILEERROR_MSG;
+//    }
+//    res_file.open(QIODevice::WriteOnly);
+//    QXmlStreamWriter xmlWriter(&res_file);
+//    xmlWriter.setAutoFormatting(true);
+//    xmlWriter.writeStartDocument();
+//    xmlWriter.writeStartElement("Communication");//**********************************************
+//    xmlWriter.writeTextElement("CommunicationType", "SPO");
+//    xmlWriter.writeStartElement("Contexts");//***********************************************
+//    xmlWriter.writeTextElement("ParserVersion", "1.0");
+//    xmlWriter.writeTextElement("POGUID", "SPO12345");
+//    xmlWriter.writeEndElement();//End Contexts*********************************************
+//    xmlWriter.writeEndElement();//End Communication********************************************
+//   // ShowXmlOnScreen();
+//}

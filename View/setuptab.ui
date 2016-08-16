@@ -235,7 +235,35 @@
       <string>Current Line Items</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_5">
-      <item row="2" column="5">
+      <item row="1" column="2">
+       <widget class="QLineEdit" name="leOrderTotal">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>65</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
+        <property name="maxLength">
+         <number>32770</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="6">
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -251,7 +279,7 @@
         </property>
        </spacer>
       </item>
-      <item row="2" column="6">
+      <item row="2" column="7">
        <widget class="QPushButton" name="btnSubmitOrder">
         <property name="minimumSize">
          <size>
@@ -264,7 +292,7 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="3">
+      <item row="2" column="4">
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -277,7 +305,7 @@
         </property>
        </spacer>
       </item>
-      <item row="0" column="0" colspan="7">
+      <item row="0" column="0" colspan="8">
        <widget class="QTableWidget" name="tblOrderLinesWidget">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -345,7 +373,7 @@
         </column>
        </widget>
       </item>
-      <item row="2" column="4">
+      <item row="2" column="5">
        <widget class="QPushButton" name="btnRecapAndSubmit_Clear">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -387,33 +415,18 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QLineEdit" name="leOrderTotal">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+      <item row="1" column="3">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
         </property>
-        <property name="maximumSize">
+        <property name="sizeHint" stdset="0">
          <size>
-          <width>65</width>
-          <height>25</height>
+          <width>20</width>
+          <height>40</height>
          </size>
         </property>
-        <property name="layoutDirection">
-         <enum>Qt::RightToLeft</enum>
-        </property>
-        <property name="maxLength">
-         <number>32770</number>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
+       </spacer>
       </item>
      </layout>
      <zorder>tblOrderLinesWidget</zorder>
@@ -425,6 +438,7 @@
      <zorder>horizontalSpacer</zorder>
      <zorder>lblOrderTotal</zorder>
      <zorder>leOrderTotal</zorder>
+     <zorder>verticalSpacer_2</zorder>
     </widget>
    </item>
    <item row="0" column="0">

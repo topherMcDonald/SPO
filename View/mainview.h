@@ -10,21 +10,21 @@ namespace Ui {
 }
 
 class SetupTab;
-class AddLineItem;
+//class AddLineItem;
 
 class MainView : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainView(QWidget *parent, SetupTab &setup, AddLineItem &addlineitem);
+    explicit MainView(QWidget *parent, SetupTab &setup);
     ~MainView();
 
 public slots:
 
 private:
     SetupTab& m_setupTab;
-    AddLineItem& m_addlineitem;
+    //AddLineItem& m_addlineitem;
     Ui::MainView *ui;
     QString basefilename;
 

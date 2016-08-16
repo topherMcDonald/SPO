@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>900</width>
-    <height>1500</height>
+    <height>1000</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -28,18 +28,27 @@
     <item>
      <widget class="QLabel" name="smallPartsOrder">
       <property name="text">
-       <string>Small Parts Order</string>
+       <string>Place Small Parts Order</string>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QTabWidget" name="tabMainView">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
+      <property name="documentMode">
+       <bool>false</bool>
+      </property>
+      <property name="tabsClosable">
+       <bool>false</bool>
+      </property>
       <widget class="QWidget" name="tabShipToAddress">
        <attribute name="title">
-        <string>Set Ship-To</string>
+        <string>                 Small Parts Order                </string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
@@ -49,7 +58,7 @@
       </widget>
       <widget class="QWidget" name="tabAddSmallParts">
        <attribute name="title">
-        <string>Add Small Parts</string>
+        <string notr="true"/>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
