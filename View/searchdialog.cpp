@@ -124,3 +124,8 @@ QMap<QString, QString> SearchDialog::getMap() {
     return partMap;
 }
 
+
+void SearchDialog::on_btnCancelSearch_clicked()
+{
+    close();
+}

@@ -52,6 +52,7 @@ private:
     void resetFields();
     bool GetOrderTotal();
     void WriteXml();
+    void resetForm();
 };
 
 #endif // SETUPTAB_H

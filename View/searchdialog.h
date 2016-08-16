@@ -27,6 +27,8 @@ private slots:
     void startSearchRequest();
     void on_btnAddSelectedItem_clicked();
 
+    void on_btnCancelSearch_clicked();
+
 private:
     Ui::SearchDialog *ui;
 

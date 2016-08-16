@@ -376,6 +376,37 @@ void SetupTab::resetFields() {
     ui->leAddLineItem_Quantity->setText("");
 }
 
+void SetupTab::resetForm()
+{
+    int rowCt = ui->tblOrderLinesWidget->rowCount();
+    //Clear table
+
+    for (int i = 12; i > rowCt; i--) {
+        qDebug() << "before       rct==="<< rowCt;
+
+        this->ui->tblOrderLinesWidget->removeRow(i);
+        rowCt =  ui->tblOrderLinesWidget->rowCount();
+        qDebug() << "i==="<< i;
+        //rowCt = ui->tblOrderLinesWidget->rowCount();
+        qDebug() << "after      rct==="<< rowCt;
+    }
+
+    ui->leShipToDealer_PO->setText("");
+    ui->leShipToAddress_Address1->setText("");
+    ui->leShipToAddress_Address2->setText("");
+    ui->leShipToAddress_City->setText("");
+    ui->leShipToAddress_Name->setText("");
+    ui->leShipToAddress_State->setText("");
+    ui->leShipToAddress_Zip->setText("");
+    ui->leShipToDealer_ID->setText("");
+    ui->leShipToDealer_ID->setText("");
+    ui->leShipToDealer_Routing->setText("");
+    QString po = "";
+    Utils *u;
+    u->createPO(po);
+    ui->leShipToDealer_PO->setText(po);
+}
+
 
 void SetupTab::on_btnAddLineItem_AddLine_clicked()
 {
@@ -462,13 +493,14 @@ void SetupTab::OverLimitDialog()
 void SetupTab::on_btnSubmitOrder_clicked()
 {
 
-//  /*  //QString testPO;
-//    Ui_SetupTab * test = new Ui_SetupTab;
-//    test->leShipToDealer_PO->text();
-//     //qDebug() << "TEST THE POOOOOOOOOOOOOOOO" << testPO;
-//    //OrderSubmittedDialog *dialog = new OrderSubmittedDialog;
-//   //WriteXml(*/);
-//   // dialog->exec();
+    QString output;
+    QString plusText = " small parts order has been submitted.";
+    output = ui->leShipToDealer_PO->text();
+    qDebug() << "POOOOOOOOOOOOOOOOOOOOOO" << output;
+    ui->lblOrderSubmitTotal->setText(output + plusText);
+
+    resetForm();
+
 }
 
 //void AddLineItem::ProcessSetUpTab(SetupTab * a)
