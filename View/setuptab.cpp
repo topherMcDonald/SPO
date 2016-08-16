@@ -380,16 +380,20 @@ void SetupTab::resetForm()
 {
     int rowCt = ui->tblOrderLinesWidget->rowCount();
     //Clear table
+    rowCt += 1;
+    int rowCtIndex= rowCt;
+    qDebug() << "before       rct==="<< rowCt;
+    for (int i = 0; i <= rowCt ; i++) {
 
-    for (int i = 12; i > rowCt; i--) {
-        qDebug() << "before       rct==="<< rowCt;
 
-        this->ui->tblOrderLinesWidget->removeRow(i);
-        rowCt =  ui->tblOrderLinesWidget->rowCount();
+        this->ui->tblOrderLinesWidget->removeRow(rowCtIndex);
+
         qDebug() << "i==="<< i;
-        //rowCt = ui->tblOrderLinesWidget->rowCount();
-        qDebug() << "after      rct==="<< rowCt;
+        //rowCt = ui->tblOrderLinesWidget->rowCount();2
+        rowCtIndex--;
     }
+
+    qDebug() << "after      rct==="<< rowCt;
 
     ui->leShipToDealer_PO->setText("");
     ui->leShipToAddress_Address1->setText("");
@@ -496,7 +500,6 @@ void SetupTab::on_btnSubmitOrder_clicked()
     QString output;
     QString plusText = " small parts order has been submitted.";
     output = ui->leShipToDealer_PO->text();
-    qDebug() << "POOOOOOOOOOOOOOOOOOOOOO" << output;
     ui->lblOrderSubmitTotal->setText(output + plusText);
 
     resetForm();
