@@ -9,6 +9,11 @@
 #include "View/ordersubmitteddialog.h"
 #include <string>
 #include <sstream>
+#include <QDir>
+#include <QFile>
+
+static auto OUTFILE_PREFIX = QStringLiteral("C:/");
+static QString FILEERROR_MSG = QStringLiteral("ERROR OPENING FILE");
 
 AddLineItem::AddLineItem(QWidget *parent) :
     QWidget(parent),
@@ -164,8 +169,51 @@ void AddLineItem::OverLimitDialog()
 
 void AddLineItem::on_btnSubmitOrder_clicked()
 {
-    SetupTab *writeFile = 0;
+
+    //QString testPO;
+    Ui_SetupTab * test = new Ui_SetupTab;
+    test->leShipToDealer_PO->text();
+     //qDebug() << "TEST THE POOOOOOOOOOOOOOOO" << testPO;
     //OrderSubmittedDialog *dialog = new OrderSubmittedDialog;
-    writeFile->WriteXml();
+   WriteXml();
    // dialog->exec();
+}
+
+//void AddLineItem::ProcessSetUpTab(SetupTab * a)
+//{
+
+//}
+/************************************************************************
+ *
+ *  WriteXml()
+ *
+ ************************************************************************/
+void AddLineItem::WriteXml()
+{
+
+
+
+    QDir res_dir (OUTFILE_PREFIX);
+    auto path = res_dir.filePath("XmlForMacPac.xml");
+    QFile res_file(path);
+
+  //  basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
+
+    if(!res_file.open(QIODevice::WriteOnly))
+    {
+        //TODO Send Error message
+        qDebug() << FILEERROR_MSG;
+    }
+    res_file.open(QIODevice::WriteOnly);
+    QXmlStreamWriter xmlWriter(&res_file);
+    xmlWriter.setAutoFormatting(true);
+    xmlWriter.writeStartDocument();
+    xmlWriter.writeStartElement("Communication");//**********************************************
+    xmlWriter.writeTextElement("CommunicationType", "SPO");
+    xmlWriter.writeStartElement("Contexts");//***********************************************
+    xmlWriter.writeTextElement("ParserVersion", "1.0");
+    xmlWriter.writeTextElement("POGUID", "SPO12345");
+    xmlWriter.writeEndElement();//End Contexts*********************************************
+    xmlWriter.writeEndElement();//End Communication********************************************
+   // ShowXmlOnScreen();
 }

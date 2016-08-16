@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "View/searchdialog.h"
 #include "ui_addlineitem.h"
+#include "View/setuptab.h"
 
 namespace Ui {
     class AddLineItem;
@@ -24,6 +25,7 @@ public:
     void handleDeleteSelectedRow();
     void updateExtendedCostTotal();
     void OverLimitDialog();
+    //void ProcessSetUpTab(SetupTab *a);
 public slots:
 
 protected:
@@ -41,6 +43,7 @@ private:
     bool AddLineItem_OrderTotal(QString orderTotal);
     void resetFields();
     bool GetOrderTotal();
+    void WriteXml();
 };
 
 #endif // ADDLINEITEM_H

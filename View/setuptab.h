@@ -3,23 +3,26 @@
 #include <QWidget>
 #include <QXmlStreamReader>
 #include <QFile>
+#include "ui_setuptab.h"
+#include <View/addlineitem.h>
 
 namespace Ui {
     class SetupTab;
 }
 
-class SetupTab : public QWidget
+class SetupTab : public QWidget, public Ui::SetupTab
 {
     Q_OBJECT
 
 public:
-    explicit SetupTab(QWidget *parent);
+Ui::SetupTab *ui;
+    explicit SetupTab(QWidget *parent = 0);
+
     ~SetupTab();
     void GetAddressXML();
     void XmlAddressSearchRequestParsing(QXmlStreamReader &XmlFileReader);
     QString GetDefaultXML();
     void ShowXmlOnScreen();
-    void WriteXml();
 public slots:
     void SaveAddressXML();
 private slots:
@@ -28,7 +31,7 @@ private slots:
 private:
     QString m_basefilename;
     QString basefilename;
-    Ui::SetupTab *ui;
+
     //QString ReadBaseXMLFile();
     QString ReadBaseXMLFromInternalResource();
     QString ReadBaseXMLFile();
