@@ -363,6 +363,10 @@
         <property name="text">
          <string>Submit Order</string>
         </property>
+        <property name="icon">
+         <iconset resource="../sporesource.qrc">
+          <normaloff>:/root/qtAppIcons/Check.png</normaloff>:/root/qtAppIcons/Check.png</iconset>
+        </property>
        </widget>
       </item>
       <item row="2" column="4">
@@ -528,8 +532,6 @@
       </item>
      </layout>
      <zorder>tblOrderLinesWidget</zorder>
-     <zorder>groupBox_3</zorder>
-     <zorder>gbAddLineTtem</zorder>
      <zorder>btnRecapAndSubmit_Clear</zorder>
      <zorder>horizontalSpacer_2</zorder>
      <zorder>btnSubmitOrder</zorder>
@@ -597,7 +599,7 @@
         </property>
         <property name="icon">
          <iconset resource="../sporesource.qrc">
-          <normaloff>:/root/qtAppIcons/Check.png</normaloff>:/root/qtAppIcons/Check.png</iconset>
+          <normaloff>:/root/qtAppIcons/Add.png</normaloff>:/root/qtAppIcons/Add.png</iconset>
         </property>
        </widget>
       </item>

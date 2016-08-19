@@ -16,29 +16,24 @@ QMAKE_CXXFLAGS += -std=c++11
 SOURCES += main.cpp\
         View/mainview.cpp \
     View/setuptab.cpp \
-    View/addlineitem.cpp \
     utils.cpp \
     Model/settings.cpp \
     startup.cpp \
     View/searchdialog.cpp \
     View/missingdatadialog.cpp \
-    View/overcostlimitdialog.cpp \
-    View/ordersubmitteddialog.cpp
+    View/overcostlimitdialog.cpp
 
 HEADERS  += View/mainview.h \
     View/setuptab.h \
-    View/addlineitem.h \
     utils.h \
     Model/settings.h \
     startup.h \
     View/searchdialog.h \
     View/missingdatadialog.h \
-    View/overcostlimitdialog.h \
-    View/ordersubmitteddialog.h
+    View/overcostlimitdialog.h
 
 FORMS    += View/mainview.ui \
     View/setuptab.ui \
-    View/addlineitem.ui \
     View/searchdialog.ui \
     View/missingdatadialog.ui \
     View/overcostlimitdialog.ui \

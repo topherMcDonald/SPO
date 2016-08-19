@@ -1,8 +1,6 @@
 #include "searchdialog.h"
 #include "ui_searchdialog.h"
 #include "ui_addlineitem.h"
-#include "addlineitem.h"
-#include <QDebug>
 #include <QtNetwork>
 //For web calls ...
 #include <QCoreApplication>
@@ -16,7 +14,6 @@
 #include <QDir>
 
 QList<QTableWidgetItem *>  selectedValue;
-
 QMap<QString, QString> partMap;
 
 SearchDialog::SearchDialog(QWidget *parent) :
@@ -38,7 +35,7 @@ void SearchDialog::startSearchRequest()
 {
     // create custom temporary event loop on stack
     QEventLoop eventLoop;
-   // const QString& myXmlFile = 0;
+    // const QString& myXmlFile = 0;
 
     // "quit()" the event-loop, when the network request "finished()"
     QNetworkAccessManager mgr;
@@ -72,13 +69,11 @@ void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
                 ui->tblDialogSearchResults->insertRow(row);
                 partName = XmlFile.readElementText();
                 ui->tblDialogSearchResults->setItem(row,0, new QTableWidgetItem (partName));
-
             }
             else if(name == "Description")
             {
                 description = XmlFile.readElementText();
                 ui->tblDialogSearchResults->setItem(row,1, new QTableWidgetItem (description));
-
             }
             else if(name == "Cost")
             {
@@ -123,7 +118,6 @@ QMap<QString, QString> SearchDialog::getMap() {
     partMap["PartCost"] = partCost.toString();
     return partMap;
 }
-
 
 void SearchDialog::on_btnCancelSearch_clicked()
 {

@@ -47,6 +47,10 @@
        <bool>false</bool>
       </property>
       <widget class="QWidget" name="tabShipToAddress">
+       <attribute name="icon">
+        <iconset resource="../sporesource.qrc">
+         <normaloff>:/root/qtAppIcons/configure.png</normaloff>:/root/qtAppIcons/configure.png</iconset>
+       </attribute>
        <attribute name="title">
         <string>                 Small Parts Order                </string>
        </attribute>

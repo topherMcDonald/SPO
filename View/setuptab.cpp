@@ -4,11 +4,9 @@
 #include "View/mainview.h"
 #include "ui_mainview.h"
 #include "View/setuptab.h"
-#include "View/addlineitem.h"
 #include "View/searchdialog.h"
 #include "View/missingdatadialog.h"
 #include "View/overcostlimitdialog.h"
-#include "View/ordersubmitteddialog.h"
 #include <string>
 #include <sstream>
 #include <QDir>
@@ -39,7 +37,6 @@
 static auto RESOURCE_PREFIX = QStringLiteral(":/xml");
 static auto OUTFILE_PREFIX = QStringLiteral("C:/");
 static QString FILEERROR_MSG = QStringLiteral("ERROR OPENING FILE");
-
 QString defaultXML;
 
 /************************************************************************
@@ -59,18 +56,8 @@ SetupTab::SetupTab(QWidget *parent) :
     u->createPO(po);
     ui->leShipToDealer_PO->setText(po);
     //End: PO generation
-   // defaultXML = ReadBaseXMLFromInternalResource();
+    // defaultXML = ReadBaseXMLFromInternalResource();
 }
-/************************************************************************
- *
- *  ReadBaseXMLFile()
- *
- ************************************************************************/
-//QString SetupTab::ReadBaseXMLFile()
-//{
-//    auto default_xml = ReadBaseXMLFromInternalResource();
-//    return default_xml;
-//}
 /************************************************************************
  *
  *  ReadBaseXMLFromInternalResource()
@@ -92,12 +79,7 @@ QString SetupTab::ReadBaseXMLFromInternalResource()
         //TODO Send Error message
         qDebug() << FILEERROR_MSG;
     }
-    //QString baseXML = res_file.readAll();
-    //QByteArray baseXML = res_file.readAll();
-    //QXmlStreamReader xmlReader(baseXML);
-    //XmlSpoParsing(xmlReader);
-   // WriteXml();
-    //return baseXML;
+
 }
 /************************************************************************
  *
@@ -106,60 +88,15 @@ QString SetupTab::ReadBaseXMLFromInternalResource()
  ************************************************************************/
 void SetupTab::ShowXmlOnScreen()
 {
-    //ui->textEdit->clear();
-
     QFile file(basefilename);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
-   // qDebug() << "inside the print xml loop";
     while (!file.atEnd())
     {
         QByteArray line = file.readLine();
         qDebug() << "inside the print xml loop" << line;
-     //   ui->textEdit->insertPlainText(line);
     }
 }
-/************************************************************************
-// *
-// *  XmlSpoParsing(QXmlStreamReader &)
-// *
- ************************************************************************/
-//void SetupTab::XmlSpoParsing(QXmlStreamReader &XmlFileReader)
-//{
-//    basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
-//    QFile XmlOutputFile(basefilename);
-//    XmlOutputFile.open(QIODevice::WriteOnly);
-//    QXmlStreamWriter xmlWriter(&XmlOutputFile);
-
-//    while(!XmlFileReader.atEnd() && !XmlFileReader.hasError())
-//    {
-//        QXmlStreamReader::TokenType token = XmlFileReader.readNext();
-//        if(token == QXmlStreamReader::StartDocument)
-//        {
-//            continue;
-//        }
-//        if(XmlFileReader.isStartElement())
-//        {
-//            //QStringRef  name = XmlFileReader.name();
-//            if(XmlFileReader.name() == "POGUID")
-//            {
-//              xmlWriter.writeTextElement("POGUID", ui->leShipToDealer_PO->text());
-//              qDebug() << "MADE IT INSIDE THE POGUID";
-//            }
-//            if(XmlFileReader.name() == "ShipTo")
-//            {
-//                XmlFileReader.readNext();
-//                if(XmlFileReader.name()== "Name")
-//                {
-//                    xmlWriter.writeTextElement("ShipTo++++Name", ui->leShipToDealer_PO->text());
-//                    qDebug() << "READING ShipTo";
-//                }
-//            }
-//        }
-//    }
-//    XmlOutputFile.close();
-//    ShowXmlOnScreen();
-//}
 /************************************************************************
  *
  *  SaveAddressXML()
@@ -167,22 +104,22 @@ void SetupTab::ShowXmlOnScreen()
  ************************************************************************/
 void SetupTab::SaveAddressXML()
 {
-//    //basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
-//    basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
+    //    //basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
+    //    basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
 
-//    QFile file(basefilename);
-//    file.open(QIODevice::WriteOnly);
-//    QXmlStreamWriter xmlWriter(&file);
-//    xmlWriter.setAutoFormatting(true);
-//    xmlWriter.writeStartDocument();
-//    xmlWriter.writeStartElement("ShipTo");
-//    xmlWriter.writeTextElement("Name",ui->leShipToAddress_Name->text());
-//    xmlWriter.writeTextElement("Address",ui->leShipToAddress_Address1->text());
-//    xmlWriter.writeTextElement("City",ui->leShipToAddress_City->text());
-//    xmlWriter.writeTextElement("State",ui->leShipToAddress_State->text());
-//    xmlWriter.writeTextElement("Zip",ui->leShipToAddress_Zip->text());
-//    xmlWriter.writeTextElement("CountryCode", "USA"); //Does this need to be hard coded for USA
-//    xmlWriter.writeEndElement();
+    //    QFile file(basefilename);
+    //    file.open(QIODevice::WriteOnly);
+    //    QXmlStreamWriter xmlWriter(&file);
+    //    xmlWriter.setAutoFormatting(true);
+    //    xmlWriter.writeStartDocument();
+    //    xmlWriter.writeStartElement("ShipTo");
+    //    xmlWriter.writeTextElement("Name",ui->leShipToAddress_Name->text());
+    //    xmlWriter.writeTextElement("Address",ui->leShipToAddress_Address1->text());
+    //    xmlWriter.writeTextElement("City",ui->leShipToAddress_City->text());
+    //    xmlWriter.writeTextElement("State",ui->leShipToAddress_State->text());
+    //    xmlWriter.writeTextElement("Zip",ui->leShipToAddress_Zip->text());
+    //    xmlWriter.writeTextElement("CountryCode", "USA"); //Does this need to be hard coded for USA
+    //    xmlWriter.writeEndElement();
 
 }
 /************************************************************************
@@ -221,8 +158,8 @@ void SetupTab::XmlAddressSearchRequestParsing(QXmlStreamReader &XmlFileReader)
     {
         QXmlStreamReader::TokenType token = XmlFileReader.readNext();
         if(token == QXmlStreamReader::StartDocument) {
-                        continue;
-                }
+            continue;
+        }
         if(token == QXmlStreamReader::StartElement)
         {
             //QStringRef  name = XmlFileReader.name();
@@ -230,56 +167,45 @@ void SetupTab::XmlAddressSearchRequestParsing(QXmlStreamReader &XmlFileReader)
             {
                 dealerID = XmlFileReader.readElementText();
             }
-
             else if(XmlFileReader.name() == "Name")
             {
-               dname = XmlFileReader.readElementText();
+                dname = XmlFileReader.readElementText();
             }
-
             else if(XmlFileReader.name() == "Status")
             {
                 status = XmlFileReader.readElementText();
             }
-
             else if(XmlFileReader.name() == "Address1")
             {
                 address1 = XmlFileReader.readElementText();
             }
-
             else if(XmlFileReader.name() == "Address2")
             {
                 address2 = XmlFileReader.readElementText();
             }
-
             else if(XmlFileReader.name() == "Address3")
             {
                 address3 = XmlFileReader.readElementText();
             }
-
             else if(XmlFileReader.name() == "City")
             {
                 city = XmlFileReader.readElementText();
             }
-
             else if(XmlFileReader.name() == "State")
             {
                 state = XmlFileReader.readElementText();
             }
-
             else if(XmlFileReader.name() == "Zip")
             {
                 zip = XmlFileReader.readElementText();
             }
-
             else if(XmlFileReader.name() == "CountryCode")
             {
                 countryCode = XmlFileReader.readElementText();
             }
-
             else if(XmlFileReader.name() == "Region")
             {
                 region = XmlFileReader.readElementText();
-
             }
             else if(XmlFileReader.name() == "Phone")
             {
@@ -340,7 +266,6 @@ void SetupTab::on_btnAddLineItem_GetMacPacPart_clicked()
 
         QString partCost = m.value("PartCost");
         ui->leAddLineItem_Value->setText(partCost);
-
         //Default the quantity to 1 for users
         ui->leAddLineItem_Quantity->setText("1");
     }
@@ -383,18 +308,14 @@ void SetupTab::resetForm()
     rowCt += 1;
     int rowCtIndex= rowCt;
     qDebug() << "before       rct==="<< rowCt;
-    for (int i = 0; i <= rowCt ; i++) {
-
-
+    for (int i = 0; i <= rowCt ; i++)
+    {   //  Delete rows from the table after order submitted.
         this->ui->tblOrderLinesWidget->removeRow(rowCtIndex);
-
-        qDebug() << "i==="<< i;
-        //rowCt = ui->tblOrderLinesWidget->rowCount();2
+        //  Clears data from table.
+        //this->ui->tblOrderLinesWidget->clear();
+        //rowCt = ui->tblOrderLinesWidget->rowCount();
         rowCtIndex--;
-    }
-
-    qDebug() << "after      rct==="<< rowCt;
-
+    }// End for loop
     ui->leShipToDealer_PO->setText("");
     ui->leShipToAddress_Address1->setText("");
     ui->leShipToAddress_Address2->setText("");
@@ -410,7 +331,6 @@ void SetupTab::resetForm()
     u->createPO(po);
     ui->leShipToDealer_PO->setText(po);
 }
-
 
 void SetupTab::on_btnAddLineItem_AddLine_clicked()
 {
@@ -465,8 +385,8 @@ bool SetupTab::PartOkToAdd(QString partName, QString partDesc, QString partCost,
         retval = false;
     }
     if (retval == false) {
-            MissingDataDialog *mdDialog = new MissingDataDialog;
-            mdDialog->show();
+        MissingDataDialog *mdDialog = new MissingDataDialog;
+        mdDialog->show();
     }
     return retval;
 }
@@ -496,20 +416,12 @@ void SetupTab::OverLimitDialog()
 
 void SetupTab::on_btnSubmitOrder_clicked()
 {
-
     QString output;
     QString plusText = " small parts order has been submitted.";
     output = ui->leShipToDealer_PO->text();
     ui->lblOrderSubmitTotal->setText(output + plusText);
-
     resetForm();
-
 }
-
-//void AddLineItem::ProcessSetUpTab(SetupTab * a)
-//{
-
-//}
 /************************************************************************
  *
  *  WriteXml()
@@ -517,14 +429,11 @@ void SetupTab::on_btnSubmitOrder_clicked()
  ************************************************************************/
 void SetupTab::WriteXml()
 {
-
-
-
     QDir res_dir (OUTFILE_PREFIX);
     auto path = res_dir.filePath("XmlForMacPac.xml");
     QFile res_file(path);
 
-  //  basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
+    //  basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
 
     if(!res_file.open(QIODevice::WriteOnly))
     {
@@ -542,7 +451,7 @@ void SetupTab::WriteXml()
     xmlWriter.writeTextElement("POGUID", "SPO12345");
     xmlWriter.writeEndElement();//End Contexts*********************************************
     xmlWriter.writeEndElement();//End Communication********************************************
-   // ShowXmlOnScreen();
+    // ShowXmlOnScreen();
 }
 
 

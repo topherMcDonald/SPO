@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../sporesource.qrc">
+    <normaloff>:/root/qtAppIcons/Search.png</normaloff>:/root/qtAppIcons/Search.png</iconset>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <layout class="QVBoxLayout" name="loSearchDialog">
@@ -148,6 +152,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../sporesource.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -1,30 +1,22 @@
 #include "startup.h"
 #include "View/setuptab.h"
 #include "View/mainview.h"
-#include "View/addlineitem.h"
 #include "View/searchdialog.h"
-
 #include "utils.h"
 #include "Model/settings.h"
 #include <QString>
 #include <QDir>
 #include <QFile>
-#include <QDebug>
 #include <QtXml>
 #include<QFileDialog>
 #include<iostream>
 #include<QMessageBox>
-
 #include <QXmlStreamWriter>
 #include <QDataStream>
 #include <QTextStream>
 #include <QPushButton>
 #include <QIcon>
-
 #include<QComboBox>
-
-
-
 
 Startup::Startup() :
     QObject(nullptr),

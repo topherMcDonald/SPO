@@ -1,14 +1,11 @@
- #pragma once
+#pragma once
 #include <QObject>
 
-class QDebug;
 class QString;
 class QStringListModel;
 class QXmlStreamReader;
 class QFile;
 class QDir;
-
-
 
 class Settings : public QObject
 {
@@ -19,9 +16,7 @@ public:
 private:
     QString m_basefilename;
     QString m_orderlinefile;
-
     QString ReadXmlFile();
-
     explicit Settings(const Settings& rhs) = delete;
     Settings& operator= (const Settings& rhs) = delete;
 };
