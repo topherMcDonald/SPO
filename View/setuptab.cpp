@@ -56,7 +56,9 @@ SetupTab::SetupTab(QWidget *parent) :
     u->createPO(po);
     ui->leShipToDealer_PO->setText(po);
     //End: PO generation
-    // defaultXML = ReadBaseXMLFromInternalResource();
+    //  Set date, add one day for shipping default.
+    QDate shipDate = QDate::currentDate();
+    ui->dateEdit->setDate(shipDate.addDays(1));
 }
 /************************************************************************
  *
@@ -253,7 +255,6 @@ void SetupTab::AddLineItemFromDialog(QString & item)
 void SetupTab::on_btnAddLineItem_GetMacPacPart_clicked()
 {
     SearchDialog *dialog = new SearchDialog;
-
     if(dialog->exec())
     {
         QMap<QString, QString> m = dialog->getMap();
@@ -326,6 +327,7 @@ void SetupTab::resetForm()
     ui->leShipToDealer_ID->setText("");
     ui->leShipToDealer_ID->setText("");
     ui->leShipToDealer_Routing->setText("");
+    ui->leOrderTotal->setText("");
     QString po = "";
     Utils *u;
     u->createPO(po);
@@ -454,15 +456,8 @@ void SetupTab::WriteXml()
     // ShowXmlOnScreen();
 }
 
+void SetupTab::on_dateEdit_userDateChanged(const QDate &date)
+{
 
-
-
-
-
-
-
-
-
-
-
+}
 

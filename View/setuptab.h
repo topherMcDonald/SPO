@@ -36,6 +36,7 @@ private slots:
     void on_btnAddLineItem_AddLine_clicked();
     void on_btnRecapAndSubmit_Clear_clicked();
     void on_btnSubmitOrder_clicked();
+    void on_dateEdit_userDateChanged(const QDate &date);
 
 private:
     QString m_basefilename;
