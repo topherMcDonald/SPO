@@ -281,9 +281,11 @@ void SetupTab::updateExtendedCostTotal() {
     QString uiTotal;
     float tmpTotal;
     QTableWidgetItem *wi;
+
     for (int i = 0; i < rowCt; i++) {
         wi = ui->tblOrderLinesWidget->item(i,4);
         tmpTotal += wi->text().toFloat();
+
         if(tmpTotal > 100)
         {
             this->ui->tblOrderLinesWidget->removeRow(i);
@@ -348,7 +350,12 @@ void SetupTab::on_btnAddLineItem_AddLine_clicked()
     partCost = ui->leAddLineItem_Value->text();
     partQty = ui->leAddLineItem_Quantity->text();
     //START: Extended Cost Mod - FJD - 8.9.2016
-    xCost = partQty.toFloat() * partCost.toFloat();
+    if(partCost.toFloat() < 0.01)
+    {
+        //  If lees than penny, round to $00.01
+        partCost.setNum(0.01);
+    }
+    xCost = (roundf((partQty.toFloat() * partCost.toFloat()) * 100) / 100);
     extCost.setNum(xCost);
     //END: Extended Cost Mod
 
