@@ -36,7 +36,7 @@ private slots:
     void on_btnAddLineItem_AddLine_clicked();
     void on_btnRecapAndSubmit_Clear_clicked();
     void on_btnSubmitOrder_clicked();
-    void on_dateEdit_userDateChanged(const QDate &date);
+   // void on_dateEdit_userDateChanged(const QDate &date);
 
 private:
     QString m_basefilename;
@@ -51,6 +51,7 @@ private:
     bool GetOrderTotal();
     void WriteXml();
     void resetForm();
+    QString mapRoutingComboBoxCodes(QString &routingCode);
 };
 
 #endif // SETUPTAB_H

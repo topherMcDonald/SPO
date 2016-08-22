@@ -328,7 +328,6 @@ void SetupTab::resetForm()
     ui->leShipToAddress_Zip->setText("");
     ui->leShipToDealer_ID->setText("");
     ui->leShipToDealer_ID->setText("");
-    ui->leShipToDealer_Routing->setText("");
     ui->leOrderTotal->setText("");
     QString po = "";
     Utils *u;
@@ -427,9 +426,53 @@ void SetupTab::on_btnSubmitOrder_clicked()
 {
     QString output;
     QString plusText = " small parts order has been submitted.";
+    QString code;
     output = ui->leShipToDealer_PO->text();
     ui->lblOrderSubmitTotal->setText(output + plusText);
     resetForm();
+
+    //  This will need to be moved to, get code to pass as xml.....
+    mapRoutingComboBoxCodes(code);
+    qDebug() << "row from combo box selected is...." << code;
+
+}
+
+QString SetupTab::mapRoutingComboBoxCodes(QString &routingCode)
+{
+    //  Get row from routing combo box, map and return code.
+    int row = ui->cbxShipToDealer_Routing->currentIndex();
+     switch (row)
+     {
+     case 0:
+         routingCode = "GRD";
+         break;
+     case 1:
+         routingCode = "GSTD";
+         break;
+     case 2:
+         routingCode = "NAM";
+         break;
+     case 3:
+         routingCode = "NEAM";
+         break;
+     case 4:
+         routingCode = "NPM";
+         break;
+     case 5:
+         routingCode = "NSAT";
+         break;
+     case 6:
+         routingCode = "2PM";
+         break;
+     case 7:
+         routingCode = "3DF";
+         break;
+     }
+
+     return routingCode;
+
+
+
 }
 /************************************************************************
  *
@@ -463,8 +506,8 @@ void SetupTab::WriteXml()
     // ShowXmlOnScreen();
 }
 
-void SetupTab::on_dateEdit_userDateChanged(const QDate &date)
-{
+//void SetupTab::on_dateEdit_userDateChanged(const QDate &date)
+//{
 
-}
+//}
 

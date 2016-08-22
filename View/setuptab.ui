@@ -188,6 +188,9 @@
           <property name="text">
            <string>                                                       Date to Ship</string>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
          </widget>
         </item>
         <item>
@@ -217,12 +220,56 @@
         <item>
          <widget class="QLabel" name="lblShipToDealer_Routing">
           <property name="text">
-           <string>Routing</string>
+           <string>                                   Routing</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="leShipToDealer_Routing"/>
+         <widget class="QComboBox" name="cbxShipToDealer_Routing">
+          <item>
+           <property name="text">
+            <string>Ground</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Ground Canada</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Next Day A.M.</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Next Day Earlt A.M.</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Next Day P.M.</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Next Day Saturday</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2 Day P.M.</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>3 Day P.M</string>
+           </property>
+          </item>
+         </widget>
         </item>
        </layout>
       </item>
@@ -669,7 +716,6 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>leShipToDealer_Routing</tabstop>
   <tabstop>leShipToDealer_PO</tabstop>
   <tabstop>leShipToAddress_Name</tabstop>
   <tabstop>leShipToAddress_City</tabstop>
