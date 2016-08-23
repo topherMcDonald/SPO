@@ -26,6 +26,7 @@ public:
     QString GetDefaultXML();
     void ShowXmlOnScreen();
 
+    void ReadActiveDirectory();
 public slots:
     void SaveAddressXML();
 

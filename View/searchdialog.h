@@ -1,6 +1,5 @@
 #ifndef SEARCHDIALOG_H
 #define SEARCHDIALOG_H
-#include "ui_addlineitem.h"
 #include <QDialog>
 
 namespace Ui {
@@ -10,7 +9,7 @@ namespace Ui {
 class QXmlStreamReader;
 class AddLineItem;
 
-class SearchDialog : public QDialog, public Ui::AddLineItem
+class SearchDialog : public QDialog
 {
     Q_OBJECT
 

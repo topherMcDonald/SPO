@@ -33,6 +33,7 @@
 #include <QNetworkReply>
 #include <QUrl>
 #include <QUrlQuery>
+#include <Iads.h>
 
 static auto RESOURCE_PREFIX = QStringLiteral(":/xml");
 static auto OUTFILE_PREFIX = QStringLiteral("C:/");
@@ -59,6 +60,7 @@ SetupTab::SetupTab(QWidget *parent) :
     //  Set date, add one day for shipping default.
     QDate shipDate = QDate::currentDate();
     ui->dateEdit->setDate(shipDate.addDays(1));
+
 }
 /************************************************************************
  *
@@ -236,22 +238,29 @@ SetupTab::~SetupTab()
     Utils::DestuctorMsg(this);
     delete ui;
 }
-/************************************************************************
+/* ========================================================================
  *
- *  on_leShipToDealer_ID_editingFinished()
+ * void on_leShipToDealer_ID_editingFinished()
  *
- ************************************************************************/
+ * =======================================================================*/
 void SetupTab::on_leShipToDealer_ID_editingFinished()
 {
     GetAddressXML();
 }
-//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/* ========================================================================
+ *
+ * void AddLineItemFromDialog()
+ *
+ * =======================================================================*/
 void SetupTab::AddLineItemFromDialog(QString & item)
 {
     ui->tblOrderLinesWidget->setItem(0,0, new QTableWidgetItem(item));
 }
-
+/* ========================================================================
+ *
+ * void on_btnAddLineItem_GetMacPacPart_clicked()
+ *
+ * =======================================================================*/
 void SetupTab::on_btnAddLineItem_GetMacPacPart_clicked()
 {
     SearchDialog *dialog = new SearchDialog;
@@ -271,8 +280,13 @@ void SetupTab::on_btnAddLineItem_GetMacPacPart_clicked()
         ui->leAddLineItem_Quantity->setText("1");
     }
 }
-
-void SetupTab::updateExtendedCostTotal() {
+/* ========================================================================
+ *
+ * void updateExtendedCostTotal()
+ *
+ * =======================================================================*/
+void SetupTab::updateExtendedCostTotal()
+{
     int rowCt = ui->tblOrderLinesWidget->rowCount();
     if (rowCt == 0) {
         ui->leOrderTotal->setText("0.00");
@@ -296,14 +310,23 @@ void SetupTab::updateExtendedCostTotal() {
     uiTotal.setNum(tmpTotal);
     ui->leOrderTotal->setText(uiTotal);
 }
-
-void SetupTab::resetFields() {
+/* ========================================================================
+ *
+ * void resetFields()
+ *
+ * =======================================================================*/
+void SetupTab::resetFields()
+{
     ui->leAddLineItem_PartNumber->setText("");
     ui->leAddlineItem_Description->setText("");
     ui->leAddLineItem_Value->setText("");
     ui->leAddLineItem_Quantity->setText("");
 }
-
+/* ========================================================================
+ *
+ * void resetForm()
+ *
+ * =======================================================================*/
 void SetupTab::resetForm()
 {
     int rowCt = ui->tblOrderLinesWidget->rowCount();
@@ -334,7 +357,11 @@ void SetupTab::resetForm()
     u->createPO(po);
     ui->leShipToDealer_PO->setText(po);
 }
-
+/* ========================================================================
+ *
+ * void on_btnAddLineItem_AddLine_clicked()
+ *
+ * =======================================================================*/
 void SetupTab::on_btnAddLineItem_AddLine_clicked()
 {
     QString partName;
@@ -377,8 +404,13 @@ void SetupTab::on_btnAddLineItem_AddLine_clicked()
         resetFields();
     }
 }
-
-bool SetupTab::PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty) {
+/* =================================================================================================
+ *
+ * bool PartOkToAdd(QString , QString , QString , QString)
+ *
+ * ===============================================================================================*/
+bool SetupTab::PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty)
+{
     bool retval = true;
     if (partName == "") {
         retval = false;
@@ -398,7 +430,11 @@ bool SetupTab::PartOkToAdd(QString partName, QString partDesc, QString partCost,
     }
     return retval;
 }
-
+/* ===============================================================================================
+ *
+ * void handleDeleteSelectedRow()
+ *
+ * =============================================================================================*/
 void SetupTab::handleDeleteSelectedRow()
 {
     QList<QTableWidgetItem*> selectionRangeList = this->ui->tblOrderLinesWidget->selectedItems();
@@ -409,19 +445,31 @@ void SetupTab::handleDeleteSelectedRow()
         this->ui->tblOrderLinesWidget->removeRow(rowIndex);
     }
 }
-
+/* ========================================================================
+ *
+ * void on_btnRecapAndSubmit_Clear_clicked()
+ *
+ * =======================================================================*/
 void SetupTab::on_btnRecapAndSubmit_Clear_clicked()
 {
     handleDeleteSelectedRow();
     updateExtendedCostTotal();
 }
-
+/* ========================================================================
+ *
+ * void OverLimitDialog()
+ *
+ * =======================================================================*/
 void SetupTab::OverLimitDialog()
 {
     overCostLimitDialog *dialog = new overCostLimitDialog;
     dialog->exec();
 }
-
+/* ========================================================================
+ *
+ * void on_btnSubmitOrder_clicked()
+ *
+ * =======================================================================*/
 void SetupTab::on_btnSubmitOrder_clicked()
 {
     QString output;
@@ -429,14 +477,17 @@ void SetupTab::on_btnSubmitOrder_clicked()
     QString code;
     output = ui->leShipToDealer_PO->text();
     ui->lblOrderSubmitTotal->setText(output + plusText);
-    resetForm();
-
+    WriteXml();
     //  This will need to be moved to, get code to pass as xml.....
     mapRoutingComboBoxCodes(code);
-    qDebug() << "row from combo box selected is...." << code;
+    resetForm();
 
 }
-
+/* ========================================================================
+ *
+ * QString mapRoutingComboBoxCodes(QString &)
+ *
+ * =======================================================================*/
 QString SetupTab::mapRoutingComboBoxCodes(QString &routingCode)
 {
     //  Get row from routing combo box, map and return code.
@@ -468,20 +519,19 @@ QString SetupTab::mapRoutingComboBoxCodes(QString &routingCode)
          routingCode = "3DF";
          break;
      }
-
      return routingCode;
-
-
-
 }
-/************************************************************************
+/* ========================================================================
  *
- *  WriteXml()
+ * void WriteXml()
  *
- ************************************************************************/
+ * =======================================================================*/
 void SetupTab::WriteXml()
 {
     QDir res_dir (OUTFILE_PREFIX);
+
+    const QString PLACEHOLDER;
+
     auto path = res_dir.filePath("XmlForMacPac.xml");
     QFile res_file(path);
 
@@ -490,24 +540,147 @@ void SetupTab::WriteXml()
     if(!res_file.open(QIODevice::WriteOnly))
     {
         //TODO Send Error message
-        qDebug() << FILEERROR_MSG;
+        //qDebug() << FILEERROR_MSG;
     }
     res_file.open(QIODevice::WriteOnly);
     QXmlStreamWriter xmlWriter(&res_file);
     xmlWriter.setAutoFormatting(true);
+    //PLACEHOLDER denotes where form data might go
     xmlWriter.writeStartDocument();
-    xmlWriter.writeStartElement("Communication");//**********************************************
+    xmlWriter.writeStartElement("Communication");
     xmlWriter.writeTextElement("CommunicationType", "SPO");
-    xmlWriter.writeStartElement("Contexts");//***********************************************
+    xmlWriter.writeStartElement("Contexts");
     xmlWriter.writeTextElement("ParserVersion", "1.0");
     xmlWriter.writeTextElement("POGUID", "SPO12345");
-    xmlWriter.writeEndElement();//End Contexts*********************************************
-    xmlWriter.writeEndElement();//End Communication********************************************
+    xmlWriter.writeEndElement();// End Contexts
+    xmlWriter.writeStartElement("OrderInstructions");
+    xmlWriter.writeTextElement("Environment", "Internal");
+    xmlWriter.writeTextElement("RefQuote", "");
+    xmlWriter.writeTextElement("DiscountCode", "");
+    xmlWriter.writeTextElement("ShipVia", "");
+    xmlWriter.writeTextElement("ShipViaAcctNum", "");
+    xmlWriter.writeTextElement("ContactName", "");
+    xmlWriter.writeTextElement("ContactPhone", "");
+    xmlWriter.writeTextElement("PrevPOGUID", "");
+    xmlWriter.writeTextElement("ContactEmail", "");
+    xmlWriter.writeTextElement("DeliveryNotes", "");
+    xmlWriter.writeStartElement("OrderComments");
+    xmlWriter.writeTextElement("OrderComment", PLACEHOLDER);
+    xmlWriter.writeEndElement();//End OrderComments
+    xmlWriter.writeEndElement();//End OrderInstructions
+    xmlWriter.writeStartElement("MetaInfo");
+    xmlWriter.writeTextElement("PONumber", PLACEHOLDER);
+    xmlWriter.writeTextElement("EndCustPO", "");
+    xmlWriter.writeTextElement("DealerSONumber", "");
+    xmlWriter.writeStartElement("POCreated");
+    xmlWriter.writeTextElement("Year", "");
+    xmlWriter.writeTextElement("Month", "");
+    xmlWriter.writeTextElement("Day", "");
+    xmlWriter.writeEndElement();//End POCreated
+    xmlWriter.writeStartElement("ProjectInfo");
+    xmlWriter.writeTextElement("ProjectName", "");
+    xmlWriter.writeTextElement("ProjectID", "");
+    xmlWriter.writeEndElement();//End ProjectInfo
+    xmlWriter.writeStartElement("PartnerInfo");
+    xmlWriter.writeTextElement("PartnerType", "Internal");
+    xmlWriter.writeTextElement("ERPID", "1600S");
+    xmlWriter.writeTextElement("PartnerName", "Draper, Inc.");
+    xmlWriter.writeEndElement();//End PartnerInfo
+    xmlWriter.writeStartElement("Addressing");
+    xmlWriter.writeStartElement("SoldTo");
+    xmlWriter.writeTextElement("Name", "Draper, Inc.");
+    xmlWriter.writeTextElement("Address1", "411 Pearl Street");
+    xmlWriter.writeTextElement("Address2", "");
+    xmlWriter.writeTextElement("Address3", "");
+    xmlWriter.writeTextElement("City", "Spiceland");
+    xmlWriter.writeTextElement("State", "IN");
+    xmlWriter.writeTextElement("Zip", "47385");
+    xmlWriter.writeTextElement("CountryCode", "USA");
+    xmlWriter.writeStartElement("GPS");
+    xmlWriter.writeTextElement("Lat", "0.0");
+    xmlWriter.writeTextElement("Lon", "0.0");
+    xmlWriter.writeEndElement();//End GPS
+    xmlWriter.writeEndElement();//End SoldTo
+    xmlWriter.writeStartElement("ShipTo");
+    xmlWriter.writeTextElement("Name", PLACEHOLDER);
+    xmlWriter.writeTextElement("Address1", PLACEHOLDER);
+    xmlWriter.writeTextElement("Address2", PLACEHOLDER);
+    xmlWriter.writeTextElement("Address3", PLACEHOLDER);
+    xmlWriter.writeTextElement("City", PLACEHOLDER);
+    xmlWriter.writeTextElement("State", PLACEHOLDER);
+    xmlWriter.writeTextElement("Zip", PLACEHOLDER);
+    xmlWriter.writeTextElement("CountryCode", PLACEHOLDER);
+    xmlWriter.writeStartElement("GPS");
+    xmlWriter.writeTextElement("Lat", "0.0");
+    xmlWriter.writeTextElement("Lon", "0.0");
+    xmlWriter.writeEndElement();//End GPS
+    xmlWriter.writeStartElement("Instructions");
+    xmlWriter.writeTextElement("Attention", "");
+    xmlWriter.writeTextElement("Phone", "");
+    xmlWriter.writeTextElement("Email", "");
+    xmlWriter.writeTextElement("Note1", "");
+    xmlWriter.writeTextElement("Note2", "");
+    xmlWriter.writeTextElement("Note3", "");
+    xmlWriter.writeTextElement("Note4", "");
+    xmlWriter.writeTextElement("ShippingQuote", "");
+    xmlWriter.writeEndElement();//End Instructions
+    xmlWriter.writeEndElement();//End ShipTo
+    xmlWriter.writeEndElement();//End Addressing
+    xmlWriter.writeEndElement();//End MetaInfo
+    xmlWriter.writeStartElement("OrderLines");
+    //Loop for lines
+    QVariant partValue;
+    QVariant partDesc;
+    QVariant partCost;
+    QVariant partQty;
+    QMap<QString, QString> partMap;
+    QTableWidgetItem* tmpItem;
+    for (int row = 0; row < this->ui->tblOrderLinesWidget->rowCount(); row++) {
+        for (int col = 0; col <= this->ui->tblOrderLinesWidget->columnCount(); col++){
+            tmpItem = this->ui->tblOrderLinesWidget->item(row, col);
+            if (col == 0) {
+                partValue = tmpItem->text();
+                partMap["PartName"] = partValue.toString();
+            }
+            else if (col == 1) {
+                partDesc = tmpItem->text();
+                partMap["PartDesc"] = partDesc.toString();
+            }
+            else if (col == 2) {
+                partCost = tmpItem->text();
+                partMap["PartCost"] = partCost.toString();
+            }
+            else if (col == 3) {
+                partQty = tmpItem->text();
+                partMap["PartQty"] = partQty.toString();
+            }
+        }
+        xmlWriter.writeStartElement("OrderLine");
+        xmlWriter.writeStartElement("LineInstructions");
+        xmlWriter.writeTextElement("LineInstruction", "");
+        xmlWriter.writeEndElement();//End LineInstructions
+        xmlWriter.writeStartElement("POInfo");
+        xmlWriter.writeTextElement("Status", "");
+        xmlWriter.writeTextElement("Number", "");
+        xmlWriter.writeTextElement("Qty", partMap["PartQty"]);
+        xmlWriter.writeTextElement("QtyUOM", "");
+        xmlWriter.writeTextElement("Price", partMap["PartCost"]);
+        xmlWriter.writeTextElement("Location", "");
+        xmlWriter.writeTextElement("SourcePart", "");
+        xmlWriter.writeTextElement("TargetPart", partMap["PartName"]);
+        xmlWriter.writeTextElement("Salesperson", "");
+        xmlWriter.writeTextElement("ContactEmail", "");
+        xmlWriter.writeStartElement("RequestedShipDate");
+        xmlWriter.writeTextElement("Year", "");
+        xmlWriter.writeTextElement("Month", "");
+        xmlWriter.writeTextElement("Day", "");
+        xmlWriter.writeEndElement();//End RequestedShipDate
+        xmlWriter.writeTextElement("CarrierName", "");
+        xmlWriter.writeEndElement();//End POInfo
+        xmlWriter.writeEndElement();//End OrderLine
+    }
+    xmlWriter.writeEndElement();//End OrderLines
+    xmlWriter.writeEndElement();//End Communication
     // ShowXmlOnScreen();
 }
-
-//void SetupTab::on_dateEdit_userDateChanged(const QDate &date)
-//{
-
-//}
 

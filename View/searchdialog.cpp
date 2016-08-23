@@ -1,6 +1,5 @@
 #include "searchdialog.h"
 #include "ui_searchdialog.h"
-#include "ui_addlineitem.h"
 #include <QtNetwork>
 //For web calls ...
 #include <QCoreApplication>

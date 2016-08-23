@@ -624,6 +624,9 @@
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="3" column="0">
@@ -678,7 +681,11 @@
        <widget class="QLineEdit" name="leAddLineItem_Quantity"/>
       </item>
       <item row="0" column="5">
-       <widget class="QLineEdit" name="leAddLineItem_PartNumber"/>
+       <widget class="QLineEdit" name="leAddLineItem_PartNumber">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="0" column="6">
        <widget class="QLabel" name="lblAddLineItem_Quantity">
