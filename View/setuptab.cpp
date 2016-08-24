@@ -60,31 +60,30 @@ SetupTab::SetupTab(QWidget *parent) :
     //  Set date, add one day for shipping default.
     QDate shipDate = QDate::currentDate();
     ui->dateEdit->setDate(shipDate.addDays(1));
-
 }
 /************************************************************************
  *
  *  ReadBaseXMLFromInternalResource()
  *
  ************************************************************************/
-QString SetupTab::ReadBaseXMLFromInternalResource()
-{
-    QDir res_dir (RESOURCE_PREFIX);
-    if(!res_dir.exists())
-    {
-        //TODO Send Error message
-        return "";
-    }
-    auto path = res_dir.filePath("spoBase.xml");
-    QFile res_file(path);
+//QString SetupTab::ReadBaseXMLFromInternalResource()
+//{
+//    QDir res_dir (RESOURCE_PREFIX);
+//    if(!res_dir.exists())
+//    {
+//        //TODO Send Error message
+//        return "";
+//    }
+//    auto path = res_dir.filePath("spoBase.xml");
+//    QFile res_file(path);
 
-    if(!res_file.open(QFile::ReadOnly|QFile::Text))
-    {
-        //TODO Send Error message
-        qDebug() << FILEERROR_MSG;
-    }
+//    if(!res_file.open(QFile::ReadOnly|QFile::Text))
+//    {
+//        //TODO Send Error message
+//        qDebug() << FILEERROR_MSG;
+//    }
 
-}
+//}
 /************************************************************************
  *
  *  ShowXmlOnScreen()
@@ -474,12 +473,11 @@ void SetupTab::on_btnSubmitOrder_clicked()
 {
     QString output;
     QString plusText = " small parts order has been submitted.";
-    QString code;
+
     output = ui->leShipToDealer_PO->text();
     ui->lblOrderSubmitTotal->setText(output + plusText);
     WriteXml();
-    //  This will need to be moved to, get code to pass as xml.....
-    mapRoutingComboBoxCodes(code);
+
     resetForm();
 
 }
@@ -528,6 +526,14 @@ QString SetupTab::mapRoutingComboBoxCodes(QString &routingCode)
  * =======================================================================*/
 void SetupTab::WriteXml()
 {
+    QString shipViaCode;
+    QDate dateToShip = ui->dateEdit->date();
+    QString shipDay = QString::number(dateToShip.day());
+    QString shipMonth = QString::number(dateToShip.month());
+    QString shipYear = QString::number(dateToShip.year());
+    //  Map routing codes from xml
+    mapRoutingComboBoxCodes(shipViaCode);
+
     QDir res_dir (OUTFILE_PREFIX);
 
     const QString PLACEHOLDER;
@@ -536,6 +542,7 @@ void SetupTab::WriteXml()
     QFile res_file(path);
 
     //  basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
+
 
     if(!res_file.open(QIODevice::WriteOnly))
     {
@@ -557,7 +564,7 @@ void SetupTab::WriteXml()
     xmlWriter.writeTextElement("Environment", "Internal");
     xmlWriter.writeTextElement("RefQuote", "");
     xmlWriter.writeTextElement("DiscountCode", "");
-    xmlWriter.writeTextElement("ShipVia", "");
+    xmlWriter.writeTextElement("ShipVia", shipViaCode);
     xmlWriter.writeTextElement("ShipViaAcctNum", "");
     xmlWriter.writeTextElement("ContactName", "");
     xmlWriter.writeTextElement("ContactPhone", "");
@@ -671,9 +678,9 @@ void SetupTab::WriteXml()
         xmlWriter.writeTextElement("Salesperson", "");
         xmlWriter.writeTextElement("ContactEmail", "");
         xmlWriter.writeStartElement("RequestedShipDate");
-        xmlWriter.writeTextElement("Year", "");
-        xmlWriter.writeTextElement("Month", "");
-        xmlWriter.writeTextElement("Day", "");
+        xmlWriter.writeTextElement("Year", shipYear);
+        xmlWriter.writeTextElement("Month", shipMonth);
+        xmlWriter.writeTextElement("Day", shipDay);
         xmlWriter.writeEndElement();//End RequestedShipDate
         xmlWriter.writeTextElement("CarrierName", "");
         xmlWriter.writeEndElement();//End POInfo
@@ -682,5 +689,6 @@ void SetupTab::WriteXml()
     xmlWriter.writeEndElement();//End OrderLines
     xmlWriter.writeEndElement();//End Communication
     // ShowXmlOnScreen();
+
 }
 
