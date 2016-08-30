@@ -318,6 +318,14 @@
        </item>
        <item>
         <widget class="QLineEdit" name="leSalespersonEmail">
+         <property name="font">
+          <font>
+           <italic>true</italic>
+          </font>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
          <property name="placeholderText">
           <string>@draperinc.com</string>
          </property>

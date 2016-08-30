@@ -34,6 +34,12 @@
 #include <QUrl>
 #include <QUrlQuery>
 #include <Iads.h>
+//#pragma comment(lib, "Secur32.lib")
+#define SECURITY_WIN32
+#include <Security.h>
+#include <lmcons.h>
+#include <Windows.h>
+
 
 static auto RESOURCE_PREFIX = QStringLiteral(":/xml");
 static auto OUTFILE_PREFIX = QStringLiteral("C:/");
@@ -60,6 +66,12 @@ SetupTab::SetupTab(QWidget *parent) :
     //  Set date, add one day for shipping default.
     QDate shipDate = QDate::currentDate();
     ui->dateEdit->setDate(shipDate.addDays(1));
+    //get logged on user name in order to append to @DraperInc.com
+    TCHAR Username[UNLEN+1];
+    DWORD nULen = UNLEN;
+    GetUserName(Username, &nULen);
+    QString adUserName = QString::fromWCharArray(Username);
+    ui->leSalespersonEmail->setText(adUserName+"@DraperInc.com");
 }
 /************************************************************************
  *
@@ -105,24 +117,10 @@ void SetupTab::ShowXmlOnScreen()
  *  SaveAddressXML()
  *
  ************************************************************************/
-void SetupTab::SaveAddressXML()
+void SetupTab::PostXMLToService()
 {
-    //    //basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
-    //    basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
-
-    //    QFile file(basefilename);
-    //    file.open(QIODevice::WriteOnly);
-    //    QXmlStreamWriter xmlWriter(&file);
-    //    xmlWriter.setAutoFormatting(true);
-    //    xmlWriter.writeStartDocument();
-    //    xmlWriter.writeStartElement("ShipTo");
-    //    xmlWriter.writeTextElement("Name",ui->leShipToAddress_Name->text());
-    //    xmlWriter.writeTextElement("Address",ui->leShipToAddress_Address1->text());
-    //    xmlWriter.writeTextElement("City",ui->leShipToAddress_City->text());
-    //    xmlWriter.writeTextElement("State",ui->leShipToAddress_State->text());
-    //    xmlWriter.writeTextElement("Zip",ui->leShipToAddress_Zip->text());
-    //    xmlWriter.writeTextElement("CountryCode", "USA"); //Does this need to be hard coded for USA
-    //    xmlWriter.writeEndElement();
+    QNetworkAccessManager *nam;
+    nam = new QNetworkAccessManager(this);
 
 }
 /************************************************************************
@@ -332,7 +330,7 @@ void SetupTab::resetForm()
     //Clear table
     rowCt += 1;
     int rowCtIndex= rowCt;
-    qDebug() << "before       rct==="<< rowCt;
+
     for (int i = 0; i <= rowCt ; i++)
     {   //  Delete rows from the table after order submitted.
         this->ui->tblOrderLinesWidget->removeRow(rowCtIndex);
@@ -477,7 +475,6 @@ void SetupTab::on_btnSubmitOrder_clicked()
     output = ui->leShipToDealer_PO->text();
     ui->lblOrderSubmitTotal->setText(output + plusText);
     WriteXml();
-
     resetForm();
 
 }
@@ -558,7 +555,7 @@ void SetupTab::WriteXml()
     xmlWriter.writeTextElement("CommunicationType", "SPO");
     xmlWriter.writeStartElement("Contexts");
     xmlWriter.writeTextElement("ParserVersion", "1.0");
-    xmlWriter.writeTextElement("POGUID", "SPO12345");
+    xmlWriter.writeTextElement("POGUID", ui->leShipToDealer_PO->text());
     xmlWriter.writeEndElement();// End Contexts
     xmlWriter.writeStartElement("OrderInstructions");
     xmlWriter.writeTextElement("Environment", "Internal");
@@ -569,14 +566,14 @@ void SetupTab::WriteXml()
     xmlWriter.writeTextElement("ContactName", "");
     xmlWriter.writeTextElement("ContactPhone", "");
     xmlWriter.writeTextElement("PrevPOGUID", "");
-    xmlWriter.writeTextElement("ContactEmail", "");
+    xmlWriter.writeTextElement("ContactEmail", ui->leSalespersonEmail->text());
     xmlWriter.writeTextElement("DeliveryNotes", "");
     xmlWriter.writeStartElement("OrderComments");
     xmlWriter.writeTextElement("OrderComment", PLACEHOLDER);
     xmlWriter.writeEndElement();//End OrderComments
     xmlWriter.writeEndElement();//End OrderInstructions
     xmlWriter.writeStartElement("MetaInfo");
-    xmlWriter.writeTextElement("PONumber", PLACEHOLDER);
+    xmlWriter.writeTextElement("PONumber", ui->leShipToDealer_PO->text());
     xmlWriter.writeTextElement("EndCustPO", "");
     xmlWriter.writeTextElement("DealerSONumber", "");
     xmlWriter.writeStartElement("POCreated");
@@ -609,13 +606,13 @@ void SetupTab::WriteXml()
     xmlWriter.writeEndElement();//End GPS
     xmlWriter.writeEndElement();//End SoldTo
     xmlWriter.writeStartElement("ShipTo");
-    xmlWriter.writeTextElement("Name", PLACEHOLDER);
-    xmlWriter.writeTextElement("Address1", PLACEHOLDER);
-    xmlWriter.writeTextElement("Address2", PLACEHOLDER);
+    xmlWriter.writeTextElement("Name", ui->leShipToAddress_Name->text());
+    xmlWriter.writeTextElement("Address1", ui->leShipToAddress_Address1->text());
+    xmlWriter.writeTextElement("Address2", ui->leShipToAddress_Address2->text());
     xmlWriter.writeTextElement("Address3", PLACEHOLDER);
-    xmlWriter.writeTextElement("City", PLACEHOLDER);
-    xmlWriter.writeTextElement("State", PLACEHOLDER);
-    xmlWriter.writeTextElement("Zip", PLACEHOLDER);
+    xmlWriter.writeTextElement("City", ui->leShipToAddress_City->text());
+    xmlWriter.writeTextElement("State", ui->leShipToAddress_State->text());
+    xmlWriter.writeTextElement("Zip", ui->leShipToAddress_Zip->text());
     xmlWriter.writeTextElement("CountryCode", PLACEHOLDER);
     xmlWriter.writeStartElement("GPS");
     xmlWriter.writeTextElement("Lat", "0.0");

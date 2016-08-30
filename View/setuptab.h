@@ -28,7 +28,7 @@ public:
 
     void ReadActiveDirectory();
 public slots:
-    void SaveAddressXML();
+   // void SaveAddressXML();
 
 private slots:
     //void on_btnAddShipToAddress_clicked();
@@ -53,6 +53,7 @@ private:
     void WriteXml();
     void resetForm();
     QString mapRoutingComboBoxCodes(QString &routingCode);
+    void PostXMLToService();
 };
 
 #endif // SETUPTAB_H
