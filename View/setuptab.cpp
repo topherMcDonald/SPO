@@ -690,10 +690,14 @@ void SetupTab::WriteXml()
 void SetupTab::PostXMLToService(QByteArray& xmlData)
 {
     QString PO = ui->leShipToDealer_PO->text();
-    //qDebug() << "Xml submit data!!!!" << xmlData << PO;
-
-    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-    manager->post(QNetworkRequest(QUrl("http://spi-rabbit2:8080/sporders/new/"+PO)), xmlData);
-    delete manager;
+    QEventLoop eventLoop;
+    QNetworkAccessManager mgr;
+    QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
+    //QString textSearch = ui->leEnterSearchCriteria->text();
+    QNetworkRequest request(QUrl("http://spi-rabbit2:8080/sporders/new/"+PO));
+    request.setRawHeader("Content-Type", "application/xml");
+    //QNetworkReply *reply = mgr.post(request, xmlData);
+    mgr.post(request, xmlData);
+    eventLoop.exec();
 }
 
