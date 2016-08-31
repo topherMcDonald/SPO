@@ -103,26 +103,16 @@ SetupTab::SetupTab(QWidget *parent) :
  ************************************************************************/
 void SetupTab::ShowXmlOnScreen()
 {
-    QFile file(basefilename);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        return;
-    while (!file.atEnd())
-    {
-        QByteArray line = file.readLine();
-        qDebug() << "inside the print xml loop" << line;
-    }
+//    QFile file(basefilename);
+//    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+//        return;
+//    while (!file.atEnd())
+//    {
+//        QByteArray line = file.readLine();
+//        qDebug() << "inside the print xml loop" << line;
+//    }
 }
-/************************************************************************
- *
- *  SaveAddressXML()
- *
- ************************************************************************/
-void SetupTab::PostXMLToService()
-{
-    QNetworkAccessManager *nam;
-    nam = new QNetworkAccessManager(this);
 
-}
 /************************************************************************
  *
  *  GetAddressXML()
@@ -462,6 +452,7 @@ void SetupTab::OverLimitDialog()
     overCostLimitDialog *dialog = new overCostLimitDialog;
     dialog->exec();
 }
+
 /* ========================================================================
  *
  * void on_btnSubmitOrder_clicked()
@@ -475,6 +466,7 @@ void SetupTab::on_btnSubmitOrder_clicked()
     output = ui->leShipToDealer_PO->text();
     ui->lblOrderSubmitTotal->setText(output + plusText);
     WriteXml();
+
     resetForm();
 
 }
@@ -537,16 +529,14 @@ void SetupTab::WriteXml()
 
     auto path = res_dir.filePath("XmlForMacPac.xml");
     QFile res_file(path);
-
-    //  basefilename = QFileDialog::getSaveFileName(this,tr("Save Xml"), ".",tr("Xml files (*.xml)"));
-
+    QFile xmlToService_file(path);
 
     if(!res_file.open(QIODevice::WriteOnly))
     {
         //TODO Send Error message
-        //qDebug() << FILEERROR_MSG;
+        qDebug() << FILEERROR_MSG;
     }
-    res_file.open(QIODevice::WriteOnly);
+    res_file.open(QIODevice::ReadWrite);
     QXmlStreamWriter xmlWriter(&res_file);
     xmlWriter.setAutoFormatting(true);
     //PLACEHOLDER denotes where form data might go
@@ -685,7 +675,25 @@ void SetupTab::WriteXml()
     }
     xmlWriter.writeEndElement();//End OrderLines
     xmlWriter.writeEndElement();//End Communication
-    // ShowXmlOnScreen();
+    res_file.flush();
+    xmlToService_file.open(QIODevice::ReadOnly);
+    QByteArray xmlToServiceAry = xmlToService_file.readAll();
+    res_file.close();
+    xmlToService_file.close();
+    PostXMLToService(xmlToServiceAry);
+}
+/************************************************************************
+ *
+ *  PostXMLToService()
+ *
+ ************************************************************************/
+void SetupTab::PostXMLToService(QByteArray& xmlData)
+{
+    QString PO = ui->leShipToDealer_PO->text();
+    //qDebug() << "Xml submit data!!!!" << xmlData << PO;
 
+    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+    manager->post(QNetworkRequest(QUrl("http://spi-rabbit2:8080/sporders/new/"+PO)), xmlData);
+    delete manager;
 }
 

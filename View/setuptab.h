@@ -53,7 +53,7 @@ private:
     void WriteXml();
     void resetForm();
     QString mapRoutingComboBoxCodes(QString &routingCode);
-    void PostXMLToService();
+    void PostXMLToService(QByteArray &xmlData);
 };
 
 #endif // SETUPTAB_H
