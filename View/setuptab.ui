@@ -37,7 +37,7 @@
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>155</height>
+       <height>170</height>
       </size>
      </property>
      <property name="title">
@@ -58,20 +58,6 @@
         </item>
        </layout>
       </item>
-      <item row="2" column="1">
-       <layout class="QHBoxLayout" name="hloShipToAddress_Zip">
-        <item>
-         <widget class="QLabel" name="lblShipToAddress_Zip">
-          <property name="text">
-           <string>Zip</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leShipToAddress_Zip"/>
-        </item>
-       </layout>
-      </item>
       <item row="0" column="0">
        <layout class="QHBoxLayout" name="hloShipToAddress_Name">
         <item>
@@ -86,7 +72,7 @@
         </item>
        </layout>
       </item>
-      <item row="0" column="1">
+      <item row="0" column="2">
        <layout class="QHBoxLayout" name="hloShipToAddress_City">
         <item>
          <widget class="QLabel" name="lblShipToAddress_City">
@@ -100,17 +86,51 @@
         </item>
        </layout>
       </item>
-      <item row="1" column="1">
+      <item row="1" column="2">
        <layout class="QHBoxLayout" name="hloShipToAddress_State">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMaximumSize</enum>
+        </property>
         <item>
          <widget class="QLabel" name="lblShipToAddress_State">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="text">
            <string>State</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="leShipToAddress_State"/>
+         <widget class="QLineEdit" name="leShipToAddress_State">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>2</number>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -125,6 +145,87 @@
         </item>
         <item>
          <widget class="QLineEdit" name="leShipToAddress_Address1"/>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="2">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="lblShipToAddress_Country">
+          <property name="text">
+           <string>Country</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToAddress_Country">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>3</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="3">
+       <layout class="QHBoxLayout" name="hloShipToAddress_Zip">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMaximumSize</enum>
+        </property>
+        <item>
+         <widget class="QLabel" name="lblShipToAddress_Zip">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Zip</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToAddress_Zip">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>5</number>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="dragEnabled">
+           <bool>true</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -177,7 +278,16 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="leShipToDealer_PO"/>
+         <widget class="QLineEdit" name="leShipToDealer_PO">
+          <property name="font">
+           <font>
+            <italic>true</italic>
+           </font>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -731,13 +841,28 @@
   </layout>
  </widget>
  <tabstops>
+  <tabstop>leSalespersonEmail</tabstop>
+  <tabstop>leShipToDealer_ID</tabstop>
   <tabstop>leShipToDealer_PO</tabstop>
+  <tabstop>cbxShipToDealer_Routing</tabstop>
+  <tabstop>dateEdit</tabstop>
   <tabstop>leShipToAddress_Name</tabstop>
-  <tabstop>leShipToAddress_City</tabstop>
   <tabstop>leShipToAddress_Address1</tabstop>
-  <tabstop>leShipToAddress_State</tabstop>
   <tabstop>leShipToAddress_Address2</tabstop>
+  <tabstop>leShipToAddress_City</tabstop>
+  <tabstop>leShipToAddress_State</tabstop>
   <tabstop>leShipToAddress_Zip</tabstop>
+  <tabstop>leShipToAddress_Country</tabstop>
+  <tabstop>btnAddLineItem_GetMacPacPart</tabstop>
+  <tabstop>leAddLineItem_PartNumber</tabstop>
+  <tabstop>leAddlineItem_Description</tabstop>
+  <tabstop>leAddLineItem_Quantity</tabstop>
+  <tabstop>leAddLineItem_Value</tabstop>
+  <tabstop>btnAddLineItem_AddLine</tabstop>
+  <tabstop>tblOrderLinesWidget</tabstop>
+  <tabstop>leOrderTotal</tabstop>
+  <tabstop>btnRecapAndSubmit_Clear</tabstop>
+  <tabstop>btnSubmitOrder</tabstop>
  </tabstops>
  <resources>
   <include location="../sporesource.qrc"/>

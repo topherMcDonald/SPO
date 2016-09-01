@@ -207,10 +207,10 @@ void SetupTab::XmlAddressSearchRequestParsing(QXmlStreamReader &XmlFileReader)
             ui->leShipToAddress_Name->setText(dname); // = dname;
             ui->leShipToAddress_Address1->setText(address1); //= address1;
             ui->leShipToAddress_Address2->setText(address2); //= address2;
-            //ui->leShipToAddress_Address3->setText(address3); //= address3;
             ui->leShipToAddress_City->setText(city); //= city;
             ui->leShipToAddress_State->setText(state); //= state;
             ui->leShipToAddress_Zip->setText(zip); //= zip;
+            ui->leShipToAddress_Country->setText(countryCode); //   County line edit field
 
         }
     }
@@ -516,6 +516,11 @@ QString SetupTab::mapRoutingComboBoxCodes(QString &routingCode)
 void SetupTab::WriteXml()
 {
     QString shipViaCode;
+    QDate orderDate = QDate::currentDate();
+    QString orderDay = QString::number(orderDate.day());
+    QString orderMonth = QString::number(orderDate.month());
+    QString orderYear = QString::number(orderDate.year());
+
     QDate dateToShip = ui->dateEdit->date();
     QString shipDay = QString::number(dateToShip.day());
     QString shipMonth = QString::number(dateToShip.month());
@@ -567,9 +572,9 @@ void SetupTab::WriteXml()
     xmlWriter.writeTextElement("EndCustPO", "");
     xmlWriter.writeTextElement("DealerSONumber", "");
     xmlWriter.writeStartElement("POCreated");
-    xmlWriter.writeTextElement("Year", "");
-    xmlWriter.writeTextElement("Month", "");
-    xmlWriter.writeTextElement("Day", "");
+    xmlWriter.writeTextElement("Year", orderYear);
+    xmlWriter.writeTextElement("Month", orderMonth);
+    xmlWriter.writeTextElement("Day", orderDay);
     xmlWriter.writeEndElement();//End POCreated
     xmlWriter.writeStartElement("ProjectInfo");
     xmlWriter.writeTextElement("ProjectName", "");
@@ -603,7 +608,7 @@ void SetupTab::WriteXml()
     xmlWriter.writeTextElement("City", ui->leShipToAddress_City->text());
     xmlWriter.writeTextElement("State", ui->leShipToAddress_State->text());
     xmlWriter.writeTextElement("Zip", ui->leShipToAddress_Zip->text());
-    xmlWriter.writeTextElement("CountryCode", PLACEHOLDER);
+    xmlWriter.writeTextElement("CountryCode", ui->leShipToAddress_Country->text());
     xmlWriter.writeStartElement("GPS");
     xmlWriter.writeTextElement("Lat", "0.0");
     xmlWriter.writeTextElement("Lon", "0.0");
@@ -629,6 +634,7 @@ void SetupTab::WriteXml()
     QVariant partQty;
     QMap<QString, QString> partMap;
     QTableWidgetItem* tmpItem;
+    int lineOrderNumber = 0;
     for (int row = 0; row < this->ui->tblOrderLinesWidget->rowCount(); row++) {
         for (int col = 0; col <= this->ui->tblOrderLinesWidget->columnCount(); col++){
             tmpItem = this->ui->tblOrderLinesWidget->item(row, col);
@@ -649,13 +655,15 @@ void SetupTab::WriteXml()
                 partMap["PartQty"] = partQty.toString();
             }
         }
+        lineOrderNumber++; //   Count for </Number> node
+
         xmlWriter.writeStartElement("OrderLine");
         xmlWriter.writeStartElement("LineInstructions");
         xmlWriter.writeTextElement("LineInstruction", "");
         xmlWriter.writeEndElement();//End LineInstructions
         xmlWriter.writeStartElement("POInfo");
         xmlWriter.writeTextElement("Status", "");
-        xmlWriter.writeTextElement("Number", "");
+        xmlWriter.writeTextElement("Number", QString::number(lineOrderNumber));
         xmlWriter.writeTextElement("Qty", partMap["PartQty"]);
         xmlWriter.writeTextElement("QtyUOM", "");
         xmlWriter.writeTextElement("Price", partMap["PartCost"]);
@@ -680,7 +688,7 @@ void SetupTab::WriteXml()
     QByteArray xmlToServiceAry = xmlToService_file.readAll();
     res_file.close();
     xmlToService_file.close();
-    PostXMLToService(xmlToServiceAry);
+   // PostXMLToService(xmlToServiceAry);
 }
 /************************************************************************
  *
