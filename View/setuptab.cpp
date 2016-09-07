@@ -339,6 +339,7 @@ void SetupTab::resetForm()
     ui->leShipToDealer_ID->setText("");
     ui->leShipToDealer_ID->setText("");
     ui->leOrderTotal->setText("");
+    ui->leShipToAddress_ContactNumber->setText("");
     QString po = "";
     Utils *u;
     u->createPO(po);
@@ -559,7 +560,7 @@ void SetupTab::WriteXml()
     xmlWriter.writeTextElement("ShipVia", shipViaCode);
     xmlWriter.writeTextElement("ShipViaAcctNum", "");
     xmlWriter.writeTextElement("ContactName", "");
-    xmlWriter.writeTextElement("ContactPhone", "");
+    xmlWriter.writeTextElement("ContactPhone", ui->leShipToAddress_ContactNumber->text());// ui contact phone goes here.
     xmlWriter.writeTextElement("PrevPOGUID", "");
     xmlWriter.writeTextElement("ContactEmail", ui->leSalespersonEmail->text());
     xmlWriter.writeTextElement("DeliveryNotes", "");
@@ -688,7 +689,7 @@ void SetupTab::WriteXml()
     QByteArray xmlToServiceAry = xmlToService_file.readAll();
     res_file.close();
     xmlToService_file.close();
-   // PostXMLToService(xmlToServiceAry);
+    //PostXMLToService(xmlToServiceAry);
 }
 /************************************************************************
  *

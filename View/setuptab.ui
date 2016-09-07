@@ -656,7 +656,7 @@
          <widget class="QLabel" name="lblShipToAddress_City">
           <property name="minimumSize">
            <size>
-            <width>35</width>
+            <width>55</width>
             <height>0</height>
            </size>
           </property>
@@ -669,6 +669,9 @@
           <property name="text">
            <string>City</string>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
          </widget>
         </item>
         <item>
@@ -678,6 +681,53 @@
             <width>300</width>
             <height>16777215</height>
            </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblShipToAddress_State">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>35</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>20</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>State</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToAddress_State">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>2</number>
           </property>
          </widget>
         </item>
@@ -705,90 +755,34 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QLabel" name="lblShipToAddress_Zip">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>35</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>26</width>
-            <height>16777215</height>
-           </size>
-          </property>
+         <widget class="QLabel" name="lblShipToAddress_ContactNumber">
           <property name="text">
-           <string> Zip</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           <string>Contact Number</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="leShipToAddress_Zip">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+         <widget class="QLineEdit" name="leShipToAddress_ContactNumber">
+          <property name="font">
+           <font>
+            <italic>true</italic>
+            <stylestrategy>PreferAntialias</stylestrategy>
+           </font>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>16777215</height>
-           </size>
+          <property name="inputMethodHints">
+           <set>Qt::ImhNone</set>
           </property>
           <property name="maxLength">
-           <number>5</number>
+           <number>10</number>
           </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          <property name="echoMode">
+           <enum>QLineEdit::Normal</enum>
           </property>
-          <property name="dragEnabled">
-           <bool>true</bool>
+          <property name="placeholderText">
+           <string>xxx5551234</string>
           </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblShipToAddress_Country">
-          <property name="maximumSize">
-           <size>
-            <width>100</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Country</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leShipToAddress_Country">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="maxLength">
-           <number>3</number>
+          <property name="cursorMoveStyle">
+           <enum>Qt::LogicalMoveStyle</enum>
           </property>
          </widget>
         </item>
@@ -865,7 +859,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QLabel" name="lblShipToAddress_State">
+         <widget class="QLabel" name="lblShipToAddress_Zip">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -874,26 +868,26 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>35</width>
+            <width>55</width>
             <height>0</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>20</width>
+            <width>26</width>
             <height>16777215</height>
            </size>
           </property>
           <property name="text">
-           <string>State</string>
+           <string> Zip</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="leShipToAddress_State">
+         <widget class="QLineEdit" name="leShipToAddress_Zip">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -907,18 +901,81 @@
            </size>
           </property>
           <property name="maxLength">
-           <number>2</number>
+           <number>5</number>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="dragEnabled">
+           <bool>true</bool>
           </property>
          </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblShipToAddress_Country">
+          <property name="minimumSize">
+           <size>
+            <width>55</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Country</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToAddress_Country">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>3</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_7">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <spacer name="horizontalSpacer_4">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>70</width>
+            <width>125</width>
             <height>20</height>
            </size>
           </property>
@@ -940,6 +997,11 @@
   <tabstop>leShipToAddress_Name</tabstop>
   <tabstop>leShipToAddress_Address1</tabstop>
   <tabstop>leShipToAddress_Address2</tabstop>
+  <tabstop>leShipToAddress_City</tabstop>
+  <tabstop>leShipToAddress_State</tabstop>
+  <tabstop>leShipToAddress_Zip</tabstop>
+  <tabstop>leShipToAddress_Country</tabstop>
+  <tabstop>leShipToAddress_ContactNumber</tabstop>
   <tabstop>btnAddLineItem_GetMacPacPart</tabstop>
   <tabstop>leAddLineItem_PartNumber</tabstop>
   <tabstop>leAddlineItem_Description</tabstop>
