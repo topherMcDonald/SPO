@@ -453,7 +453,33 @@ void SetupTab::OverLimitDialog()
     overCostLimitDialog *dialog = new overCostLimitDialog;
     dialog->exec();
 }
+/* ========================================================================
+ *
+ * void CheckDealerIsAdded()
+ *
+ * =======================================================================*/
+bool SetupTab::CheckRequiredDataAdded()
+{
+    bool boolLogicValue = true;
+    QString dealerName = ui->leShipToAddress_Name->text();
+    QString address = ui->leShipToAddress_Address1->text();
+    QString city = ui->leShipToAddress_City->text();
+    QString country = ui->leShipToAddress_Country->text();
 
+    if(dealerName == "" || address == "" || city == "" || country == "")
+    {
+        MissingDataDialog *mdDialog = new MissingDataDialog;
+        mdDialog->show();
+        boolLogicValue = false;
+    }
+    if(ui->tblOrderLinesWidget->rowCount() == 0)
+    {
+        MissingDataDialog *mdDialog = new MissingDataDialog;
+        mdDialog->show();
+        boolLogicValue = false;
+    }
+    return boolLogicValue;
+}
 /* ========================================================================
  *
  * void on_btnSubmitOrder_clicked()
@@ -463,13 +489,13 @@ void SetupTab::on_btnSubmitOrder_clicked()
 {
     QString output;
     QString plusText = " small parts order has been submitted.";
-
-    output = ui->leShipToDealer_PO->text();
-    ui->lblOrderSubmitTotal->setText(output + plusText);
-    WriteXml();
-
-    resetForm();
-
+    if(CheckRequiredDataAdded() == true)
+    {
+        output = ui->leShipToDealer_PO->text();
+        ui->lblOrderSubmitTotal->setText(output + plusText);
+        WriteXml();
+        resetForm();
+    }
 }
 /* ========================================================================
  *
@@ -689,7 +715,7 @@ void SetupTab::WriteXml()
     QByteArray xmlToServiceAry = xmlToService_file.readAll();
     res_file.close();
     xmlToService_file.close();
-    //PostXMLToService(xmlToServiceAry);
+    PostXMLToService(xmlToServiceAry);
 }
 /************************************************************************
  *

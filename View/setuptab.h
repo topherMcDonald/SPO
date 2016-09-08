@@ -54,6 +54,7 @@ private:
     void resetForm();
     QString mapRoutingComboBoxCodes(QString &routingCode);
     void PostXMLToService(QByteArray &xmlData);
+    bool CheckRequiredDataAdded();
 };
 
 #endif // SETUPTAB_H

@@ -590,7 +590,17 @@
        </widget>
       </item>
       <item row="0" column="7">
-       <widget class="QLineEdit" name="leAddLineItem_Quantity"/>
+       <widget class="QLineEdit" name="leAddLineItem_Quantity">
+        <property name="toolTip">
+         <string>Required field.</string>
+        </property>
+        <property name="toolTipDuration">
+         <number>-1</number>
+        </property>
+        <property name="statusTip">
+         <string>Required Field</string>
+        </property>
+       </widget>
       </item>
       <item row="0" column="5">
        <widget class="QLineEdit" name="leAddLineItem_PartNumber">
