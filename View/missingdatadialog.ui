@@ -47,7 +47,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Missing data. Please check to make sure all required data has been filled in.</string>
+    <string>Missing data. Please check to make sure all required data has been entered.</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>

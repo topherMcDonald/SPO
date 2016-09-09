@@ -466,13 +466,7 @@ bool SetupTab::CheckRequiredDataAdded()
     QString city = ui->leShipToAddress_City->text();
     QString country = ui->leShipToAddress_Country->text();
 
-    if(dealerName == "" || address == "" || city == "" || country == "")
-    {
-        MissingDataDialog *mdDialog = new MissingDataDialog;
-        mdDialog->show();
-        boolLogicValue = false;
-    }
-    if(ui->tblOrderLinesWidget->rowCount() == 0)
+    if((dealerName == "") || (address == "") || (city == "") || (country == "") || (ui->tblOrderLinesWidget->rowCount() == 0))
     {
         MissingDataDialog *mdDialog = new MissingDataDialog;
         mdDialog->show();
