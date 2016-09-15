@@ -73,6 +73,7 @@ void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
             {
                 description = XmlFile.readElementText();
                 ui->tblDialogSearchResults->setItem(row,1, new QTableWidgetItem (description));
+                ui->tblDialogSearchResults->horizontalHeader()->setSectionResizeMode(1,QHeaderView::ResizeToContents);
             }
             else if(name == "Cost")
             {
