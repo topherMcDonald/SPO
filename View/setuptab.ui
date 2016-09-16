@@ -539,8 +539,20 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>347</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
-         <string>  Add Line</string>
+         <string>  Add Line To Small Parts Order</string>
         </property>
         <property name="icon">
          <iconset resource="../sporesource.qrc">
