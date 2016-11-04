@@ -27,6 +27,7 @@ public:
     void ShowXmlOnScreen();
 
     void ReadActiveDirectory();
+    void OutOfStockDialog();
 public slots:
    // void SaveAddressXML();
 

@@ -14,6 +14,7 @@
 
 QList<QTableWidgetItem *>  selectedValue;
 QMap<QString, QString> partMap;
+QVariant onHandParts;
 
 SearchDialog::SearchDialog(QWidget *parent) :
     QDialog(parent),
@@ -52,7 +53,8 @@ void SearchDialog::startSearchRequest()
 
 void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
 {
-    QString partName,  description, cost;
+    QString partName,  description, cost, onHand;
+
     //Removes all rows from table (fjd 8.5.16 1:05 PM)
     ui->tblDialogSearchResults->setRowCount(0);
     int row = ui->tblDialogSearchResults->rowCount();
@@ -68,6 +70,7 @@ void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
                 ui->tblDialogSearchResults->insertRow(row);
                 partName = XmlFile.readElementText();
                 ui->tblDialogSearchResults->setItem(row,0, new QTableWidgetItem (partName));
+                ui->tblDialogSearchResults->horizontalHeader()->setSectionResizeMode(0,QHeaderView::ResizeToContents);
             }
             else if(name == "Description")
             {
@@ -79,7 +82,16 @@ void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
             {
                 cost = XmlFile.readElementText();
                 ui->tblDialogSearchResults->setItem(row,2, new QTableWidgetItem (cost));
-                row = ui->tblDialogSearchResults->rowCount();
+                ui->tblDialogSearchResults->horizontalHeader()->setSectionResizeMode(2,QHeaderView::ResizeToContents);
+               // row = ui->tblDialogSearchResults->rowCount();
+            }
+           else if(name == "OnHandQtyForMfg")
+            {
+                onHand = XmlFile.readElementText();
+                ui->tblDialogSearchResults->setItem(row,3, new QTableWidgetItem (onHand));
+                ui->tblDialogSearchResults->horizontalHeader()->setSectionResizeMode(3,QHeaderView::ResizeToContents);
+                //  row = ui->tblDialogSearchResults->rowCount();
+                qDebug() << "onHand quantity" << onHand;
             }
         }
     }
@@ -101,6 +113,7 @@ QMap<QString, QString> SearchDialog::getMap() {
     QVariant partValue;//name of part
     QVariant partDesc;//description of part
     QVariant partCost;//cost of part
+    QVariant partOnHand;//number of parts in stock
 
     foreach (rowValue, selectedValue) {
         if (rowValue->column() == 0) {
@@ -112,10 +125,14 @@ QMap<QString, QString> SearchDialog::getMap() {
         else if (rowValue->column() == 2) {
             partCost = rowValue->text();
         }
+        else if (rowValue->column() == 3) {
+            partOnHand = rowValue->text();
+        }
     }
     partMap["PartName"] = partValue.toString();
     partMap["PartDesc"] = partDesc.toString();
     partMap["PartCost"] = partCost.toString();
+    partMap["PartOnHand"] = partOnHand.toString();
     return partMap;
 }
 

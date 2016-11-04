@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>650</width>
+    <width>675</width>
     <height>650</height>
    </rect>
   </property>
@@ -81,10 +81,13 @@
            <bool>false</bool>
           </property>
           <property name="editTriggers">
-           <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="dragDropOverwriteMode">
+           <bool>false</bool>
           </property>
           <property name="dragDropMode">
-           <enum>QAbstractItemView::DragDrop</enum>
+           <enum>QAbstractItemView::NoDragDrop</enum>
           </property>
           <property name="alternatingRowColors">
            <bool>true</bool>
@@ -129,6 +132,11 @@
           <column>
            <property name="text">
             <string>Cost</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>On Hand</string>
            </property>
           </column>
          </widget>

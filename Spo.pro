@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     startup.cpp \
     View/searchdialog.cpp \
     View/missingdatadialog.cpp \
-    View/overcostlimitdialog.cpp
+    View/overcostlimitdialog.cpp \
+    View/outofstock.cpp
 
 HEADERS  += View/mainview.h \
     View/setuptab.h \
@@ -32,14 +33,16 @@ HEADERS  += View/mainview.h \
     startup.h \
     View/searchdialog.h \
     View/missingdatadialog.h \
-    View/overcostlimitdialog.h
+    View/overcostlimitdialog.h \
+    View/outofstock.h
 
 FORMS    += View/mainview.ui \
     View/setuptab.ui \
     View/searchdialog.ui \
     View/missingdatadialog.ui \
     View/overcostlimitdialog.ui \
-    View/ordersubmitteddialog.ui
+    View/ordersubmitteddialog.ui \
+    View/outofstock.ui
 
 RESOURCES += \
     sporesource.qrc

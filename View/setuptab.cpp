@@ -7,6 +7,7 @@
 #include "View/searchdialog.h"
 #include "View/missingdatadialog.h"
 #include "View/overcostlimitdialog.h"
+#include "View/outofstock.h"
 #include <string>
 #include <sstream>
 #include <QDir>
@@ -72,6 +73,8 @@ SetupTab::SetupTab(QWidget *parent) :
     GetUserName(Username, &nULen);
     QString adUserName = QString::fromWCharArray(Username);
     ui->leSalespersonEmail->setText(adUserName+"@DraperInc.com");
+    //  Hidden line edit on form to hold "on hand" inventory value.
+    ui->leOnHandStock->setVisible(0);
 }
 /************************************************************************
  *
@@ -251,6 +254,7 @@ void SetupTab::AddLineItemFromDialog(QString & item)
 void SetupTab::on_btnAddLineItem_GetMacPacPart_clicked()
 {
     SearchDialog *dialog = new SearchDialog;
+
     if(dialog->exec())
     {
         QMap<QString, QString> m = dialog->getMap();
@@ -265,6 +269,23 @@ void SetupTab::on_btnAddLineItem_GetMacPacPart_clicked()
         ui->leAddLineItem_Value->setText(partCost);
         //Default the quantity to 1 for users
         ui->leAddLineItem_Quantity->setText("1");
+
+        QString partOnHand = m.value("PartOnHand");
+        ui->leOnHandStock->setText(partOnHand);
+
+        if(partOnHand < 0)
+        {
+            //this->ui->tblOrderLinesWidget->removeRow(i);
+            OverLimitDialog();
+            qDebug() << "NOOOOOOOOOOOOOOOOOOOOOOOOOOO" << partOnHand;
+            return;
+
+
+        }
+        else
+        {
+            qDebug() << "DO we have enough" << partOnHand;
+        }
     }
 }
 /* ========================================================================
@@ -340,6 +361,9 @@ void SetupTab::resetForm()
     ui->leShipToDealer_ID->setText("");
     ui->leOrderTotal->setText("");
     ui->leShipToAddress_ContactNumber->setText("");
+    resetFields();
+    QDate shipDate = QDate::currentDate();
+    ui->dateEdit->setDate(shipDate.addDays(1));
     QString po = "";
     Utils *u;
     u->createPO(po);
@@ -357,12 +381,14 @@ void SetupTab::on_btnAddLineItem_AddLine_clicked()
     QString partCost;
     QString partQty;
     QString extCost;
+    QString onHand;
     float xCost;
 
     partName = ui->leAddLineItem_PartNumber->text();
     partDesc = ui->leAddlineItem_Description->text();
     partCost = ui->leAddLineItem_Value->text();
     partQty = ui->leAddLineItem_Quantity->text();
+    onHand = ui->leOnHandStock->text();
     //START: Extended Cost Mod - FJD - 8.9.2016
     if(partCost.toFloat() < 0.01)
     {
@@ -372,6 +398,12 @@ void SetupTab::on_btnAddLineItem_AddLine_clicked()
     xCost = (roundf((partQty.toFloat() * partCost.toFloat()) * 100) / 100);
     extCost.setNum(xCost);
     //END: Extended Cost Mod
+
+    if(partQty > onHand)
+    {
+        OutOfStockDialog();
+        return;
+    }
 
     if(xCost > 100)
     {
@@ -445,6 +477,16 @@ void SetupTab::on_btnRecapAndSubmit_Clear_clicked()
 }
 /* ========================================================================
  *
+ * void OutOfStockDialog()
+ *
+ * =======================================================================*/
+void SetupTab::OutOfStockDialog()
+{
+    outOfStock *dialog = new outOfStock;
+    dialog->exec();
+}
+/* ========================================================================
+ *
  * void OverLimitDialog()
  *
  * =======================================================================*/
@@ -490,6 +532,7 @@ void SetupTab::on_btnSubmitOrder_clicked()
         WriteXml();
         resetForm();
     }
+
 }
 /* ========================================================================
  *
