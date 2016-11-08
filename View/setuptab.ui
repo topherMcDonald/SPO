@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>900</width>
-    <height>725</height>
+    <height>800</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -26,30 +26,7 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="5" column="0">
-    <widget class="QLabel" name="lblOrderSubmitTotal">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="font">
-      <font>
-       <family>Courier New</family>
-       <pointsize>10</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-       <underline>false</underline>
-       <kerning>false</kerning>
-      </font>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
+   <item row="2" column="0">
     <widget class="QGroupBox" name="gbAddLineTtem">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -61,37 +38,54 @@
       <string>Add Line Item</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="3" column="6">
-       <widget class="QLabel" name="lblAddLineItem_Value">
+      <item row="0" column="6">
+       <widget class="QLabel" name="lblAddLineItem_Quantity">
         <property name="text">
-         <string>Value</string>
+         <string>Quantity</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="7">
-       <widget class="QLineEdit" name="leAddLineItem_Value">
+      <item row="0" column="5">
+       <widget class="QLineEdit" name="leAddLineItem_PartNumber">
         <property name="readOnly">
          <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="3" column="1" colspan="5">
-       <widget class="QLineEdit" name="leAddlineItem_Description">
-        <property name="layoutDirection">
-         <enum>Qt::RightToLeft</enum>
+      <item row="0" column="7">
+       <widget class="QLineEdit" name="leAddLineItem_Quantity">
+        <property name="toolTip">
+         <string>Required field.</string>
         </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        <property name="toolTipDuration">
+         <number>-1</number>
         </property>
-        <property name="readOnly">
-         <bool>true</bool>
+        <property name="statusTip">
+         <string>Required Field</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="lblAddLineItem_Description">
+      <item row="0" column="4">
+       <widget class="QLabel" name="lblAddLineItem_PartNumber">
         <property name="text">
-         <string>Description</string>
+         <string>Part Number</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="btnAddLineItem_GetMacPacPart">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>  Get MacPac Part</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../sporesource.qrc">
+          <normaloff>:/root/qtAppIcons/forward.png</normaloff>:/root/qtAppIcons/forward.png</iconset>
         </property>
        </widget>
       </item>
@@ -124,61 +118,44 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
-       <widget class="QPushButton" name="btnAddLineItem_GetMacPacPart">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+      <item row="3" column="0">
+       <widget class="QLabel" name="lblAddLineItem_Description">
         <property name="text">
-         <string>  Get MacPac Part</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../sporesource.qrc">
-          <normaloff>:/root/qtAppIcons/forward.png</normaloff>:/root/qtAppIcons/forward.png</iconset>
+         <string>Description</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="4">
-       <widget class="QLabel" name="lblAddLineItem_PartNumber">
-        <property name="text">
-         <string>Part Number</string>
+      <item row="3" column="1" colspan="5">
+       <widget class="QLineEdit" name="leAddlineItem_Description">
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
         </property>
-       </widget>
-      </item>
-      <item row="0" column="7">
-       <widget class="QLineEdit" name="leAddLineItem_Quantity">
-        <property name="toolTip">
-         <string>Required field.</string>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
-        <property name="toolTipDuration">
-         <number>-1</number>
-        </property>
-        <property name="statusTip">
-         <string>Required Field</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="5">
-       <widget class="QLineEdit" name="leAddLineItem_PartNumber">
         <property name="readOnly">
          <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="0" column="6">
-       <widget class="QLabel" name="lblAddLineItem_Quantity">
+      <item row="3" column="7">
+       <widget class="QLineEdit" name="leAddLineItem_Value">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="6">
+       <widget class="QLabel" name="lblAddLineItem_Value">
         <property name="text">
-         <string>Quantity</string>
+         <string>Value</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="4" column="0">
+   <item row="3" column="0">
     <widget class="QGroupBox" name="groupBox_2">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
@@ -190,6 +167,22 @@
       <string>Current Line Items</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_5">
+      <item row="3" column="5">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
       <item row="2" column="2">
        <widget class="QLineEdit" name="leOrderTotal">
         <property name="sizePolicy">
@@ -217,22 +210,6 @@
          <bool>true</bool>
         </property>
        </widget>
-      </item>
-      <item row="3" column="5">
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
       </item>
       <item row="3" column="6">
        <widget class="QPushButton" name="btnSubmitOrder">
@@ -272,7 +249,7 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>100</height>
+          <height>50</height>
          </size>
         </property>
         <property name="maximumSize">
@@ -281,11 +258,21 @@
           <height>300</height>
          </size>
         </property>
+        <property name="font">
+         <font>
+          <pointsize>8</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="lineWidth">
          <number>1</number>
         </property>
         <property name="sizeAdjustPolicy">
-         <enum>QAbstractScrollArea::AdjustToContents</enum>
+         <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+        </property>
+        <property name="autoScrollMargin">
+         <number>16</number>
         </property>
         <property name="editTriggers">
          <set>QAbstractItemView::NoEditTriggers</set>
@@ -298,6 +285,9 @@
         </property>
         <property name="selectionBehavior">
          <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
         </property>
         <property name="rowCount">
          <number>0</number>
@@ -318,11 +308,18 @@
          <number>40</number>
         </attribute>
         <attribute name="verticalHeaderStretchLastSection">
-         <bool>true</bool>
+         <bool>false</bool>
         </attribute>
         <column>
          <property name="text">
           <string>Part Number</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
          </property>
         </column>
         <column>
@@ -410,10 +407,13 @@
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Preferred</enum>
+        </property>
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>40</height>
+          <height>35</height>
          </size>
         </property>
        </spacer>
@@ -431,65 +431,6 @@
     </widget>
    </item>
    <item row="0" column="0">
-    <widget class="QGroupBox" name="groupBox">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>65</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>75</height>
-      </size>
-     </property>
-     <property name="title">
-      <string>Salesperson Info</string>
-     </property>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>391</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="hloSalespersonEmail">
-       <item>
-        <widget class="QLabel" name="lblSalespersonEmail">
-         <property name="text">
-          <string>Email Address</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="leSalespersonEmail">
-         <property name="font">
-          <font>
-           <italic>true</italic>
-          </font>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-         <property name="placeholderText">
-          <string>@draperinc.com</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-   </item>
-   <item row="1" column="0">
     <widget class="QGroupBox" name="gbShipToDealer">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -643,7 +584,37 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="4" column="0">
+    <widget class="QLabel" name="lblOrderSubmitTotal">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <family>Courier New</family>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+       <underline>false</underline>
+       <kerning>false</kerning>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLineEdit" name="leOnHandStock">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
     <widget class="QGroupBox" name="gbShipToAddress">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -661,6 +632,46 @@
       <string>Ship-To Address</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
+      <item row="4" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Contact Name</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item row="4" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLabel" name="lblSalespersonEmail">
+          <property name="text">
+           <string>Salesperson Email</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leSalespersonEmail">
+          <property name="font">
+           <font>
+            <italic>true</italic>
+           </font>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="placeholderText">
+           <string>@draperinc.com</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
       <item row="1" column="1">
        <layout class="QHBoxLayout" name="hloShipToAddress_City">
         <item>
@@ -997,17 +1008,9 @@
      </layout>
     </widget>
    </item>
-   <item row="6" column="0">
-    <widget class="QLineEdit" name="leOnHandStock">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <tabstops>
-  <tabstop>leSalespersonEmail</tabstop>
   <tabstop>leShipToDealer_ID</tabstop>
   <tabstop>leShipToDealer_PO</tabstop>
   <tabstop>cbxShipToDealer_Routing</tabstop>

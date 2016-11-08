@@ -277,15 +277,9 @@ void SetupTab::on_btnAddLineItem_GetMacPacPart_clicked()
         {
             //this->ui->tblOrderLinesWidget->removeRow(i);
             OverLimitDialog();
-            qDebug() << "NOOOOOOOOOOOOOOOOOOOOOOOOOOO" << partOnHand;
             return;
-
-
         }
-        else
-        {
-            qDebug() << "DO we have enough" << partOnHand;
-        }
+
     }
 }
 /* ========================================================================

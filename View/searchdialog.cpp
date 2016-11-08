@@ -91,8 +91,14 @@ void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
                 ui->tblDialogSearchResults->setItem(row,3, new QTableWidgetItem (onHand));
                 ui->tblDialogSearchResults->horizontalHeader()->setSectionResizeMode(3,QHeaderView::ResizeToContents);
                 //  row = ui->tblDialogSearchResults->rowCount();
-                qDebug() << "onHand quantity" << onHand;
             }
+            else if(name == "InventoryInfo")
+             {
+                 //onHand = XmlFile.readElementText();
+                 ui->tblDialogSearchResults->setItem(row,3, new QTableWidgetItem ("0"));
+                 ui->tblDialogSearchResults->horizontalHeader()->setSectionResizeMode(3,QHeaderView::ResizeToContents);
+                 //  row = ui->tblDialogSearchResults->rowCount();
+             }
         }
     }
 }
