@@ -554,7 +554,7 @@
           </item>
           <item>
            <property name="text">
-            <string>Next Day Earlt A.M.</string>
+            <string>Next Day Early A.M.</string>
            </property>
           </item>
           <item>
@@ -635,14 +635,14 @@
       <item row="4" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QLabel" name="label">
+         <widget class="QLabel" name="lblShipToAddress_ContactName">
           <property name="text">
            <string>Contact Name</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QLineEdit" name="leShipToAddress_ContactName"/>
         </item>
        </layout>
       </item>

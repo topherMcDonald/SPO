@@ -214,6 +214,7 @@ void SetupTab::XmlAddressSearchRequestParsing(QXmlStreamReader &XmlFileReader)
             ui->leShipToAddress_State->setText(state); //= state;
             ui->leShipToAddress_Zip->setText(zip); //= zip;
             ui->leShipToAddress_Country->setText(countryCode); //   County line edit field
+            ui->leShipToAddress_ContactNumber->setText(phone); // Contact number returned from macPac
 
         }
     }
@@ -355,6 +356,7 @@ void SetupTab::resetForm()
     ui->leShipToDealer_ID->setText("");
     ui->leOrderTotal->setText("");
     ui->leShipToAddress_ContactNumber->setText("");
+     ui->leShipToAddress_ContactNumber->setText("");
     resetFields();
     QDate shipDate = QDate::currentDate();
     ui->dateEdit->setDate(shipDate.addDays(1));
@@ -501,8 +503,9 @@ bool SetupTab::CheckRequiredDataAdded()
     QString address = ui->leShipToAddress_Address1->text();
     QString city = ui->leShipToAddress_City->text();
     QString country = ui->leShipToAddress_Country->text();
+    QString contactPhone = ui->leShipToAddress_ContactNumber->text();
 
-    if((dealerName == "") || (address == "") || (city == "") || (country == "") || (ui->tblOrderLinesWidget->rowCount() == 0))
+    if((dealerName == "") || (address == "") || (city == "") || (country == "") || (ui->tblOrderLinesWidget->rowCount() == 0) || (contactPhone == ""))
     {
         MissingDataDialog *mdDialog = new MissingDataDialog;
         mdDialog->show();
@@ -616,7 +619,7 @@ void SetupTab::WriteXml()
     xmlWriter.writeTextElement("DiscountCode", "");
     xmlWriter.writeTextElement("ShipVia", shipViaCode);
     xmlWriter.writeTextElement("ShipViaAcctNum", "");
-    xmlWriter.writeTextElement("ContactName", "");
+    xmlWriter.writeTextElement("ContactName", ui->leShipToAddress_ContactName->text());
     xmlWriter.writeTextElement("ContactPhone", ui->leShipToAddress_ContactNumber->text());// ui contact phone goes here.
     xmlWriter.writeTextElement("PrevPOGUID", "");
     xmlWriter.writeTextElement("ContactEmail", ui->leSalespersonEmail->text());
