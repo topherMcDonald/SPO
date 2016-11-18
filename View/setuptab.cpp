@@ -378,6 +378,8 @@ void SetupTab::on_btnAddLineItem_AddLine_clicked()
     QString partQty;
     QString extCost;
     QString onHand;
+    int partQtyInt;
+    int onHandInt;
     float xCost;
 
     partName = ui->leAddLineItem_PartNumber->text();
@@ -394,8 +396,11 @@ void SetupTab::on_btnAddLineItem_AddLine_clicked()
     xCost = (roundf((partQty.toFloat() * partCost.toFloat()) * 100) / 100);
     extCost.setNum(xCost);
     //END: Extended Cost Mod
+    //  Convert string to int.
+    partQtyInt = partQty.toInt();
+    onHandInt = onHand.toInt();
 
-    if(partQty > onHand)
+    if(partQtyInt > onHandInt)
     {
         OutOfStockDialog();
         return;
