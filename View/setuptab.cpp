@@ -324,6 +324,7 @@ void SetupTab::resetFields()
     ui->leAddlineItem_Description->setText("");
     ui->leAddLineItem_Value->setText("");
     ui->leAddLineItem_Quantity->setText("");
+    ui->leShipToAddress_ContactName->setText("");
 }
 /* ========================================================================
  *
@@ -356,7 +357,7 @@ void SetupTab::resetForm()
     ui->leShipToDealer_ID->setText("");
     ui->leOrderTotal->setText("");
     ui->leShipToAddress_ContactNumber->setText("");
-     ui->leShipToAddress_ContactNumber->setText("");
+    ui->leShipToAddress_ContactName->setText("");
     resetFields();
     QDate shipDate = QDate::currentDate();
     ui->dateEdit->setDate(shipDate.addDays(1));
