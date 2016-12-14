@@ -1,0 +1,26 @@
+<OrderLine>
+        <LineInstructions>
+                <LineInstruction/>
+        </LineInstructions>
+        <POInfo>
+                <Status>New</Status><!-- Always New for small parts. -->
+                <Number>10</Number><!-- Sequential, by tens, usually. Assigned dynamically by source program. -->
+                <Qty>1</Qty><!-- Quantity ordered. -->
+                <QtyUOM>PC</QtyUOM><!-- Just default to piece (PC) -->
+                <Price>50.00</Price><!-- From part XML -->
+                <Location></Location><!-- Leave blank. -->
+                <SourcePart></SourcePart><!-- Leave blank. -->
+                <TargetPart>C157.013</TargetPart><!-- Part number being ordered. -->
+                <Salesperson>originating salesperson</Salesperson><!-- The name of the Draper salesperson. -->
+                <ContactEmail>originatingsalespersonusername@draperinc.com</ContactEmail><!-- Email address of Draper salesperson. -->
+                <RequestedShipDate>
+                        <Year>2016</Year>
+                        <Month>07</Month>
+                        <Day>07</Day>
+                </RequestedShipDate>
+                <CarrierName>UPS</CarrierName><!--leave blnak-- Expedited shipping might go here ... -->
+        </POInfo>
+        <MOInfo>
+                <Configs></Configs><!-- Must include this node but leave it empty. -->
+        </MOInfo>
+</OrderLine>

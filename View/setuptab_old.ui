@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SetupTab</class>
+ <widget class="QWidget" name="SetupTab">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>825</width>
+    <height>684</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="gbShipToAddress">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Ship-To Address</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="1">
+       <layout class="QHBoxLayout" name="hloShipToAddress_City">
+        <item>
+         <widget class="QLabel" name="lblShipToAddress_City">
+          <property name="text">
+           <string>City</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToAddress_City"/>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="0">
+       <layout class="QHBoxLayout" name="hloShipToAdddress_Address3">
+        <item>
+         <widget class="QLabel" name="lblShipToAddress_Address3">
+          <property name="text">
+           <string>Address 3</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToAddress_Address3"/>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="1">
+       <layout class="QHBoxLayout" name="hloShipToAddress_State">
+        <item>
+         <widget class="QLabel" name="lblShipToAddress_State">
+          <property name="text">
+           <string>State</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToAddress_State"/>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <layout class="QHBoxLayout" name="hloShipToAddress_Address1">
+        <item>
+         <widget class="QLabel" name="lblShipToAddress_Address1">
+          <property name="text">
+           <string>Address 1</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToAddress_Address1"/>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="hloShipToAddress_Name">
+        <item>
+         <widget class="QLabel" name="lblShipToAddress_Name">
+          <property name="text">
+           <string>Name:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToAddress_Name"/>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="1">
+       <layout class="QHBoxLayout" name="hloShipToAddress_Zip">
+        <item>
+         <widget class="QLabel" name="lblShipToAddress_Zip">
+          <property name="text">
+           <string>Zip</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToAddress_Zip"/>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0">
+       <layout class="QHBoxLayout" name="hloShipToAddress_Address2">
+        <item>
+         <widget class="QLabel" name="lblShipToAddress_Address2">
+          <property name="text">
+           <string>Address 2</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToAddress_Address2"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="gbShipToDealer">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Ship-To Dealer</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="hloShipToDealer_DealerID">
+        <item>
+         <widget class="QLabel" name="lblShipToDealer_DealerID">
+          <property name="text">
+           <string>Dealer ID</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="cmbShipToDealer_DealerID">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <layout class="QHBoxLayout" name="hloShipToDealer_PO">
+        <item>
+         <widget class="QLabel" name="lblShipToDealer_PO">
+          <property name="text">
+           <string>PO</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToDealer_DealerID">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="1">
+       <layout class="QHBoxLayout" name="hloShipToDealer_DateToShip">
+        <item>
+         <widget class="QLabel" name="lblShipToDealer_DateToShip">
+          <property name="text">
+           <string>Date to ship</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToDealer_DateToShip"/>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="1">
+       <layout class="QHBoxLayout" name="hloShipToDealer_Routing">
+        <item>
+         <widget class="QLabel" name="lblShipToDealer_Routing">
+          <property name="text">
+           <string>Routing</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="leShipToDealer_Routing"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>cmbShipToDealer_DealerID</tabstop>
+  <tabstop>leShipToDealer_Routing</tabstop>
+  <tabstop>leShipToDealer_DealerID</tabstop>
+  <tabstop>leShipToDealer_DateToShip</tabstop>
+  <tabstop>leShipToAddress_Name</tabstop>
+  <tabstop>leShipToAddress_City</tabstop>
+  <tabstop>leShipToAddress_Address1</tabstop>
+  <tabstop>leShipToAddress_State</tabstop>
+  <tabstop>leShipToAddress_Address2</tabstop>
+  <tabstop>leShipToAddress_Zip</tabstop>
+  <tabstop>leShipToAddress_Address3</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

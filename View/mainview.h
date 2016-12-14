@@ -1,22 +1,36 @@
 #ifndef MAINVIEW_H
 #define MAINVIEW_H
-
 #include <QMainWindow>
+#include <View/setuptab.h>
 
 namespace Ui {
-class MainView;
+    class MainView;
 }
+
+class SetupTab;
+//class AddLineItem;
 
 class MainView : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainView(QWidget *parent = 0);
+    explicit MainView(QWidget *parent, SetupTab &setup);
     ~MainView();
 
-private:
-    Ui::MainView *ui;
-};
+public slots:
 
+private:
+    SetupTab& m_setupTab;
+    //AddLineItem& m_addlineitem;
+    Ui::MainView *ui;
+    QString basefilename;
+    void createActions();
+    QAction *openAction;
+    QAction *saveAsAction;
+    QAction *clearAction;
+    QAction *exitAction;
+    QAction *aboutAction;
+    QAction *aboutQtAction;
+};
 #endif // MAINVIEW_H

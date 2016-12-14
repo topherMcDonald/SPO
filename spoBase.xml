@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Communication xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+        <CommunicationType>SPO</CommunicationType>
+        <Contexts>
+                <ParserVersion>1.0</ParserVersion><!-- Constant 1.0 value here. -->
+                <POGUID>spo12345</POGUID><!-- Can be any GUID matching this alphanumeric format 8-4-4-4-12 -->
+        </Contexts>
+        <OrderInstructions>
+                <Environment>Internal</Environment><!-- Internal for the small parts process. -->
+                <RefQuote></RefQuote>
+                <DiscountCode></DiscountCode>
+                <ShipVia></ShipVia>
+                <ShipViaAcctNum></ShipViaAcctNum>
+                <ContactName></ContactName>
+                <ContactPhone></ContactPhone>
+                <PrevPOGUID></PrevPOGUID>
+                <ContactEmail></ContactEmail>
+                <DeliveryNotes></DeliveryNotes>
+                <!-- The following is a node family is specific to the small parts process ... -->
+                <OrderComments>
+                        <OrderComment></OrderComment><!-- If a dealer needs small parts, dealer ID goes here. You may also put general notes here, too, per XSD rules. -->
+                </OrderComments>
+        </OrderInstructions>
+        <MetaInfo>
+                <PONumber></PONumber><!-- Auto-assigned, random PO string ... whatever. Chris P. will prepend something to it to uniquely identify small parts POs for reporting purposes. -->
+                <EndCustPO></EndCustPO>
+                <DealerSONumber>123456</DealerSONumber>
+                <POCreated>
+                        <Year>2016</Year>
+                        <Month>07</Month>
+                        <Day>01</Day>
+                </POCreated>
+                <ProjectInfo>
+                        <ProjectName></ProjectName>
+                        <ProjectID></ProjectID>
+                </ProjectInfo>
+                <PartnerInfo><!-- This node's children are constant values. -->
+                        <PartnerType>Internal</PartnerType>
+                        <ERPID>1600S</ERPID>
+                        <PartnerName>Draper, Inc.</PartnerName>
+                </PartnerInfo>
+                <Addressing>
+                        <SoldTo><!-- Always Draper address. -->
+                                <Name>Draper, Inc.</Name>
+                                <Address1>411 South Pearl Street</Address1>
+                                <Address2/>
+                                <Address3/>
+                                <City>Spiceland</City>
+                                <State>IN</State>
+                                <Zip>47385</Zip>
+                                <CountryCode>USA</CountryCode>
+                                <GPS>
+                                        <Lat>0.0</Lat>
+                                        <Lon>0.0</Lon>
+                                </GPS>
+                        </SoldTo>
+                        <ShipTo><!-- This is the target addressing of the end user or the dealer we are sending the small parts to -->
+                                <Name></Name>
+                                <Address1></Address1>
+                                <Address2/>
+                                <Address3/>
+                                <City></City>
+                                <State></State>
+                                <Zip></Zip>
+                                <CountryCode>USA</CountryCode>
+                                <GPS>
+                                        <Lat>0.0</Lat>
+                                        <Lon>0.0</Lon>
+                                </GPS>
+                                <Instructions><!-- Special instructions for the delivery person. -->
+                                        <Attention></Attention>
+                                        <Phone></Phone>
+                                        <Email></Email>
+                                        <Note1></Note1>
+                                        <Note2></Note2>
+                                        <Note3></Note3>
+                                        <Note4></Note4>
+                                        <ShippingQuote></ShippingQuote>
+                                </Instructions>
+                        </ShipTo>
+                </Addressing>
+        </MetaInfo>
+        <OrderLines>
+        <!-- Small parts data from GUI below ... -->
+        </OrderLines>
+</Communication>

@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/root">
+        <file>qtAppIcons/Add.png</file>
+        <file>qtAppIcons/add1.png</file>
+        <file>qtAppIcons/alert.png</file>
+        <file>qtAppIcons/back.png</file>
+        <file>qtAppIcons/cancel.png</file>
+        <file>qtAppIcons/delete.png</file>
+        <file>qtAppIcons/export.png</file>
+        <file>qtAppIcons/Redo.png</file>
+        <file>qtAppIcons/Refresh.png</file>
+        <file>qtAppIcons/Remove.png</file>
+        <file>qtAppIcons/Undo.png</file>
+    </qresource>
+</RCC>
