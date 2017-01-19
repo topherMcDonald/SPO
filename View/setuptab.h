@@ -25,7 +25,7 @@ public:
     void XmlAddressSearchRequestParsing(QXmlStreamReader &XmlFileReader);
     QString GetDefaultXML();
     void ShowXmlOnScreen();
-
+    void resetFields();
     void ReadActiveDirectory();
     void OutOfStockDialog();
 public slots:
@@ -49,7 +49,7 @@ private:
     bool overCostLimit;
     Ui::SetupTab *ui;
     bool AddLineItem_OrderTotal(QString orderTotal);
-    void resetFields();
+
     bool GetOrderTotal();
     void WriteXml();
     void resetForm();

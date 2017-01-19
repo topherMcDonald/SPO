@@ -41,7 +41,7 @@
 #include <lmcons.h>
 #include <Windows.h>
 
-
+/* Add a timer, start when session is initiated */
 static auto RESOURCE_PREFIX = QStringLiteral(":/xml");
 static auto OUTFILE_PREFIX = QStringLiteral("C:/");
 static QString FILEERROR_MSG = QStringLiteral("ERROR OPENING FILE");
