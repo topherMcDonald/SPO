@@ -207,14 +207,14 @@ void SetupTab::XmlAddressSearchRequestParsing(QXmlStreamReader &XmlFileReader)
             }
 
             //leShipToAddress_
-            ui->leShipToAddress_Name->setText(dname); // = dname;
-            ui->leShipToAddress_Address1->setText(address1); //= address1;
-            ui->leShipToAddress_Address2->setText(address2); //= address2;
-            ui->leShipToAddress_City->setText(city); //= city;
-            ui->leShipToAddress_State->setText(state); //= state;
-            ui->leShipToAddress_Zip->setText(zip); //= zip;
-            ui->leShipToAddress_Country->setText(countryCode); //   County line edit field
-            ui->leShipToAddress_ContactNumber->setText(phone); // Contact number returned from macPac
+            ui->leShipToAddress_Name->setText(dname);           // = dname;
+            ui->leShipToAddress_Address1->setText(address1);    //= address1;
+            ui->leShipToAddress_Address2->setText(address2);    //= address2;
+            ui->leShipToAddress_City->setText(city);            //= city;
+            ui->leShipToAddress_State->setText(state);          //= state;
+            ui->leShipToAddress_Zip->setText(zip);              //= zip;
+            ui->leShipToAddress_Country->setText(countryCode);  //   County line edit field
+            ui->leShipToAddress_ContactNumber->setText(phone);  // Contact number returned from macPac
 
         }
     }
@@ -625,8 +625,8 @@ void SetupTab::WriteXml()
     xmlWriter.writeTextElement("DiscountCode", "");
     xmlWriter.writeTextElement("ShipVia", shipViaCode);
     xmlWriter.writeTextElement("ShipViaAcctNum", "");
-    xmlWriter.writeTextElement("ContactName", ui->leShipToAddress_ContactName->text());
-    xmlWriter.writeTextElement("ContactPhone", ui->leShipToAddress_ContactNumber->text());// ui contact phone goes here.
+    xmlWriter.writeTextElement("ContactName", "");  //Salesperson info
+    xmlWriter.writeTextElement("ContactPhone", "");
     xmlWriter.writeTextElement("PrevPOGUID", "");
     xmlWriter.writeTextElement("ContactEmail", ui->leSalespersonEmail->text());
     xmlWriter.writeTextElement("DeliveryNotes", "");
@@ -681,8 +681,8 @@ void SetupTab::WriteXml()
     xmlWriter.writeTextElement("Lon", "0.0");
     xmlWriter.writeEndElement();//End GPS
     xmlWriter.writeStartElement("Instructions");
-    xmlWriter.writeTextElement("Attention", "");
-    xmlWriter.writeTextElement("Phone", "");
+    xmlWriter.writeTextElement("Attention", ui->leShipToAddress_ContactName->text());
+    xmlWriter.writeTextElement("Phone", ui->leShipToAddress_ContactNumber->text()); // ui contact phone goes here.
     xmlWriter.writeTextElement("Email", "");
     xmlWriter.writeTextElement("Note1", "");
     xmlWriter.writeTextElement("Note2", "");
