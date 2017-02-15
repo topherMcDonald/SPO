@@ -923,7 +923,7 @@
            </size>
           </property>
           <property name="maxLength">
-           <number>5</number>
+           <number>6</number>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

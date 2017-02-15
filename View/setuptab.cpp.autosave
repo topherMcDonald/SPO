@@ -324,7 +324,7 @@ void SetupTab::resetFields()
     ui->leAddlineItem_Description->setText("");
     ui->leAddLineItem_Value->setText("");
     ui->leAddLineItem_Quantity->setText("");
-    //ui->leShipToAddress_ContactName->setText("");
+    //aui->leShipToAddress_ContactName->setText("");
 }
 /* ========================================================================
  *
