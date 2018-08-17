@@ -38,58 +38,7 @@
       <string>Add Line Item</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="6">
-       <widget class="QLabel" name="lblAddLineItem_Quantity">
-        <property name="text">
-         <string>Quantity</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="5">
-       <widget class="QLineEdit" name="leAddLineItem_PartNumber">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="7">
-       <widget class="QLineEdit" name="leAddLineItem_Quantity">
-        <property name="toolTip">
-         <string>Required field.</string>
-        </property>
-        <property name="toolTipDuration">
-         <number>-1</number>
-        </property>
-        <property name="statusTip">
-         <string>Required Field</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="4">
-       <widget class="QLabel" name="lblAddLineItem_PartNumber">
-        <property name="text">
-         <string>Part Number</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QPushButton" name="btnAddLineItem_GetMacPacPart">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>  Get MacPac Part</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../sporesource.qrc">
-          <normaloff>:/root/qtAppIcons/forward.png</normaloff>:/root/qtAppIcons/forward.png</iconset>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="6" colspan="2">
+      <item row="4" column="6" colspan="3">
        <widget class="QPushButton" name="btnAddLineItem_AddLine">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -118,10 +67,34 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="lblAddLineItem_Description">
+      <item row="0" column="4">
+       <widget class="QLabel" name="lblAddLineItem_PartNumber">
         <property name="text">
-         <string>Description</string>
+         <string>Part Number</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="QLineEdit" name="leAddLineItem_PartNumber">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="btnAddLineItem_GetMacPacPart">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>  Get MacPac Part</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../sporesource.qrc">
+          <normaloff>:/root/qtAppIcons/forward.png</normaloff>:/root/qtAppIcons/forward.png</iconset>
         </property>
        </widget>
       </item>
@@ -138,10 +111,10 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="7">
-       <widget class="QLineEdit" name="leAddLineItem_Value">
-        <property name="readOnly">
-         <bool>true</bool>
+      <item row="3" column="0">
+       <widget class="QLabel" name="lblAddLineItem_Description">
+        <property name="text">
+         <string>Description</string>
         </property>
        </widget>
       </item>
@@ -149,6 +122,33 @@
        <widget class="QLabel" name="lblAddLineItem_Value">
         <property name="text">
          <string>Value</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="6">
+       <widget class="QLabel" name="lblAddLineItem_Quantity">
+        <property name="text">
+         <string>Quantity</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="7" colspan="2">
+       <widget class="QSpinBox" name="spinBoxAddLineItem_Quantity">
+        <property name="minimum">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <number>99999</number>
+        </property>
+        <property name="value">
+         <number>1</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="7" colspan="2">
+       <widget class="QLineEdit" name="leAddLineItem_Value">
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -1026,7 +1026,6 @@
   <tabstop>btnAddLineItem_GetMacPacPart</tabstop>
   <tabstop>leAddLineItem_PartNumber</tabstop>
   <tabstop>leAddlineItem_Description</tabstop>
-  <tabstop>leAddLineItem_Quantity</tabstop>
   <tabstop>leAddLineItem_Value</tabstop>
   <tabstop>btnAddLineItem_AddLine</tabstop>
   <tabstop>tblOrderLinesWidget</tabstop>

@@ -269,7 +269,7 @@ void SetupTab::on_btnAddLineItem_GetMacPacPart_clicked()
         QString partCost = m.value("PartCost");
         ui->leAddLineItem_Value->setText(partCost);
         //Default the quantity to 1 for users
-        ui->leAddLineItem_Quantity->setText("1");
+        //replaced with spinBox ui->leAddLineItem_Quantity->setText("1");
 
         QString partOnHand = m.value("PartOnHand");
         ui->leOnHandStock->setText(partOnHand);
@@ -323,7 +323,8 @@ void SetupTab::resetFields()
     ui->leAddLineItem_PartNumber->setText("");
     ui->leAddlineItem_Description->setText("");
     ui->leAddLineItem_Value->setText("");
-    ui->leAddLineItem_Quantity->setText("");
+    //replaced with spin boxui->leAddLineItem_Quantity->setText("");
+    ui->spinBoxAddLineItem_Quantity->setValue(0);
     ui->leShipToAddress_ContactName->setText("");
 }
 /* ========================================================================
@@ -379,6 +380,8 @@ void SetupTab::on_btnAddLineItem_AddLine_clicked()
     QString partQty;
     QString extCost;
     QString onHand;
+
+    int partQtyIntFromSB;
     int partQtyInt;
     int onHandInt;
     float xCost;
@@ -386,7 +389,9 @@ void SetupTab::on_btnAddLineItem_AddLine_clicked()
     partName = ui->leAddLineItem_PartNumber->text();
     partDesc = ui->leAddlineItem_Description->text();
     partCost = ui->leAddLineItem_Value->text();
-    partQty = ui->leAddLineItem_Quantity->text();
+    partQtyIntFromSB = ui->spinBoxAddLineItem_Quantity->value();
+    qDebug("Number from Spin box %d ", partQtyIntFromSB);
+    //replaced with spin box partQty = ui->leAddLineItem_Quantity->text();
     onHand = ui->leOnHandStock->text();
     //START: Extended Cost Mod - FJD - 8.9.2016
     if(partCost.toFloat() < 0.01)
@@ -394,7 +399,9 @@ void SetupTab::on_btnAddLineItem_AddLine_clicked()
         //  If lees than penny, round to $00.01
         partCost.setNum(0.01);
     }
-    xCost = (roundf((partQty.toFloat() * partCost.toFloat()) * 100) / 100);
+    //xCost = (roundf((partQty.toFloat() * partCost.toFloat()) * 100) / 100);
+    xCost = (roundf((partQtyIntFromSB * partCost.toFloat()) * 100) / 100);
+
     extCost.setNum(xCost);
     //END: Extended Cost Mod
     //  Convert string to int.
@@ -413,7 +420,7 @@ void SetupTab::on_btnAddLineItem_AddLine_clicked()
         return;
     }
 
-    if((PartOkToAdd(partName, partDesc, partCost, partQty) == true) && (xCost < 100))
+    if((PartOkToAdd(partName, partDesc, partCost, partQtyIntFromSB) == true) && (xCost < 100))
     {
         int row = ui->tblOrderLinesWidget->rowCount();
         ui->tblOrderLinesWidget->insertRow(row);
@@ -431,7 +438,7 @@ void SetupTab::on_btnAddLineItem_AddLine_clicked()
  * bool PartOkToAdd(QString , QString , QString , QString)
  *
  * ===============================================================================================*/
-bool SetupTab::PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty)
+bool SetupTab::PartOkToAdd(QString partName, QString partDesc, QString partCost, int partQty)
 {
     bool retval = true;
     if (partName == "") {
@@ -443,7 +450,7 @@ bool SetupTab::PartOkToAdd(QString partName, QString partDesc, QString partCost,
     if (partCost == "") {
         retval = false;
     }
-    if (partQty == "" || partQty == "0" || partQty.contains("-")) {
+    if (partQty <= 0) { // "" || partQty == "0" || partQty.contains("-")) {
         retval = false;
     }
     if (retval == false) {
@@ -755,7 +762,7 @@ void SetupTab::WriteXml()
     QByteArray xmlToServiceAry = xmlToService_file.readAll();
     res_file.close();
     xmlToService_file.close();
-    PostXMLToService(xmlToServiceAry);
+    //////////////////////////////////////////////// uncomment for delivery, live         PostXMLToService(xmlToServiceAry);
 }
 /************************************************************************
  *
