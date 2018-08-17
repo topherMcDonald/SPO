@@ -52,19 +52,6 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="7">
-       <widget class="QLineEdit" name="leAddLineItem_Quantity">
-        <property name="toolTip">
-         <string>Required field.</string>
-        </property>
-        <property name="toolTipDuration">
-         <number>-1</number>
-        </property>
-        <property name="statusTip">
-         <string>Required Field</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="4">
        <widget class="QLabel" name="lblAddLineItem_PartNumber">
         <property name="text">
@@ -72,24 +59,7 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
-       <widget class="QPushButton" name="btnAddLineItem_GetMacPacPart">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>  Get MacPac Part</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../sporesource.qrc">
-          <normaloff>:/root/qtAppIcons/forward.png</normaloff>:/root/qtAppIcons/forward.png</iconset>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="6" colspan="2">
+      <item row="5" column="6" colspan="3">
        <widget class="QPushButton" name="btnAddLineItem_AddLine">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -118,14 +88,31 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
+      <item row="0" column="0">
+       <widget class="QPushButton" name="btnAddLineItem_GetMacPacPart">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>  Get MacPac Part</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../sporesource.qrc">
+          <normaloff>:/root/qtAppIcons/forward.png</normaloff>:/root/qtAppIcons/forward.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
        <widget class="QLabel" name="lblAddLineItem_Description">
         <property name="text">
          <string>Description</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="1" colspan="5">
+      <item row="4" column="1" colspan="5">
        <widget class="QLineEdit" name="leAddlineItem_Description">
         <property name="layoutDirection">
          <enum>Qt::RightToLeft</enum>
@@ -138,17 +125,33 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="7">
+      <item row="4" column="8">
        <widget class="QLineEdit" name="leAddLineItem_Value">
         <property name="readOnly">
          <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="3" column="6">
+      <item row="4" column="6">
        <widget class="QLabel" name="lblAddLineItem_Value">
         <property name="text">
          <string>Value</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="7">
+       <widget class="QSpinBox" name="spinBoxAddLineItem_Quantity"/>
+      </item>
+      <item row="0" column="8">
+       <widget class="QLineEdit" name="leAddLineItem_Quantity">
+        <property name="toolTip">
+         <string>Required field.</string>
+        </property>
+        <property name="toolTipDuration">
+         <number>-1</number>
+        </property>
+        <property name="statusTip">
+         <string>Required Field</string>
         </property>
        </widget>
       </item>
@@ -1026,7 +1029,6 @@
   <tabstop>btnAddLineItem_GetMacPacPart</tabstop>
   <tabstop>leAddLineItem_PartNumber</tabstop>
   <tabstop>leAddlineItem_Description</tabstop>
-  <tabstop>leAddLineItem_Quantity</tabstop>
   <tabstop>leAddLineItem_Value</tabstop>
   <tabstop>btnAddLineItem_AddLine</tabstop>
   <tabstop>tblOrderLinesWidget</tabstop>

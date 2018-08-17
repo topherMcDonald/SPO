@@ -17,7 +17,7 @@ public:
     explicit SetupTab(QWidget *parent = 0);
     ~SetupTab();
     void AddLineItemFromDialog(QString &item);
-    bool PartOkToAdd(QString partName, QString partDesc, QString partCost, QString partQty);
+    bool PartOkToAdd(QString partName, QString partDesc, QString partCost, int partQty);
     void handleDeleteSelectedRow();
     void updateExtendedCostTotal();
     void OverLimitDialog();
