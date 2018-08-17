@@ -1,5 +1,6 @@
 #include "searchdialog.h"
 #include "ui_searchdialog.h"
+#include "setuptab.h"
 #include <QtNetwork>
 //For web calls ...
 #include <QCoreApplication>
@@ -48,16 +49,18 @@ void SearchDialog::startSearchRequest()
 
     QByteArray result = reply->readAll();
     QXmlStreamReader xmlReader(result);
+
     XmlDialogSearchRequestParsing(xmlReader);
 }
 
 void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
 {
-    QString partName,  description, cost, onHand;
+    QString partName,  description, cost, onHand, parts;
 
     //Removes all rows from table (fjd 8.5.16 1:05 PM)
     ui->tblDialogSearchResults->setRowCount(0);
     int row = ui->tblDialogSearchResults->rowCount();
+    int xmlOkayToProcess = false;
 
     while(!XmlFile.atEnd() && !XmlFile.hasError())
     {
@@ -65,12 +68,19 @@ void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
         if(token == QXmlStreamReader::StartElement)
         {
             QStringRef  name = XmlFile.name();
+            if(name == "Parts")
+            {
+                ui->tblDialogSearchResults->setRowCount(0);
+                xmlOkayToProcess = false;
+            }
+
             if(name == "Name")
             {
                 ui->tblDialogSearchResults->insertRow(row);
                 partName = XmlFile.readElementText();
                 ui->tblDialogSearchResults->setItem(row,0, new QTableWidgetItem (partName));
                 ui->tblDialogSearchResults->horizontalHeader()->setSectionResizeMode(0,QHeaderView::ResizeToContents);
+                xmlOkayToProcess = true;
             }
             else if(name == "Description")
             {
@@ -83,9 +93,9 @@ void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
                 cost = XmlFile.readElementText();
                 ui->tblDialogSearchResults->setItem(row,2, new QTableWidgetItem (cost));
                 ui->tblDialogSearchResults->horizontalHeader()->setSectionResizeMode(2,QHeaderView::ResizeToContents);
-               // row = ui->tblDialogSearchResults->rowCount();
+                // row = ui->tblDialogSearchResults->rowCount();
             }
-           else if(name == "OnHandQtyForMfg")
+            else if(name == "OnHandQtyForMfg")
             {
                 onHand = XmlFile.readElementText();
                 ui->tblDialogSearchResults->setItem(row,3, new QTableWidgetItem (onHand));
@@ -93,13 +103,24 @@ void SearchDialog::XmlDialogSearchRequestParsing(QXmlStreamReader &XmlFile)
                 //  row = ui->tblDialogSearchResults->rowCount();
             }
             else if(name == "InventoryInfo")
-             {
-                 //onHand = XmlFile.readElementText();
-                 ui->tblDialogSearchResults->setItem(row,3, new QTableWidgetItem ("0"));
-                 ui->tblDialogSearchResults->horizontalHeader()->setSectionResizeMode(3,QHeaderView::ResizeToContents);
-                 //  row = ui->tblDialogSearchResults->rowCount();
-             }
+            {
+                //onHand = XmlFile.readElementText();
+                ui->tblDialogSearchResults->setItem(row,3, new QTableWidgetItem ("0"));
+                ui->tblDialogSearchResults->horizontalHeader()->setSectionResizeMode(3,QHeaderView::ResizeToContents);
+                //  row = ui->tblDialogSearchResults->rowCount();
+            }
         }
+    }
+
+    if(xmlOkayToProcess == false)
+    {
+        ui->tblDialogSearchResults->insertRow(row);
+        partName = "No parts returned, check MacPac for further information.";
+        ui->tblDialogSearchResults->setItem(row,0, new QTableWidgetItem (partName));
+        ui->tblDialogSearchResults->horizontalHeader()->setSectionResizeMode(0,QHeaderView::ResizeToContents);
+        description = "Part is possibly marked as Discontinued or Don't buy";
+        ui->tblDialogSearchResults->setItem(row,1, new QTableWidgetItem (description));
+        ui->tblDialogSearchResults->horizontalHeader()->setSectionResizeMode(1,QHeaderView::ResizeToContents);
     }
 }
 
@@ -116,9 +137,9 @@ void SearchDialog::on_btnAddSelectedItem_clicked()
 QMap<QString, QString> SearchDialog::getMap() {
 
     QTableWidgetItem *rowValue;
-    QVariant partValue;//name of part
-    QVariant partDesc;//description of part
-    QVariant partCost;//cost of part
+    QVariant partValue; //name of part
+    QVariant partDesc;  //description of part
+    QVariant partCost;  //cost of part
     QVariant partOnHand;//number of parts in stock
 
     foreach (rowValue, selectedValue) {
