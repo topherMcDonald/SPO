@@ -310,6 +310,7 @@ void SetupTab::updateExtendedCostTotal()
             return;
         }
     }
+    //uiTotal.setNum(tmpTotal, 'f', 2);
     uiTotal.setNum(tmpTotal);
     ui->leOrderTotal->setText(uiTotal);
 }
@@ -378,49 +379,71 @@ void SetupTab::on_btnAddLineItem_AddLine_clicked()
     QString partDesc;
     QString partCost;
     QString partQty;
-    QString extCost;
+    QString totalCostStringConversion;
     QString onHand;
 
     int partQtyIntFromSB;
-    int partQtyInt;
     int onHandInt;
-    float xCost;
+    double partCostConversion;
+    //float xCost;
+    double partCostFormatForTable;
+    double totalCost;
 
     partName = ui->leAddLineItem_PartNumber->text();
     partDesc = ui->leAddlineItem_Description->text();
     partCost = ui->leAddLineItem_Value->text();
     partQtyIntFromSB = ui->spinBoxAddLineItem_Quantity->value();
-    qDebug("Number from Spin box %d ", partQtyIntFromSB);
+    //qDebug("Number from Spin box %d ", partQtyIntFromSB);
     //replaced with spin box partQty = ui->leAddLineItem_Quantity->text();
     onHand = ui->leOnHandStock->text();
-    //START: Extended Cost Mod - FJD - 8.9.2016
-    if(partCost.toFloat() < 0.01)
+    //START: Extended Cost Mod - FJD - 8.9.20
+    //if(partCost.toFloat() < 0.01)
+    partCostFormatForTable = partCost.toDouble();
+    partCostConversion = partCost.toDouble();
+
+    if(partCostConversion < 0.01)
     {
         //  If lees than penny, round to $00.01
         partCost.setNum(0.01);
     }
     //xCost = (roundf((partQty.toFloat() * partCost.toFloat()) * 100) / 100);
-    xCost = (roundf((partQtyIntFromSB * partCost.toFloat()) * 100) / 100);
+    //xCost = (roundf((partQtyIntFromSB * partCost.toFloat()) * 100) / 100);
+    totalCost = ((partQtyIntFromSB * partCostConversion * 100) / 100);
+    //qDebug() << QString("what is the xcost conversion %1").arg(totalCost) << QString::number(totalCost, 'g', 4);
 
-    extCost.setNum(xCost);
+   // extCost.setNum(xCost);
+    //totalCostStringConversion = QString::number(totalCost, 'g', 4);
+
     //END: Extended Cost Mod
     //  Convert string to int.
-    partQtyInt = partQty.toInt();
-    onHandInt = onHand.toInt();
+    //partQtyInt = partQty.toInt();
 
-    if(partQtyInt > onHandInt)
+    //Convert int to string for UI display.
+    partQty = QString::number(partQtyIntFromSB);
+    partCost = QString::number(partCostFormatForTable, 'f', 2);
+    //qDebug() << QString("------------------Part cost conversion %1").arg(partCost);
+    onHandInt = onHand.toInt();
+    totalCostStringConversion = QString::number(totalCost, 'f', 2);
+    //qDebug() << QString("part  what is the g conversion %1").arg(partCostConversion) << QString::number(partCostConversion, 'f', 2);
+    //qDebug() << QString("aprt what is the G conversion %1").arg(partCostConversion) << QString::number(partCostConversion, 'F', 2);
+
+
+    //qDebug() << QString("total what is the g conversion %1").arg(totalCost) << QString::number(totalCost, 'f', 2);
+    //qDebug() << QString("total what is the G conversion %1").arg(totalCost) << QString::number(totalCost, 'F', 2);
+
+    if(partQtyIntFromSB > onHandInt)
     {
         OutOfStockDialog();
         return;
     }
 
-    if(xCost > 100)
+    if(totalCost > 100)
     {
         OverLimitDialog();
         return;
     }
 
-    if((PartOkToAdd(partName, partDesc, partCost, partQtyIntFromSB) == true) && (xCost < 100))
+    if((PartOkToAdd(partName, partDesc, partCost, partQtyIntFromSB) == true) && (totalCost < 100))
     {
         int row = ui->tblOrderLinesWidget->rowCount();
         ui->tblOrderLinesWidget->insertRow(row);
@@ -428,7 +451,7 @@ void SetupTab::on_btnAddLineItem_AddLine_clicked()
         ui->tblOrderLinesWidget->setItem(row,1, new QTableWidgetItem (partDesc));
         ui->tblOrderLinesWidget->setItem(row,2, new QTableWidgetItem (partCost));
         ui->tblOrderLinesWidget->setItem(row,3, new QTableWidgetItem (partQty));
-        ui->tblOrderLinesWidget->setItem(row,4, new QTableWidgetItem (extCost));
+        ui->tblOrderLinesWidget->setItem(row,4, new QTableWidgetItem (totalCostStringConversion));
         updateExtendedCostTotal();
         resetFields();
     }
