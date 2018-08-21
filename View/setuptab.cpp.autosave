@@ -503,8 +503,6 @@ void SetupTab::handleDeleteSelectedRow()
  * =======================================================================*/
 void SetupTab::on_btnRecapAndSubmit_Clear_clicked()
 {
-    //int rowIndex;\\
-    //QString str = tblOrderLinesWidget->item(rowIndex,1)->text();
     handleDeleteSelectedRow();
     updateExtendedCostTotal();
 }
