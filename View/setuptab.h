@@ -40,6 +40,8 @@ private slots:
     void on_btnSubmitOrder_clicked();
    // void on_dateEdit_userDateChanged(const QDate &date);
 
+    void on_btnSetUpPage_Clear_clicked();
+
 private:
     QString m_basefilename;
     QString basefilename;

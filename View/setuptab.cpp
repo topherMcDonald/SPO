@@ -498,13 +498,37 @@ void SetupTab::handleDeleteSelectedRow()
 }
 /* ========================================================================
  *
+ * void btnSetUpPage_Clear_clicked()
+ *
+ * =======================================================================*/
+void SetupTab::on_btnSetUpPage_Clear_clicked()
+{
+    //ui->leShipToDealer_PO->setText("");
+    ui->leShipToAddress_Address1->setText("");
+    ui->leShipToAddress_Address2->setText("");
+    ui->leShipToAddress_City->setText("");
+    ui->leShipToAddress_Name->setText("");
+    ui->leShipToAddress_State->setText("");
+    ui->leShipToAddress_Zip->setText("");
+    ui->leShipToDealer_ID->setText("");
+    //ui->leShipToDealer_ID->setText("");
+   // ui->leOrderTotal->setText("");
+    ui->leShipToAddress_ContactNumber->setText("");
+    ui->leShipToAddress_ContactName->setText("");
+    ui->leAddLineItem_PartNumber->setText("");
+    ui->leAddlineItem_Description->setText("");
+    ui->leAddLineItem_Value->setText("");
+    //replaced with spin boxui->leAddLineItem_Quantity->setText("");
+    ui->spinBoxAddLineItem_Quantity->setValue(0);
+    ui->leShipToAddress_ContactName->setText("");
+}
+/* ========================================================================
+ *
  * void on_btnRecapAndSubmit_Clear_clicked()
  *
  * =======================================================================*/
 void SetupTab::on_btnRecapAndSubmit_Clear_clicked()
 {
-    //int rowIndex;\\
-    //QString str = tblOrderLinesWidget->item(rowIndex,1)->text();
     handleDeleteSelectedRow();
     updateExtendedCostTotal();
 }
@@ -550,6 +574,7 @@ bool SetupTab::CheckRequiredDataAdded()
     }
     return boolLogicValue;
 }
+
 /* ========================================================================
  *
  * void on_btnSubmitOrder_clicked()
@@ -806,4 +831,6 @@ void SetupTab::PostXMLToService(QByteArray& xmlData)
     mgr.post(request, xmlData);
     eventLoop.exec();
 }
+
+
 
